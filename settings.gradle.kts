@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "PercentagesWithAnimationCompose"
 include(":app")
+include(":PercentagesWithAnimationCompose")
