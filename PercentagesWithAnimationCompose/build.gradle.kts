@@ -7,6 +7,7 @@ plugins {
 android {
     namespace = "com.nicos.percentageswithanimationcompose"
     compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         minSdk = 27
