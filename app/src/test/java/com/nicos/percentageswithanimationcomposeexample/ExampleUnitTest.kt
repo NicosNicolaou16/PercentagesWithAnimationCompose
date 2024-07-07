@@ -1,4 +1,4 @@
-package com.nicos.percentageswithanimationcompose
+package com.nicos.percentageswithanimationcomposeexample
 
 import org.junit.Test
 

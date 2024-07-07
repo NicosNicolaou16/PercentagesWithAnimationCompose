@@ -1,14 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
-    namespace = "com.nicos.percentageswithanimationcompose"
+    namespace = "com.nicos.percentageswithanimationcomposeexample"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.nicos.percentageswithanimationcompose"
+        applicationId = "com.nicos.percentageswithanimationcomposeexample"
         minSdk = 27
         targetSdk = 34
         versionCode = 1
@@ -39,8 +40,9 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+    composeCompiler {
+        enableStrongSkippingMode = true
+        reportsDestination = layout.buildDirectory.dir("compose_compiler")
     }
     packaging {
         resources {

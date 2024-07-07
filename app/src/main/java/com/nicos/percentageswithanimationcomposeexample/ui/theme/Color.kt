@@ -1,4 +1,4 @@
-package com.nicos.percentageswithanimationcompose.ui.theme
+package com.nicos.percentageswithanimationcomposeexample.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
