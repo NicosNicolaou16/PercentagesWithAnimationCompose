@@ -32,14 +32,17 @@ import androidx.compose.ui.unit.dp
 fun LinearPercentage(
     currentValue: Float,
     maximumValue: Float,
+    progressAnimationDuration: Int = 1_500
 ) {
     var progress by remember { mutableFloatStateOf(0F) }
     val density = LocalDensity.current
     var maxWidth by remember { mutableStateOf(0.dp) }
-    val progressAnimDuration = 1_500
     val progressAnimation by animateFloatAsState(
         targetValue = if (progress != Infinity.value) progress else 0F,
-        animationSpec = tween(durationMillis = progressAnimDuration, easing = FastOutSlowInEasing),
+        animationSpec = tween(
+            durationMillis = progressAnimationDuration,
+            easing = FastOutSlowInEasing
+        ),
         label = "",
     )
 
