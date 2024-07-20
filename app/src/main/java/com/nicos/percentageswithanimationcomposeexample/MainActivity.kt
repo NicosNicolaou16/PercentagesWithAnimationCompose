@@ -48,6 +48,8 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         LinearPercentage(
             currentValue = 50F,
             maximumValue = 100F,
+            heightPercentageBackground = 50,
+            heightPercentage = 50,
             startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp),
             endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp)
         )

@@ -38,6 +38,8 @@ fun LinearPercentage(
     currentValue: Float,
     maximumValue: Float,
     progressAnimationDuration: Int = 1_500,
+    heightPercentageBackground: Int,
+    heightPercentage: Int,
     startTextEndPadding: Int = 5,
     endTextStartPadding: Int = 5,
     startTextStyle: TextStyle,
@@ -80,7 +82,7 @@ fun LinearPercentage(
         Box(modifier = modifier.weight(1f)) {
             Box(
                 modifier = modifier
-                    .height(50.dp)
+                    .height(heightPercentageBackground.dp)
                     .fillMaxWidth()
                     .clip(shape = RoundedCornerShape(21.dp))
                     .background(Color.Red)
@@ -93,9 +95,9 @@ fun LinearPercentage(
             ) {
                 Box(
                     modifier = modifier
-                        .align(Alignment.CenterStart)
                         .width(progressAnimation.dp)
-                        .height(50.dp)
+                        .height(heightPercentage.dp)
+                        .align(Alignment.CenterStart)
                         .background(Color.Blue)
                 )
             }
@@ -119,6 +121,8 @@ fun LinearPercentagePreview() {
     LinearPercentage(
         currentValue = 50F,
         maximumValue = 100F,
+        heightPercentageBackground = 20,
+        heightPercentage = 20,
         startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp),
         endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp)
     )
