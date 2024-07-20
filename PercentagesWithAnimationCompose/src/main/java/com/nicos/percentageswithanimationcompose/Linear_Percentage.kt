@@ -40,6 +40,8 @@ fun LinearPercentage(
     progressAnimationDuration: Int = 1_500,
     heightPercentageBackground: Int,
     heightPercentage: Int,
+    colorPercentageBackground: Color,
+    colorPercentage: Color,
     startTextEndPadding: Int = 5,
     endTextStartPadding: Int = 5,
     startTextStyle: TextStyle,
@@ -85,7 +87,7 @@ fun LinearPercentage(
                     .height(heightPercentageBackground.dp)
                     .fillMaxWidth()
                     .clip(shape = RoundedCornerShape(21.dp))
-                    .background(Color.Red)
+                    .background(colorPercentageBackground)
                     .onGloballyPositioned {
                         maxWidth = with(density) {
                             it.size.width.toDp()
@@ -98,7 +100,7 @@ fun LinearPercentage(
                         .width(progressAnimation.dp)
                         .height(heightPercentage.dp)
                         .align(Alignment.CenterStart)
-                        .background(Color.Blue)
+                        .background(colorPercentage)
                 )
             }
         }
@@ -123,6 +125,8 @@ fun LinearPercentagePreview() {
         maximumValue = 100F,
         heightPercentageBackground = 20,
         heightPercentage = 20,
+        colorPercentageBackground = Color.Red,
+        colorPercentage = Color.Blue,
         startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp),
         endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp)
     )
