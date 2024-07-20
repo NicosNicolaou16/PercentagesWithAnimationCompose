@@ -1,6 +1,5 @@
 package com.nicos.percentageswithanimationcompose
 
-import android.util.Log
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -12,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,7 +37,11 @@ import androidx.compose.ui.unit.sp
 fun LinearPercentage(
     currentValue: Float,
     maximumValue: Float,
-    progressAnimationDuration: Int = 1_500
+    progressAnimationDuration: Int = 1_500,
+    startTextEndPadding: Int = 5,
+    endTextStartPadding: Int = 5,
+    startTextStyle: TextStyle,
+    endTextStyle: TextStyle
 ) {
     val modifier = Modifier
     var progress by remember { mutableFloatStateOf(0F) }
@@ -72,10 +74,8 @@ fun LinearPercentage(
     ) {
         Text(
             text = (actualProgressAnimation).toInt().toString(),
-            modifier = modifier.padding(end = 5.dp),
-            style = TextStyle(
-                color = Color.Red,
-            )
+            modifier = modifier.padding(end = startTextEndPadding.dp),
+            style = startTextStyle
         )
         Box(modifier = modifier.weight(1f)) {
             Box(
@@ -103,10 +103,8 @@ fun LinearPercentage(
         Text(
             text = maximumValue.toInt().toString(),
             modifier = modifier
-                .padding(start = 5.dp),
-            style = TextStyle(
-                color = Color.Green,
-            )
+                .padding(start = endTextStartPadding.dp),
+            style = endTextStyle
         )
     }
     LaunchedEffect(Unit) {
@@ -118,5 +116,10 @@ fun LinearPercentage(
 @Preview
 @Composable
 fun LinearPercentagePreview() {
-    LinearPercentage(currentValue = 50F, maximumValue = 100F)
+    LinearPercentage(
+        currentValue = 50F,
+        maximumValue = 100F,
+        startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp),
+        endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp)
+    )
 }
