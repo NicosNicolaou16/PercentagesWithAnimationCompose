@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,9 +49,11 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         modifier = Modifier
             .background(Color.White)
             .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.size(90.dp))
+        Text(text = "Linear Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
+        Spacer(modifier = Modifier.size(15.dp))
         LinearPercentage(
             currentValue = 50F,
             maximumValue = 100F,
@@ -62,16 +65,23 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
             endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
             leftAndRightText = LeftAndRightText.BOTH
         )
+
+        Spacer(modifier = Modifier.size(15.dp))
+        Text(text = "Circular Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
         Spacer(modifier = Modifier.size(15.dp))
         CircularPercentage(
             currentValue = 70F,
             maximumValue = 100F,
-            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+            centerTextStyle = TextStyle(color = Color.Red, fontSize = 25.sp),
         )
+
+        Spacer(modifier = Modifier.size(15.dp))
+        Text(text = "Circle Percentage", style = TextStyle(color = Color.Black, fontSize = 15.sp))
         Spacer(modifier = Modifier.size(15.dp))
         CirclePercentage(
             currentValue = 80F,
             maximumValue = 100F,
+            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
     }
 }
