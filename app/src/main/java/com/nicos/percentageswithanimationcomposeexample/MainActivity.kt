@@ -72,7 +72,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         CircularPercentage(
             currentValue = 70F,
             maximumValue = 100F,
-            centerTextStyle = TextStyle(color = Color.Red, fontSize = 25.sp),
+            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
 
         Spacer(modifier = Modifier.size(15.dp))
