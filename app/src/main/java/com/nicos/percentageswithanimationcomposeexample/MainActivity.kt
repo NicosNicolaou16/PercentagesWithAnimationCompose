@@ -77,7 +77,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         )
 
         Spacer(modifier = Modifier.size(15.dp))
-        Text(text = "Circle Percentage", style = TextStyle(color = Color.Black, fontSize = 15.sp))
+        Text(text = "Circle Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
         Spacer(modifier = Modifier.size(15.dp))
         CirclePercentage(
             currentValue = 80F,
@@ -88,11 +88,11 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.size(15.dp))
         Text(
             text = "Gradient Circle Percentage",
-            style = TextStyle(color = Color.Black, fontSize = 15.sp)
+            style = TextStyle(color = Color.Black, fontSize = 25.sp)
         )
         Spacer(modifier = Modifier.size(15.dp))
         GradientCirclePercentage(
-            currentValue = 80F,
+            currentValue = 50F,
             maximumValue = 100F,
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )

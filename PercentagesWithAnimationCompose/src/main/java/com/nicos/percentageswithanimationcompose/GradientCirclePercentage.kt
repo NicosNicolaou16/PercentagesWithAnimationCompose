@@ -2,7 +2,6 @@ package com.nicos.percentageswithanimationcompose
 
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -20,13 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.LinearGradientShader
-import androidx.compose.ui.graphics.ShaderBrush
-import androidx.compose.ui.graphics.TileMode
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
@@ -70,11 +64,16 @@ fun GradientCirclePercentage(
     ) {
         Canvas(modifier = modifier.size(circularSize.dp)) {
             actualPercentage = (progressAnimation / 360) * maximumValue
-            val gradientShader = Brush.verticalGradient(
-                endY = progressAnimation,
-                startY = 0f,
+            val gradientShader = Brush.linearGradient(
+                start = Offset.Zero,
+                end = Offset(0f, percentage),
                 colors = listOf(Color.Green, (Color.Green.copy(alpha = 0.3f)), Color.White),
             )
+            /*val gradientShader = Brush.linearGradient(
+                end = Offset(0f, progressAnimation - maximumValue / 2),
+                start = Offset.Zero,
+                colors = listOf(Color.Green, (Color.Green.copy(alpha = 0.3f)), Color.White),
+            )*/
 
             drawCircle(
                 brush = gradientShader,
