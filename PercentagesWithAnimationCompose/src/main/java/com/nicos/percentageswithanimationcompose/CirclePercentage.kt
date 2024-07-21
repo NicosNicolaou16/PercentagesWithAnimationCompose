@@ -103,7 +103,7 @@ fun CirclePercentage(
 
 @Preview
 @Composable
-fun CircularPercentagePreview() {
+private fun CircularPercentagePreview() {
     CirclePercentage(
         currentValue = 50F,
         maximumValue = 100F,
