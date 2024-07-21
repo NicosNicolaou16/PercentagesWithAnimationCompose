@@ -27,11 +27,16 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CirclePercentage(
-    currentValue: Float = 70F,
+    currentValue: Float = 50F,
     maximumValue: Float = 100F,
     circularSize: Int = 200,
     percentageAnimationDuration: Int = 1_500,
 ) {
+    assert(currentValue >= 0) { "Current value must be greater than or equal to 0" }
+    assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
+    assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
+    assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
+
     var percentage by remember { mutableFloatStateOf(0F) }
     val progressAnimation by animateFloatAsState(
         targetValue = if (percentage != Infinity.value) percentage else 0F,

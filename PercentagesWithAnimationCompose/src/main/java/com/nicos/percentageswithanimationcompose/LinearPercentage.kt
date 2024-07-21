@@ -73,6 +73,9 @@ fun LinearPercentage(
     assert(currentValue >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
+    assert(maximumValue >= 0) { "Maximum value must be greater than or equal to 0" }
+    assert(maximumValue >= currentValue) { "Maximum value must be greater than or equal to current value" }
+
     val modifier = Modifier
     var percentage by remember { mutableFloatStateOf(0F) }
     var actualProgress by remember { mutableFloatStateOf(0F) }
