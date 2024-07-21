@@ -22,8 +22,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun GradientCirclePercentage(
@@ -66,7 +68,7 @@ fun GradientCirclePercentage(
             actualPercentage = (progressAnimation / 360) * maximumValue
             val gradientShader = Brush.linearGradient(
                 start = Offset.Zero,
-                end = Offset(0f, percentage),
+                end = Offset(0f, progressAnimation * (circularSize / 100)),
                 colors = listOf(Color.Green, (Color.Green.copy(alpha = 0.3f)), Color.White),
             )
             /*val gradientShader = Brush.linearGradient(
@@ -94,4 +96,14 @@ fun GradientCirclePercentage(
     LaunchedEffect(Unit) {
         percentage = (currentValue * 360) / maximumValue
     }
+}
+
+@Preview
+@Composable
+fun GradientCirclePercentagePreview() {
+    GradientCirclePercentage(
+        currentValue = 50F,
+        maximumValue = 100F,
+        centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+    )
 }
