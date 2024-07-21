@@ -21,6 +21,8 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 
@@ -99,4 +101,17 @@ fun CircularPercentage(
     LaunchedEffect(Unit) {
         percentage = (currentValue * 360) / maximumValue
     }
+}
+
+@Preview
+@Composable
+private fun CircularPercentagePreview() {
+    CircularPercentage(
+        currentValue = 50F,
+        maximumValue = 100F,
+        centerTextStyle = TextStyle(
+            color = Color.Black,
+            textAlign = TextAlign.Center
+        )
+    )
 }
