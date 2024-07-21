@@ -35,9 +35,9 @@ import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 
 /**
- * @param currentValue - The current value of the Linear Percentage (current value must be less than or equal to maximum value)
- * @param maximumValue - The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value)
- * @param progressAnimationDuration - The duration of the percentage animation, default value is 1500ms
+ * @param currentValue - The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
+ * @param maximumValue - The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue)
+ * @param percentageAnimationDuration - The duration of the percentage animation, default value is 1500ms
  * @param heightPercentageBackground - The height of the background of the Linear Percentage
  * @param heightPercentage - The height of the Linear Percentage
  * @param colorPercentageBackground - The color of the background of the Linear Percentage
@@ -59,7 +59,7 @@ fun LinearPercentage(
         to = Float.MAX_VALUE.toDouble()
     )
     maximumValue: Float,
-    progressAnimationDuration: Int = 1_500,
+    percentageAnimationDuration: Int = 1_500,
     heightPercentageBackground: Int,
     heightPercentage: Int,
     colorPercentageBackground: Color,
@@ -70,7 +70,9 @@ fun LinearPercentage(
     endTextStyle: TextStyle,
     leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
 ) {
+    assert(currentValue >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
+    assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     val modifier = Modifier
     var progress by remember { mutableFloatStateOf(0F) }
     var actualProgress by remember { mutableFloatStateOf(0F) }
@@ -79,7 +81,7 @@ fun LinearPercentage(
     val progressAnimation by animateFloatAsState(
         targetValue = if (progress != Infinity.value) progress else 0F,
         animationSpec = tween(
-            durationMillis = progressAnimationDuration,
+            durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
         ),
         label = "",
@@ -87,7 +89,7 @@ fun LinearPercentage(
     val actualProgressAnimation by animateFloatAsState(
         targetValue = if (progress != Infinity.value) actualProgress else 0F,
         animationSpec = tween(
-            durationMillis = progressAnimationDuration,
+            durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
         ),
         label = "",
