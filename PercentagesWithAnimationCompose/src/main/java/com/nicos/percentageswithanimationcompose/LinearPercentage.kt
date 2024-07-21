@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 
 
 @Composable
@@ -45,7 +46,8 @@ fun LinearPercentage(
     startTextEndPadding: Int = 5,
     endTextStartPadding: Int = 5,
     startTextStyle: TextStyle,
-    endTextStyle: TextStyle
+    endTextStyle: TextStyle,
+    leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
 ) {
     val modifier = Modifier
     var progress by remember { mutableFloatStateOf(0F) }
@@ -76,11 +78,12 @@ fun LinearPercentage(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Text(
-            text = (actualProgressAnimation).toInt().toString(),
-            modifier = modifier.padding(end = startTextEndPadding.dp),
-            style = startTextStyle
-        )
+        if (leftAndRightText == LeftAndRightText.LEFT_ONLY || leftAndRightText == LeftAndRightText.BOTH)
+            Text(
+                text = (actualProgressAnimation).toInt().toString(),
+                modifier = modifier.padding(end = startTextEndPadding.dp),
+                style = startTextStyle
+            )
         Box(modifier = modifier.weight(1f)) {
             Box(
                 modifier = modifier
@@ -104,12 +107,13 @@ fun LinearPercentage(
                 )
             }
         }
-        Text(
-            text = maximumValue.toInt().toString(),
-            modifier = modifier
-                .padding(start = endTextStartPadding.dp),
-            style = endTextStyle
-        )
+        if (leftAndRightText == LeftAndRightText.RIGHT_ONLY || leftAndRightText == LeftAndRightText.BOTH)
+            Text(
+                text = maximumValue.toInt().toString(),
+                modifier = modifier
+                    .padding(start = endTextStartPadding.dp),
+                style = endTextStyle
+            )
     }
     LaunchedEffect(Unit) {
         progress = (currentValue * maxWidth.value.toInt()) / maximumValue

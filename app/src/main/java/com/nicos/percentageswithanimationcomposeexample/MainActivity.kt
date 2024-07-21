@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.LinearPercentage
+import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 import com.nicos.percentageswithanimationcomposeexample.ui.theme.PercentagesWithAnimationComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -53,7 +54,8 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
             colorPercentageBackground = Color.Red,
             colorPercentage = Color.Blue,
             startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp),
-            endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp)
+            endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+            leftAndRightText = LeftAndRightText.BOTH
         )
     }
 }
