@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
+import com.nicos.percentageswithanimationcompose.CircularPercentage
 import com.nicos.percentageswithanimationcompose.LinearPercentage
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 import com.nicos.percentageswithanimationcomposeexample.ui.theme.PercentagesWithAnimationComposeTheme
@@ -57,5 +58,6 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
             endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
             leftAndRightText = LeftAndRightText.BOTH
         )
+        CircularPercentage()
     }
 }

@@ -74,12 +74,12 @@ fun LinearPercentage(
     assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     val modifier = Modifier
-    var progress by remember { mutableFloatStateOf(0F) }
+    var percentage by remember { mutableFloatStateOf(0F) }
     var actualProgress by remember { mutableFloatStateOf(0F) }
     val density = LocalDensity.current
     var maxWidth by remember { mutableStateOf(0.dp) }
     val progressAnimation by animateFloatAsState(
-        targetValue = if (progress != Infinity.value) progress else 0F,
+        targetValue = if (percentage != Infinity.value) percentage else 0F,
         animationSpec = tween(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
@@ -87,7 +87,7 @@ fun LinearPercentage(
         label = "",
     )
     val actualProgressAnimation by animateFloatAsState(
-        targetValue = if (progress != Infinity.value) actualProgress else 0F,
+        targetValue = if (percentage != Infinity.value) actualProgress else 0F,
         animationSpec = tween(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
@@ -134,8 +134,8 @@ fun LinearPercentage(
             RightText(modifier, maximumValue, endTextStartPadding, endTextStyle)
     }
     LaunchedEffect(Unit) {
-        progress = (currentValue * maxWidth.value.toInt()) / maximumValue
-        actualProgress = progress * maximumValue / maxWidth.value.toInt()
+        percentage = (currentValue * maxWidth.value.toInt()) / maximumValue
+        actualProgress = percentage * maximumValue / maxWidth.value.toInt()
     }
 }
 
