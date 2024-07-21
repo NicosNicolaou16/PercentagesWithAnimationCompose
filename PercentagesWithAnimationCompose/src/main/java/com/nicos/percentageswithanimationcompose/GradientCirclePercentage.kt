@@ -45,10 +45,6 @@ fun GradientCirclePercentage(
     maximumValue: Float,
     circularSize: Int = 100,
     percentageAnimationDuration: Int = 1_500,
-    circularPercentageBackgroundColor: Color = Color.White,
-    circularPercentageColor: Color = Color.Black,
-    circularStrokeBackgroundWidth: Float = 10F,
-    circularStrokeWidth: Float = 10F,
     centerTextStyle: TextStyle,
 ) {
     assert(currentValue >= 0) { "Current value must be greater than or equal to 0" }
