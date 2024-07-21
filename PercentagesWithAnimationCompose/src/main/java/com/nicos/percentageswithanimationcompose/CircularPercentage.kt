@@ -57,6 +57,11 @@ fun CircularPercentage(
     circularStrokeWidth: Float = 10F,
     centerTextStyle: TextStyle,
 ) {
+    assert(currentValue >= 0) { "Current value must be greater than or equal to 0" }
+    assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
+    assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
+    assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
+
     val modifier = Modifier
     var percentage by remember { mutableFloatStateOf(0F) }
     var actualPercentage by remember { mutableFloatStateOf(0F) }
@@ -68,10 +73,6 @@ fun CircularPercentage(
         ),
         label = "",
     )
-    assert(currentValue >= 0) { "Current value must be greater than or equal to 0" }
-    assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
-    assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
-    assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
 
     Box(contentAlignment = Alignment.Center) {
         Canvas(modifier = modifier.size(circularSize.dp)) {

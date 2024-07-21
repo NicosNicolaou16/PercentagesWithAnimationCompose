@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.CirclePercentage
 import com.nicos.percentageswithanimationcompose.LinearPercentage
 import com.nicos.percentageswithanimationcompose.CircularPercentage
+import com.nicos.percentageswithanimationcompose.GradientCirclePercentage
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 import com.nicos.percentageswithanimationcomposeexample.ui.theme.PercentagesWithAnimationComposeTheme
 
@@ -90,5 +91,10 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
             style = TextStyle(color = Color.Black, fontSize = 15.sp)
         )
         Spacer(modifier = Modifier.size(15.dp))
+        GradientCirclePercentage(
+            currentValue = 80F,
+            maximumValue = 100F,
+            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+        )
     }
 }
