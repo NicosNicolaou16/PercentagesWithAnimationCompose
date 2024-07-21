@@ -69,6 +69,9 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
         Spacer(modifier = Modifier.size(15.dp))
-        CirclePercentage()
+        CirclePercentage(
+            currentValue = 80F,
+            maximumValue = 100F,
+        )
     }
 }

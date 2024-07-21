@@ -73,6 +73,7 @@ fun CircularPercentage(
 
     Box(contentAlignment = Alignment.Center) {
         Canvas(modifier = modifier.size(circularSize.dp)) {
+            actualPercentage = (progressAnimation / 360) * maximumValue
             drawCircle(
                 color = circularPercentageBackgroundColor,
                 style = Stroke(width = circularStrokeBackgroundWidth),
@@ -97,6 +98,5 @@ fun CircularPercentage(
     }
     LaunchedEffect(Unit) {
         percentage = (currentValue * 360) / maximumValue
-        actualPercentage = (percentage / 360) * maximumValue
     }
 }
