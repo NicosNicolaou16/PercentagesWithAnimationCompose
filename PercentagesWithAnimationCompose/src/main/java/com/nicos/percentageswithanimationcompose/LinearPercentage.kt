@@ -35,8 +35,8 @@ import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 
 /**
- * @param currentValue - The current value of the Linear Percentage
- * @param maximumValue - The maximum value of the Linear Percentage
+ * @param currentValue - The current value of the Linear Percentage (current value must be less than or equal to maximum value)
+ * @param maximumValue - The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value)
  * @param progressAnimationDuration - The duration of the percentage animation, default value is 1500ms
  * @param heightPercentageBackground - The height of the background of the Linear Percentage
  * @param heightPercentage - The height of the Linear Percentage
