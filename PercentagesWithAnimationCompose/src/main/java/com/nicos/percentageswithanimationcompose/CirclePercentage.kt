@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CircularPercentage(
+fun CirclePercentage(
     currentValue: Float = 70F,
     maximumValue: Float = 100F,
     circularSize: Int = 200,
@@ -71,5 +71,5 @@ fun CircularPercentage(
 @Preview
 @Composable
 fun CircularPercentagePreview() {
-    CircularPercentage()
+    CirclePercentage()
 }
