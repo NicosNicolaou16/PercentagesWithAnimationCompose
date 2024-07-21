@@ -33,7 +33,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 
-
+/**
+ * @param currentValue - The current value of the Linear Percentage
+ * @param maximumValue - The maximum value of the Linear Percentage
+ * @param progressAnimationDuration - The duration of the percentage animation
+ * */
 @Composable
 fun LinearPercentage(
     currentValue: Float,
@@ -79,11 +83,10 @@ fun LinearPercentage(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         if (leftAndRightText == LeftAndRightText.LEFT_ONLY || leftAndRightText == LeftAndRightText.BOTH)
-            Text(
-                text = (actualProgressAnimation).toInt().toString(),
-                modifier = modifier.padding(end = startTextEndPadding.dp),
-                style = startTextStyle
-            )
+            LeftText(modifier, actualProgressAnimation, startTextEndPadding, startTextStyle)
+        /**
+         * Main Functionality - Linear Percentage
+         * */
         Box(modifier = modifier.weight(1f)) {
             Box(
                 modifier = modifier
@@ -108,17 +111,41 @@ fun LinearPercentage(
             }
         }
         if (leftAndRightText == LeftAndRightText.RIGHT_ONLY || leftAndRightText == LeftAndRightText.BOTH)
-            Text(
-                text = maximumValue.toInt().toString(),
-                modifier = modifier
-                    .padding(start = endTextStartPadding.dp),
-                style = endTextStyle
-            )
+            RightText(modifier, maximumValue, endTextStartPadding, endTextStyle)
     }
     LaunchedEffect(Unit) {
         progress = (currentValue * maxWidth.value.toInt()) / maximumValue
         actualProgress = progress * maximumValue / maxWidth.value.toInt()
     }
+}
+
+@Composable
+private fun LeftText(
+    modifier: Modifier,
+    actualProgressAnimation: Float,
+    startTextEndPadding: Int,
+    startTextStyle: TextStyle
+) {
+    Text(
+        text = (actualProgressAnimation).toInt().toString(),
+        modifier = modifier.padding(end = startTextEndPadding.dp),
+        style = startTextStyle
+    )
+}
+
+@Composable
+private fun RightText(
+    modifier: Modifier,
+    maximumValue: Float,
+    endTextStartPadding: Int,
+    endTextStyle: TextStyle
+) {
+    Text(
+        text = maximumValue.toInt().toString(),
+        modifier = modifier
+            .padding(start = endTextStartPadding.dp),
+        style = endTextStyle
+    )
 }
 
 @Preview
