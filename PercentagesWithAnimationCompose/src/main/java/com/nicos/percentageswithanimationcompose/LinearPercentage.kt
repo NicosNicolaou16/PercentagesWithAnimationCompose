@@ -1,5 +1,6 @@
 package com.nicos.percentageswithanimationcompose
 
+import androidx.annotation.FloatRange
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -36,11 +37,27 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 /**
  * @param currentValue - The current value of the Linear Percentage
  * @param maximumValue - The maximum value of the Linear Percentage
- * @param progressAnimationDuration - The duration of the percentage animation
+ * @param progressAnimationDuration - The duration of the percentage animation, default value is 1500ms
+ * @param heightPercentageBackground - The height of the background of the Linear Percentage
+ * @param heightPercentage - The height of the Linear Percentage
+ * @param colorPercentageBackground - The color of the background of the Linear Percentage
+ * @param colorPercentage - The color of the Linear Percentage
+ * @param startTextEndPadding - The padding of the start text, default value is 5
+ * @param endTextStartPadding - The padding of the end text, default value is 5
+ * @param startTextStyle - The style of the start text
+ * @param endTextStyle - The style of the end text
+ * @param leftAndRightText - The left and right text, default value is NONE
  * */
 @Composable
 fun LinearPercentage(
-    currentValue: Float,
+    @FloatRange(
+        from = 0.0,
+        to = Float.MAX_VALUE.toDouble()
+    ) currentValue: Float,
+    @FloatRange(
+        from = 0.0,
+        to = Float.MAX_VALUE.toDouble()
+    )
     maximumValue: Float,
     progressAnimationDuration: Int = 1_500,
     heightPercentageBackground: Int,
@@ -53,6 +70,7 @@ fun LinearPercentage(
     endTextStyle: TextStyle,
     leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
 ) {
+    assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
     val modifier = Modifier
     var progress by remember { mutableFloatStateOf(0F) }
     var actualProgress by remember { mutableFloatStateOf(0F) }
@@ -119,6 +137,12 @@ fun LinearPercentage(
     }
 }
 
+/**
+ * @param modifier - Modifier
+ * @param actualProgressAnimation - Actual progress animation
+ * @param startTextEndPadding - Start text end padding
+ * @param startTextStyle - Start text style
+ * */
 @Composable
 private fun LeftText(
     modifier: Modifier,
@@ -133,6 +157,12 @@ private fun LeftText(
     )
 }
 
+/**
+ * @param modifier - Modifier
+ * @param maximumValue - Maximum value
+ * @param endTextStartPadding - End text start padding
+ * @param endTextStyle - End text style
+ * */
 @Composable
 private fun RightText(
     modifier: Modifier,
@@ -150,7 +180,7 @@ private fun RightText(
 
 @Preview
 @Composable
-fun LinearPercentagePreview() {
+private fun LinearPercentagePreview() {
     LinearPercentage(
         currentValue = 50F,
         maximumValue = 100F,
@@ -159,6 +189,28 @@ fun LinearPercentagePreview() {
         colorPercentageBackground = Color.Red,
         colorPercentage = Color.Blue,
         startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp),
+        endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp)
+    )
+}
+
+@Preview
+@Composable
+private fun LeftTextPreview() {
+    LeftText(
+        modifier = Modifier,
+        actualProgressAnimation = 50F,
+        startTextEndPadding = 5,
+        startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp)
+    )
+}
+
+@Preview
+@Composable
+private fun RightTextPreview() {
+    RightText(
+        modifier = Modifier,
+        maximumValue = 100F,
+        endTextStartPadding = 5,
         endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp)
     )
 }
