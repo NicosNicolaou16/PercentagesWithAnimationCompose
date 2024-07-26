@@ -56,7 +56,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.size(15.dp))
         LinearPercentage(
             currentPercentage = 50F,
-            maximumPercentage = 100F,
+            maxPercentage = 100F,
             heightPercentageBackground = 50,
             heightPercentage = 50,
             roundedCornerShapeValue = 21,
@@ -73,7 +73,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.size(15.dp))
         CircularPercentage(
             currentPercentage = 70F,
-            maximumPercentage = 100F,
+            maxPercentage = 100F,
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
 
@@ -82,7 +82,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.size(15.dp))
         CirclePercentage(
             currentPercentage = 80F,
-            maximumPercentage = 100F,
+            maxPercentage = 100F,
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
 
@@ -94,7 +94,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.size(15.dp))
         GradientCirclePercentage(
             currentPercentage = 70F,
-            maximumPercentage = 100F,
+            maxPercentage = 100F,
             listOfColors = mutableListOf(
                 Color.Green,
                 (Color.Green.copy(alpha = 0.3f)),

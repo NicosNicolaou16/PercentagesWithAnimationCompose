@@ -71,7 +71,7 @@ image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentag
 | Parameters                    | Description                                                                                                                                                 |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`           | The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
-| `maximumPercentage`           | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
+| `maxPercentage`               | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
 | `percentageAnimationDuration` | The duration of the percentage animation, default value is 1500ms                                                                                           |
 | `heightPercentageBackground`  | The height of the background of the Linear Percentage                                                                                                       |
 | `heightPercentage`            | The height of the Linear Percentage                                                                                                                         |
@@ -90,7 +90,7 @@ image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentag
 | Parameters                          | Description                                                                                                                                                 |
 |-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`                 | The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
-| `maximumPercentage`                 | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
+| `maxPercentage`                     | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
 | `circularSize`                      | The size of the circular percentage, default value is 100                                                                                                   |
 | `percentageAnimationDuration`       | The duration of the animation in milliseconds, default value is 1500ms                                                                                      |
 | `circularPercentageBackgroundColor` | The background color of the circular percentage, default value is LightGray                                                                                 |
@@ -104,7 +104,7 @@ image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentag
 | Parameters                          | Description                                                                                                                                                 |
 |-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`                 | The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
-| `maximumPercentage`                 | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
+| `maxPercentage`                     | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
 | `circularSize`                      | The size of the circular percentage, default value is 100                                                                                                   |
 | `percentageAnimationDuration`       | The duration of the animation in milliseconds, default value is 1500ms                                                                                      |
 | `circularPercentageBackgroundColor` | The background color of the circular percentage, default value is LightGray                                                                                 |
@@ -117,7 +117,7 @@ image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentag
 | Parameters                    | Description                                                                                                                                                 |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`           | The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
-| `maximumPercentage`           | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
+| `maxPercentage`               | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
 | `circularSize`                | The size of the circular percentage, default value is 100                                                                                                   |
 | `listOfColors`                | The list of gradient colors (list of colors must not be empty)                                                                                              |
 | `percentageAnimationDuration` | The duration of the animation, default value is 1500ms                                                                                                      |
@@ -180,7 +180,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.size(15.dp))
         LinearPercentage(
             currentPercentage = 50F,
-            maximumPercentage = 100F,
+            maxPercentage = 100F,
             heightPercentageBackground = 50,
             heightPercentage = 50,
             roundedCornerShapeValue = 21,
@@ -197,7 +197,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.size(15.dp))
         CircularPercentage(
             currentPercentage = 70F,
-            maximumPercentage = 100F,
+            maxPercentage = 100F,
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
 
@@ -206,7 +206,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.size(15.dp))
         CirclePercentage(
             currentPercentage = 80F,
-            maximumPercentage = 100F,
+            maxPercentage = 100F,
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
 
@@ -218,7 +218,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.size(15.dp))
         GradientCirclePercentage(
             currentPercentage = 70F,
-            maximumPercentage = 100F,
+            maxPercentage = 100F,
             listOfColors = mutableListOf(
                 Color.Green,
                 (Color.Green.copy(alpha = 0.3f)),

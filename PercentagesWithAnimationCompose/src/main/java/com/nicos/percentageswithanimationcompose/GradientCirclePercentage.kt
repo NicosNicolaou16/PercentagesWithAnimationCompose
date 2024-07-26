@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.sp
 
 /**
  * @param currentPercentage - The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
- * @param maximumPercentage - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
+ * @param maxPercentage - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
  * @param circularSize - The size of the circle, default value is 100
  * @param listOfColors - The list of gradient colors (list of colors must not be empty)
  * @param percentageAnimationDuration - The duration of the animation, default value is 1500ms
@@ -46,14 +46,14 @@ fun GradientCirclePercentage(
         from = 0.0,
         to = Float.MAX_VALUE.toDouble()
     )
-    maximumPercentage: Float,
+    maxPercentage: Float,
     listOfColors: MutableList<Color>,
     circularSize: Int = 100,
     percentageAnimationDuration: Int = 1_500,
     centerTextStyle: TextStyle,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
-    assert(currentPercentage <= maximumPercentage) { "Current value must be less than or equal to maximum value" }
+    assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
 
@@ -74,12 +74,12 @@ fun GradientCirclePercentage(
             .rotate(180f)
     ) {
         Canvas(modifier = modifier.size(circularSize.dp)) {
-            actualPercentage = (progressAnimation / 360) * maximumPercentage
+            actualPercentage = (progressAnimation / 360) * maxPercentage
             val gradientShader = Brush.linearGradient(
                 start = Offset.Zero,
                 end = Offset(
                     0F,
-                    size.height * (actualPercentage / maximumPercentage), /*actualPercentage * (maximumValue / 100)*/
+                    size.height * (actualPercentage / maxPercentage), /*actualPercentage * (maximumValue / 100)*/
                 ),
                 colors = listOfColors,
             )
@@ -101,7 +101,7 @@ fun GradientCirclePercentage(
         }
     }
     LaunchedEffect(Unit) {
-        percentage = (currentPercentage * 360) / maximumPercentage
+        percentage = (currentPercentage * 360) / maxPercentage
     }
 }
 
@@ -110,7 +110,7 @@ fun GradientCirclePercentage(
 fun GradientCirclePercentagePreview() {
     GradientCirclePercentage(
         currentPercentage = 50F,
-        maximumPercentage = 100F,
+        maxPercentage = 100F,
         listOfColors = mutableListOf(
             Color.Green,
             (Color.Green.copy(alpha = 0.3f)),

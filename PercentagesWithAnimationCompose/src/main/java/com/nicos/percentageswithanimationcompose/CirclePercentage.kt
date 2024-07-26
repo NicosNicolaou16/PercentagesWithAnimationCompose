@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 
 /**
  * @param currentPercentage - The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
- * @param maximumPercentage - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
+ * @param maxPercentage - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
  * @param circleSize - The size of the circle, default value is 100
  * @param percentageAnimationDuration - The duration of the animation (percentage animation duration must be greater than or equal to 0)
  * @param circlePercentageBackgroundColor - The background color of the circle, default value is LightGray
@@ -47,7 +47,7 @@ fun CirclePercentage(
         from = 0.0,
         to = Float.MAX_VALUE.toDouble()
     )
-    maximumPercentage: Float,
+    maxPercentage: Float,
     circleSize: Int = 100,
     percentageAnimationDuration: Int = 1_500,
     circlePercentageBackgroundColor: Color = Color.LightGray,
@@ -56,7 +56,7 @@ fun CirclePercentage(
     centerTextStyle: TextStyle,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
-    assert(currentPercentage <= maximumPercentage) { "Current value must be less than or equal to maximum value" }
+    assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(circleSize >= 0) { "Circular size must be greater than or equal to 0" }
     assert(circleStrokeBackgroundWidth > 0) { "Circle stroke background width must be greater than 0" }
@@ -74,7 +74,7 @@ fun CirclePercentage(
 
     Box(contentAlignment = Alignment.Center) {
         Canvas(modifier = Modifier.size(circleSize.dp)) {
-            actualPercentage = (progressAnimation / 360) * maximumPercentage
+            actualPercentage = (progressAnimation / 360) * maxPercentage
             drawCircle(
                 color = circlePercentageBackgroundColor,
                 style = Stroke(width = circleStrokeBackgroundWidth),
@@ -97,7 +97,7 @@ fun CirclePercentage(
         )
     }
     LaunchedEffect(Unit) {
-        percentage = (currentPercentage * 360) / maximumPercentage
+        percentage = (currentPercentage * 360) / maxPercentage
     }
 }
 
@@ -106,7 +106,7 @@ fun CirclePercentage(
 private fun CirclePercentagePreview() {
     CirclePercentage(
         currentPercentage = 50F,
-        maximumPercentage = 100F,
+        maxPercentage = 100F,
         centerTextStyle = TextStyle(
             color = Color.Black,
             textAlign = TextAlign.Center

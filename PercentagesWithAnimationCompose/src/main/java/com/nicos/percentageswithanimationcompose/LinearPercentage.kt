@@ -36,7 +36,7 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 
 /**
  * @param currentPercentage - The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
- * @param maximumPercentage - The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue)
+ * @param maxPercentage - The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue)
  * @param percentageAnimationDuration - The duration of the percentage animation, default value is 1500ms
  * @param heightPercentageBackground - The height of the background of the Linear Percentage
  * @param heightPercentage - The height of the Linear Percentage
@@ -60,7 +60,7 @@ fun LinearPercentage(
         from = 0.0,
         to = Float.MAX_VALUE.toDouble()
     )
-    maximumPercentage: Float,
+    maxPercentage: Float,
     percentageAnimationDuration: Int = 1_500,
     heightPercentageBackground: Int,
     heightPercentage: Int,
@@ -75,10 +75,10 @@ fun LinearPercentage(
     leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
-    assert(currentPercentage <= maximumPercentage) { "Current value must be less than or equal to maximum value" }
+    assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
-    assert(maximumPercentage >= 0) { "Maximum value must be greater than or equal to 0" }
-    assert(maximumPercentage >= currentPercentage) { "Maximum value must be greater than or equal to current value" }
+    assert(maxPercentage >= 0) { "Maximum value must be greater than or equal to 0" }
+    assert(maxPercentage >= currentPercentage) { "Maximum value must be greater than or equal to current value" }
 
     val modifier = Modifier
     var percentage by remember { mutableFloatStateOf(0F) }
@@ -138,11 +138,11 @@ fun LinearPercentage(
             }
         }
         if (leftAndRightText == LeftAndRightText.RIGHT_ONLY || leftAndRightText == LeftAndRightText.BOTH)
-            RightText(modifier, maximumPercentage, endTextStartPadding, endTextStyle)
+            RightText(modifier, maxPercentage, endTextStartPadding, endTextStyle)
     }
     LaunchedEffect(Unit) {
-        percentage = (currentPercentage * maxWidth.value.toInt()) / maximumPercentage
-        actualProgress = percentage * maximumPercentage / maxWidth.value.toInt()
+        percentage = (currentPercentage * maxWidth.value.toInt()) / maxPercentage
+        actualProgress = percentage * maxPercentage / maxWidth.value.toInt()
     }
 }
 
@@ -192,7 +192,7 @@ private fun RightText(
 private fun LinearPercentagePreview() {
     LinearPercentage(
         currentPercentage = 50F,
-        maximumPercentage = 100F,
+        maxPercentage = 100F,
         heightPercentageBackground = 20,
         heightPercentage = 20,
         colorPercentageBackground = Color.Red,
