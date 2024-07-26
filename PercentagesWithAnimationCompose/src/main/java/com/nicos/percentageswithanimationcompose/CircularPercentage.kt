@@ -29,12 +29,12 @@ import androidx.compose.ui.unit.dp
 /**
  * @param currentPercentage - The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
  * @param maximumPercentage - The maximum value of the Linear Percentage (maximum value must be greater than or equal to 0)
- * @param circularSize - The size of the circular percentage
- * @param percentageAnimationDuration - The duration of the animation in milliseconds
- * @param circularPercentageBackgroundColor - The background color of the circular percentage
- * @param circularPercentageColor - The color of the circular percentage
- * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage
- * @param circularStrokeWidth - The width of the stroke of the circular percentage
+ * @param circularSize - The size of the circular percentage, default value is 100
+ * @param percentageAnimationDuration - The duration of the animation in milliseconds, default value is 1500ms
+ * @param circularPercentageBackgroundColor - The background color of the circular percentage, default value is LightGray
+ * @param circularPercentageColor - The color of the circular percentage, default value is Black
+ * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage, default value is 10
+ * @param circularStrokeWidth - The width of the stroke of the circular percentage, default value is 10
  * @param centerTextStyle - The text style of the center of the circular percentage
  * */
 @Composable
