@@ -46,6 +46,7 @@ fun GradientCirclePercentage(
         to = Float.MAX_VALUE.toDouble()
     )
     maximumValue: Float,
+    listOfColors: MutableList<Color>,
     circularSize: Int = 100,
     percentageAnimationDuration: Int = 1_500,
     centerTextStyle: TextStyle,
@@ -79,7 +80,7 @@ fun GradientCirclePercentage(
                     0F,
                     size.height * (actualPercentage / maximumValue), /*actualPercentage * (maximumValue / 100)*/
                 ),
-                colors = listOf(Color.Green, (Color.Green.copy(alpha = 0.3f)), Color.White),
+                colors = listOfColors,
             )
 
             drawCircle(
@@ -109,6 +110,11 @@ fun GradientCirclePercentagePreview() {
     GradientCirclePercentage(
         currentValue = 50F,
         maximumValue = 100F,
+        listOfColors = mutableListOf(
+            Color.Green,
+            (Color.Green.copy(alpha = 0.3f)),
+            Color.White
+        ),
         centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
     )
 }

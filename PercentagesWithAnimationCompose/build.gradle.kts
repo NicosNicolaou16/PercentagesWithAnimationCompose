@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("maven-publish")
 }
 
 android {
@@ -63,4 +64,17 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     debugImplementation(libs.ui.tooling)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                groupId = "com.github.NicosNicolaou16"
+                artifactId = "percentagesWithAnimationCompose"
+                version = "1.0.0"
+                from(components["release"])
+            }
+        }
+    }
 }
