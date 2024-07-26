@@ -27,6 +27,13 @@ import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+/**
+ * @param currentValue - The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
+ * @param maximumValue - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
+ * @param circularSize - The size of the circle (circular size must be greater than or equal to 0)
+ * @param percentageAnimationDuration - The duration of the animation (percentage animation duration must be greater than or equal to 0)
+ * @param centerTextStyle - The text style of the center text (center text style must not be null)
+ * */
 @Composable
 fun GradientCirclePercentage(
     @FloatRange(
