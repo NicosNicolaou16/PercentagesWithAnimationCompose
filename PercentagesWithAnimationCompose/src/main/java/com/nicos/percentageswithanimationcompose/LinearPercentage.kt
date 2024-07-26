@@ -44,6 +44,8 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param colorPercentage - The color of the Linear Percentage
  * @param startTextEndPadding - The padding of the start text, default value is 5
  * @param endTextStartPadding - The padding of the end text, default value is 5
+ * @param roundedCornerShapeValue - The rounded corner shape value, default value is 0
+ * @param horizontalPadding - The horizontal padding left and right of the Linear Percentage, default value is 0
  * @param startTextStyle - The style of the start text
  * @param endTextStyle - The style of the end text
  * @param leftAndRightText - The left and right text, default value is NONE
@@ -66,6 +68,8 @@ fun LinearPercentage(
     colorPercentage: Color,
     startTextEndPadding: Int = 5,
     endTextStartPadding: Int = 5,
+    roundedCornerShapeValue: Int = 0,
+    horizontalPadding: Int = 0,
     startTextStyle: TextStyle,
     endTextStyle: TextStyle,
     leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
@@ -100,8 +104,8 @@ fun LinearPercentage(
 
     Row(
         modifier = modifier
-            .height(50.dp)
-            .padding(horizontal = 15.dp),
+            .height(heightPercentageBackground.dp)
+            .padding(horizontal = horizontalPadding.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -115,7 +119,7 @@ fun LinearPercentage(
                 modifier = modifier
                     .height(heightPercentageBackground.dp)
                     .fillMaxWidth()
-                    .clip(shape = RoundedCornerShape(21.dp))
+                    .clip(shape = RoundedCornerShape(roundedCornerShapeValue.dp))
                     .background(colorPercentageBackground)
                     .onGloballyPositioned {
                         maxWidth = with(density) {
