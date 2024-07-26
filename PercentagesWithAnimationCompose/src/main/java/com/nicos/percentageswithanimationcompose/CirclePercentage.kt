@@ -29,12 +29,12 @@ import androidx.compose.ui.unit.dp
 /**
  * @param currentPercentage - The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
  * @param maximumPercentage - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
- * @param circleSize - The size of the circle (circle size must be greater than or equal to 0)
+ * @param circleSize - The size of the circle, default value is 100
  * @param percentageAnimationDuration - The duration of the animation (percentage animation duration must be greater than or equal to 0)
- * @param circlePercentageBackgroundColor - The background color of the circle (circle percentage background color must not be null)
- * @param circlePercentageColor - The color of the circle (circle percentage color must not be null)
- * @param circleStrokeBackgroundWidth - The width of the circle stroke (circle stroke background width must be greater than 0)
- * @param centerTextStyle - The text style of the center text (center text style must not be null)
+ * @param circlePercentageBackgroundColor - The background color of the circle, default value is LightGray
+ * @param circlePercentageColor - The color of the circle, default value is Black
+ * @param circleStrokeBackgroundWidth - The width of the circle stroke, default value is 10
+ * @param centerTextStyle - The text style of the center text
  * */
 @Composable
 fun CirclePercentage(

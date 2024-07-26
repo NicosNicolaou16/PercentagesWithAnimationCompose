@@ -96,3 +96,16 @@ image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentag
 | `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                          |
 | `circularStrokeWidth`               | The width of the stroke of the circular percentage, default value is 10                                                                                     |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                     |
+
+### Circle Percentage
+
+| Parameters                          | Description                                                                                                                                                 |
+|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `currentPercentage`                 | The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
+| `maximumPercentage`                 | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
+| `circularSize`                      | The size of the circular percentage, default value is 100                                                                                                   |
+| `percentageAnimationDuration`       | The duration of the animation in milliseconds, default value is 1500ms                                                                                      |
+| `circularPercentageBackgroundColor` | The background color of the circular percentage, default value is LightGray                                                                                 |
+| `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                |
+| `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                          |
+| `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                     |
