@@ -27,8 +27,8 @@ import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 
 /**
- * @param currentValue - The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
- * @param maximumValue - The maximum value of the Linear Percentage (maximum value must be greater than or equal to 0)
+ * @param currentPercentage - The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
+ * @param maximumPercentage - The maximum value of the Linear Percentage (maximum value must be greater than or equal to 0)
  * @param circularSize - The size of the circular percentage
  * @param percentageAnimationDuration - The duration of the animation in milliseconds
  * @param circularPercentageBackgroundColor - The background color of the circular percentage
@@ -43,12 +43,12 @@ fun CircularPercentage(
         from = 0.0,
         to = Float.MAX_VALUE.toDouble()
     )
-    currentValue: Float,
+    currentPercentage: Float,
     @FloatRange(
         from = 0.0,
         to = Float.MAX_VALUE.toDouble()
     )
-    maximumValue: Float,
+    maximumPercentage: Float,
     circularSize: Int = 100,
     percentageAnimationDuration: Int = 1_500,
     circularPercentageBackgroundColor: Color = Color.LightGray,
@@ -57,8 +57,8 @@ fun CircularPercentage(
     circularStrokeWidth: Float = 10F,
     centerTextStyle: TextStyle,
 ) {
-    assert(currentValue >= 0) { "Current value must be greater than or equal to 0" }
-    assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
+    assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
+    assert(currentPercentage <= maximumPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
 
@@ -76,7 +76,7 @@ fun CircularPercentage(
 
     Box(contentAlignment = Alignment.Center) {
         Canvas(modifier = modifier.size(circularSize.dp)) {
-            actualPercentage = (progressAnimation / 360) * maximumValue
+            actualPercentage = (progressAnimation / 360) * maximumPercentage
             drawCircle(
                 color = circularPercentageBackgroundColor,
                 style = Stroke(width = circularStrokeBackgroundWidth),
@@ -100,7 +100,7 @@ fun CircularPercentage(
         )
     }
     LaunchedEffect(Unit) {
-        percentage = (currentValue * 360) / maximumValue
+        percentage = (currentPercentage * 360) / maximumPercentage
     }
 }
 
@@ -108,8 +108,8 @@ fun CircularPercentage(
 @Composable
 private fun CircularPercentagePreview() {
     CircularPercentage(
-        currentValue = 50F,
-        maximumValue = 100F,
+        currentPercentage = 50F,
+        maximumPercentage = 100F,
         centerTextStyle = TextStyle(
             color = Color.Black,
             textAlign = TextAlign.Center

@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 /**
- * @param currentValue - The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
- * @param maximumValue - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
+ * @param currentPercentage - The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
+ * @param maximumPercentage - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
  * @param circularSize - The size of the circle (circular size must be greater than or equal to 0)
  * @param percentageAnimationDuration - The duration of the animation (percentage animation duration must be greater than or equal to 0)
  * @param centerTextStyle - The text style of the center text (center text style must not be null)
@@ -40,19 +40,19 @@ fun GradientCirclePercentage(
         from = 0.0,
         to = Float.MAX_VALUE.toDouble()
     )
-    currentValue: Float,
+    currentPercentage: Float,
     @FloatRange(
         from = 0.0,
         to = Float.MAX_VALUE.toDouble()
     )
-    maximumValue: Float,
+    maximumPercentage: Float,
     listOfColors: MutableList<Color>,
     circularSize: Int = 100,
     percentageAnimationDuration: Int = 1_500,
     centerTextStyle: TextStyle,
 ) {
-    assert(currentValue >= 0) { "Current value must be greater than or equal to 0" }
-    assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
+    assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
+    assert(currentPercentage <= maximumPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
 
@@ -73,12 +73,12 @@ fun GradientCirclePercentage(
             .rotate(180f)
     ) {
         Canvas(modifier = modifier.size(circularSize.dp)) {
-            actualPercentage = (progressAnimation / 360) * maximumValue
+            actualPercentage = (progressAnimation / 360) * maximumPercentage
             val gradientShader = Brush.linearGradient(
                 start = Offset.Zero,
                 end = Offset(
                     0F,
-                    size.height * (actualPercentage / maximumValue), /*actualPercentage * (maximumValue / 100)*/
+                    size.height * (actualPercentage / maximumPercentage), /*actualPercentage * (maximumValue / 100)*/
                 ),
                 colors = listOfColors,
             )
@@ -100,7 +100,7 @@ fun GradientCirclePercentage(
         }
     }
     LaunchedEffect(Unit) {
-        percentage = (currentValue * 360) / maximumValue
+        percentage = (currentPercentage * 360) / maximumPercentage
     }
 }
 
@@ -108,8 +108,8 @@ fun GradientCirclePercentage(
 @Composable
 fun GradientCirclePercentagePreview() {
     GradientCirclePercentage(
-        currentValue = 50F,
-        maximumValue = 100F,
+        currentPercentage = 50F,
+        maximumPercentage = 100F,
         listOfColors = mutableListOf(
             Color.Green,
             (Color.Green.copy(alpha = 0.3f)),

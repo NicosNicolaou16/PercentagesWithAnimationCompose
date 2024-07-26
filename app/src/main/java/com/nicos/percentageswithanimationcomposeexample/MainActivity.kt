@@ -55,8 +55,8 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Text(text = "Linear Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
         Spacer(modifier = Modifier.size(15.dp))
         LinearPercentage(
-            currentValue = 50F,
-            maximumValue = 100F,
+            currentPercentage = 50F,
+            maximumPercentage = 100F,
             heightPercentageBackground = 50,
             heightPercentage = 50,
             roundedCornerShapeValue = 21,
@@ -72,8 +72,8 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Text(text = "Circular Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
         Spacer(modifier = Modifier.size(15.dp))
         CircularPercentage(
-            currentValue = 70F,
-            maximumValue = 100F,
+            currentPercentage = 70F,
+            maximumPercentage = 100F,
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
 
@@ -81,8 +81,8 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         Text(text = "Circle Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
         Spacer(modifier = Modifier.size(15.dp))
         CirclePercentage(
-            currentValue = 80F,
-            maximumValue = 100F,
+            currentPercentage = 80F,
+            maximumPercentage = 100F,
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
 
@@ -93,8 +93,8 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         )
         Spacer(modifier = Modifier.size(15.dp))
         GradientCirclePercentage(
-            currentValue = 70F,
-            maximumValue = 100F,
+            currentPercentage = 70F,
+            maximumPercentage = 100F,
             listOfColors = mutableListOf(
                 Color.Green,
                 (Color.Green.copy(alpha = 0.3f)),

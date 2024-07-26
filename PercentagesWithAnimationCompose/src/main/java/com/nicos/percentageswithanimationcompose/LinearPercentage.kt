@@ -35,8 +35,8 @@ import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 
 /**
- * @param currentValue - The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
- * @param maximumValue - The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue)
+ * @param currentPercentage - The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
+ * @param maximumPercentage - The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue)
  * @param percentageAnimationDuration - The duration of the percentage animation, default value is 1500ms
  * @param heightPercentageBackground - The height of the background of the Linear Percentage
  * @param heightPercentage - The height of the Linear Percentage
@@ -46,21 +46,21 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param endTextStartPadding - The padding of the end text, default value is 5
  * @param roundedCornerShapeValue - The rounded corner shape value, default value is 0
  * @param horizontalPadding - The horizontal padding left and right of the Linear Percentage, default value is 0
- * @param startTextStyle - The style of the start text
- * @param endTextStyle - The style of the end text
- * @param leftAndRightText - The left and right text, default value is NONE
+ * @param startTextStyle - The style of the start/lest text
+ * @param endTextStyle - The style of the end/right text
+ * @param leftAndRightText - The left and right text, accepted values are LEFT_ONLY, RIGHT_ONLY, BOTH and NONE, default value is NONE
  * */
 @Composable
 fun LinearPercentage(
     @FloatRange(
         from = 0.0,
         to = Float.MAX_VALUE.toDouble()
-    ) currentValue: Float,
+    ) currentPercentage: Float,
     @FloatRange(
         from = 0.0,
         to = Float.MAX_VALUE.toDouble()
     )
-    maximumValue: Float,
+    maximumPercentage: Float,
     percentageAnimationDuration: Int = 1_500,
     heightPercentageBackground: Int,
     heightPercentage: Int,
@@ -74,11 +74,11 @@ fun LinearPercentage(
     endTextStyle: TextStyle,
     leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
 ) {
-    assert(currentValue >= 0) { "Current value must be greater than or equal to 0" }
-    assert(currentValue <= maximumValue) { "Current value must be less than or equal to maximum value" }
+    assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
+    assert(currentPercentage <= maximumPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
-    assert(maximumValue >= 0) { "Maximum value must be greater than or equal to 0" }
-    assert(maximumValue >= currentValue) { "Maximum value must be greater than or equal to current value" }
+    assert(maximumPercentage >= 0) { "Maximum value must be greater than or equal to 0" }
+    assert(maximumPercentage >= currentPercentage) { "Maximum value must be greater than or equal to current value" }
 
     val modifier = Modifier
     var percentage by remember { mutableFloatStateOf(0F) }
@@ -138,11 +138,11 @@ fun LinearPercentage(
             }
         }
         if (leftAndRightText == LeftAndRightText.RIGHT_ONLY || leftAndRightText == LeftAndRightText.BOTH)
-            RightText(modifier, maximumValue, endTextStartPadding, endTextStyle)
+            RightText(modifier, maximumPercentage, endTextStartPadding, endTextStyle)
     }
     LaunchedEffect(Unit) {
-        percentage = (currentValue * maxWidth.value.toInt()) / maximumValue
-        actualProgress = percentage * maximumValue / maxWidth.value.toInt()
+        percentage = (currentPercentage * maxWidth.value.toInt()) / maximumPercentage
+        actualProgress = percentage * maximumPercentage / maxWidth.value.toInt()
     }
 }
 
@@ -191,8 +191,8 @@ private fun RightText(
 @Composable
 private fun LinearPercentagePreview() {
     LinearPercentage(
-        currentValue = 50F,
-        maximumValue = 100F,
+        currentPercentage = 50F,
+        maximumPercentage = 100F,
         heightPercentageBackground = 20,
         heightPercentage = 20,
         colorPercentageBackground = Color.Red,
