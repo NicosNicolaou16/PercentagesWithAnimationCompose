@@ -3,10 +3,9 @@
 This library built to give to other developers an easy way to implement <br />
 Support me and I will appreciate if you provide me your feedback(s).<br />
 
-
 The library contain/features:
 
-- 
+-
 
 ### Versioning
 
@@ -22,3 +21,45 @@ Build Tool Version 34 <br />
 THE BETA RELEASES MAYBE CONTAIN MAJOR/MINOR CHANGES
 
 ## Basic Configuration
+
+### Groovy
+
+```Groovy
+implementation 'com.github.NicosNicolaou16:percentagesWithAnimationCompose:1.0.0'
+```
+
+```Groovy
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+### Kotlin DSL
+
+```Kotlin
+implementation("com.github.NicosNicolaou16:percentagesWithAnimationCompose:1.0.0")
+```
+
+```Kotlin
+dependencyResolutionManagement {
+    //...
+    repositories {
+        //...
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
+
+### libs.versions.toml
+
+```toml
+[versions]
+# other versions here...
+percentagesWithAnimationComposeVersion = "1.0.0"
+
+[libraries]
+# other libraries here...
+image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentagesWithAnimationCompose", version.ref = "percentagesWithAnimationComposeVersion" }
+```
