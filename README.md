@@ -7,7 +7,12 @@ Support me and I will appreciate if you provide me your feedback(s).<br />
 
 The library contain/features:
 
--
+- Linear Percentage
+- Circular Percentage
+- Circle Percentage
+- Gradient Circle Percentage
+
+With customization.
 
 ### Versioning
 
