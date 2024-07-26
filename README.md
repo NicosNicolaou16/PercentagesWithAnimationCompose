@@ -12,7 +12,7 @@ The library contain/features:
 - Circle Percentage
 - Gradient Circle Percentage
 
-With customization.
+... with customization.
 
 ### Versioning
 
