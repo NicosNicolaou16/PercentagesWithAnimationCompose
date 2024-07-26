@@ -1,6 +1,8 @@
 # Percentages with Animation Compose
 
-This library built to give to other developers an easy way to implement <br />
+This library built to give to other developers an easy way to implement percentages with custom
+Compose view and animation such as linear, circular,
+circle and gradient circle percentages. <br />
 Support me and I will appreciate if you provide me your feedback(s).<br />
 
 The library contain/features:
@@ -109,3 +111,121 @@ image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentag
 | `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                |
 | `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                          |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                     |
+
+### Gradient Circle Percentage
+
+| Parameters                    | Description                                                                                                                                                 |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `currentPercentage`           | The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
+| `maximumPercentage`           | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
+| `circularSize`                | The size of the circular percentage, default value is 100                                                                                                   |
+| `listOfColors`                | The list of gradient colors (list of colors must not be empty)                                                                                              |
+| `percentageAnimationDuration` | The duration of the animation, default value is 1500ms                                                                                                      |
+| `centerTextStyle`             | The text style of the center text                                                                                                                           |
+
+```Kotlin
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.nicos.percentageswithanimationcompose.CirclePercentage
+import com.nicos.percentageswithanimationcompose.LinearPercentage
+import com.nicos.percentageswithanimationcompose.CircularPercentage
+import com.nicos.percentageswithanimationcompose.GradientCirclePercentage
+import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
+import com.nicos.percentageswithanimationcomposeexample.ui.theme.PercentagesWithAnimationComposeTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            PercentagesWithAnimationComposeTheme {
+                Scaffold(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) { innerPadding ->
+                    PercentagesWithAnimationCompose(innerPadding = innerPadding)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
+    Column(
+        modifier = Modifier
+            .background(Color.White)
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(modifier = Modifier.size(90.dp))
+        Text(text = "Linear Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
+        Spacer(modifier = Modifier.size(15.dp))
+        LinearPercentage(
+            currentPercentage = 50F,
+            maximumPercentage = 100F,
+            heightPercentageBackground = 50,
+            heightPercentage = 50,
+            roundedCornerShapeValue = 21,
+            horizontalPadding = 15,
+            colorPercentageBackground = Color.Red,
+            colorPercentage = Color.Blue,
+            startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp),
+            endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+            leftAndRightText = LeftAndRightText.BOTH
+        )
+
+        Spacer(modifier = Modifier.size(70.dp))
+        Text(text = "Circular Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
+        Spacer(modifier = Modifier.size(15.dp))
+        CircularPercentage(
+            currentPercentage = 70F,
+            maximumPercentage = 100F,
+            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+        )
+
+        Spacer(modifier = Modifier.size(70.dp))
+        Text(text = "Circle Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
+        Spacer(modifier = Modifier.size(15.dp))
+        CirclePercentage(
+            currentPercentage = 80F,
+            maximumPercentage = 100F,
+            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+        )
+
+        Spacer(modifier = Modifier.size(70.dp))
+        Text(
+            text = "Gradient Circle Percentage",
+            style = TextStyle(color = Color.Black, fontSize = 25.sp)
+        )
+        Spacer(modifier = Modifier.size(15.dp))
+        GradientCirclePercentage(
+            currentPercentage = 70F,
+            maximumPercentage = 100F,
+            listOfColors = mutableListOf(
+                Color.Green,
+                (Color.Green.copy(alpha = 0.3f)),
+                Color.White
+            ),
+            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+        )
+    }
+}
+```
