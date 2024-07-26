@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -92,7 +91,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         )
         Spacer(modifier = Modifier.size(15.dp))
         GradientCirclePercentage(
-            currentValue = 50F,
+            currentValue = 70F,
             maximumValue = 100F,
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )

@@ -68,14 +68,12 @@ fun GradientCirclePercentage(
             actualPercentage = (progressAnimation / 360) * maximumValue
             val gradientShader = Brush.linearGradient(
                 start = Offset.Zero,
-                end = Offset(0f, progressAnimation * (circularSize / 100)),
+                end = Offset(
+                    0F,
+                    size.height * (actualPercentage / maximumValue), /*actualPercentage * (maximumValue / 100)*/
+                ),
                 colors = listOf(Color.Green, (Color.Green.copy(alpha = 0.3f)), Color.White),
             )
-            /*val gradientShader = Brush.linearGradient(
-                end = Offset(0f, progressAnimation - maximumValue / 2),
-                start = Offset.Zero,
-                colors = listOf(Color.Green, (Color.Green.copy(alpha = 0.3f)), Color.White),
-            )*/
 
             drawCircle(
                 brush = gradientShader,
