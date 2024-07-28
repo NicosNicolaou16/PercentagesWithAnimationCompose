@@ -71,6 +71,11 @@ percentagesWithAnimationComposeVersion = "1.0.0"
 image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentagesWithAnimationCompose", version.ref = "percentagesWithAnimationComposeVersion" }
 ```
 
+<p align="left">
+  <a title="simulator_image"><img src="screenshots/Screenshot_20240728_152344.png" height="530" width="250"></a>
+  <a title="simulator_image"><img src="screenshots/example_gif.gif" height="530" width="250"></a>
+</p>
+
 ### Linear Percentage
 
 | Parameters                    | Description                                                                                                                                                 |
