@@ -32,7 +32,7 @@ THE BETA RELEASES MAYBE CONTAIN MAJOR/MINOR CHANGES
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:percentagesWithAnimationCompose:1.0.0'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.0.0'
 ```
 
 ```Groovy
@@ -46,7 +46,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:percentagesWithAnimationCompose:1.0.0")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.0.0")
 ```
 
 ```Kotlin
@@ -68,7 +68,7 @@ percentagesWithAnimationComposeVersion = "1.0.0"
 
 [libraries]
 # other libraries here...
-image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentagesWithAnimationCompose", version.ref = "percentagesWithAnimationComposeVersion" }
+image-picker-android = { group = "com.github.NicosNicolaou16", name = "PercentagesWithAnimationCompose", version.ref = "percentagesWithAnimationComposeVersion" }
 ```
 
 <p align="left">

@@ -71,7 +71,7 @@ afterEvaluate {
         publications {
             register<MavenPublication>("release") {
                 groupId = "com.github.NicosNicolaou16"
-                artifactId = "percentagesWithAnimationCompose"
+                artifactId = "PercentagesWithAnimationCompose"
                 version = "1.0.0"
                 from(components["release"])
             }
