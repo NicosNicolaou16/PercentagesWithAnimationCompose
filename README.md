@@ -133,6 +133,8 @@ image-picker-android = { group = "com.github.NicosNicolaou16", name = "percentag
 | `percentageAnimationDuration` | The duration of the animation, default value is 1500ms                                                                                                      |
 | `centerTextStyle`             | The text style of the center text                                                                                                                           |
 
+### Example
+
 ```Kotlin
 import android.os.Bundle
 import androidx.activity.ComponentActivity
