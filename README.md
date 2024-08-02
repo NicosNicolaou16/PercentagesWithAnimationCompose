@@ -70,7 +70,7 @@ percentagesWithAnimationComposeVersion = "1.0.0"
 
 [libraries]
 # other libraries here...
-image-picker-android = { group = "com.github.NicosNicolaou16", name = "PercentagesWithAnimationCompose", version.ref = "percentagesWithAnimationComposeVersion" }
+percentages-with-animation-compose = { group = "com.github.NicosNicolaou16", name = "PercentagesWithAnimationCompose", version.ref = "percentagesWithAnimationComposeVersion" }
 ```
 
 <p align="left">
