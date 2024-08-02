@@ -29,6 +29,8 @@ THE BETA RELEASES MAYBE CONTAIN MAJOR/MINOR CHANGES
 
 ## Basic Configuration
 
+[![](https://jitpack.io/v/NicosNicolaou16/PercentagesWithAnimationCompose.svg)](https://jitpack.io/#NicosNicolaou16/PercentagesWithAnimationCompose)
+
 ### Groovy
 
 ```Groovy
