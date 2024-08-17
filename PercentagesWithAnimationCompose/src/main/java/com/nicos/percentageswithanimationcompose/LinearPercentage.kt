@@ -46,8 +46,8 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param endTextStartPadding - The padding of the end text, default value is 5
  * @param roundedCornerShapeValue - The rounded corner shape value, default value is 0
  * @param horizontalPadding - The horizontal padding left and right of the Linear Percentage, default value is 0
- * @param startTextStyle - The style of the start/lest text
- * @param endTextStyle - The style of the end/right text
+ * @param startTextStyle - The style of the start/lest text (Optional)
+ * @param endTextStyle - The style of the end/right text (Optional)
  * @param leftAndRightText - The left and right text, accepted values are LEFT_ONLY, RIGHT_ONLY, BOTH and NONE, default value is NONE
  * */
 @Composable
@@ -70,8 +70,8 @@ fun LinearPercentage(
     endTextStartPadding: Int = 5,
     roundedCornerShapeValue: Int = 0,
     horizontalPadding: Int = 0,
-    startTextStyle: TextStyle,
-    endTextStyle: TextStyle,
+    startTextStyle: TextStyle? = null,
+    endTextStyle: TextStyle? = null,
     leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
@@ -157,12 +157,12 @@ private fun LeftText(
     modifier: Modifier,
     actualProgressAnimation: Float,
     startTextEndPadding: Int,
-    startTextStyle: TextStyle
+    startTextStyle: TextStyle?
 ) {
     Text(
         text = (actualProgressAnimation).toInt().toString(),
         modifier = modifier.padding(end = startTextEndPadding.dp),
-        style = startTextStyle
+        style = startTextStyle ?: TextStyle(color = Color.Black)
     )
 }
 
@@ -177,13 +177,13 @@ private fun RightText(
     modifier: Modifier,
     maximumValue: Float,
     endTextStartPadding: Int,
-    endTextStyle: TextStyle
+    endTextStyle: TextStyle?
 ) {
     Text(
         text = maximumValue.toInt().toString(),
         modifier = modifier
             .padding(start = endTextStartPadding.dp),
-        style = endTextStyle
+        style = endTextStyle ?: TextStyle(color = Color.Black)
     )
 }
 

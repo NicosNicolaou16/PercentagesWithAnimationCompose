@@ -93,8 +93,8 @@ percentages-with-animation-compose = { group = "com.github.NicosNicolaou16", nam
 | `endTextStartPadding`         | The padding of the end text, default value is 5                                                                                                             |
 | `roundedCornerShapeValue`     | The rounded corner shape value, default value is 0                                                                                                          |
 | `horizontalPadding`           | The horizontal padding left and right of the Linear Percentage, default value is 0                                                                          |
-| `startTextStyle`              | The style of the start/lest text                                                                                                                            |
-| `endTextStyle`                | The style of the end/right text                                                                                                                             |
+| `startTextStyle`              | The style of the start/lest text (Optional)                                                                                                                 |
+| `endTextStyle`                | The style of the end/right text (Optional)                                                                                                                  |
 | `leftAndRightText`            | The left and right text, accepted values are `LEFT_ONLY`, `RIGHT_ONLY`, `BOTH` and `NONE`, default value is `NONE`                                          |
 
 ### Circular Percentage
