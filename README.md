@@ -16,8 +16,8 @@ The library contain/features:
 
 ### Versioning
 
-Gradle Version 8.5.1 <br />
-Kotlin Version 2.0.0 <br />
+Gradle Version 8.5.2 <br />
+Kotlin Version 2.0.10 <br />
 JDK Version 17 <br />
 Minimum SDK 27 <br />
 Target SDK 34 <br />
@@ -34,7 +34,7 @@ THE BETA RELEASES MAYBE CONTAIN MAJOR/MINOR CHANGES
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.0.0'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.0.1'
 ```
 
 ```Groovy
@@ -48,7 +48,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.0.0")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.0.1")
 ```
 
 ```Kotlin
@@ -66,11 +66,21 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.0.0"
+percentagesWithAnimationComposeVersion = "1.0.1"
 
 [libraries]
 # other libraries here...
 percentages-with-animation-compose = { group = "com.github.NicosNicolaou16", name = "PercentagesWithAnimationCompose", version.ref = "percentagesWithAnimationComposeVersion" }
+```
+
+```Kotlin
+dependencyResolutionManagement {
+    //...
+    repositories {
+        //...
+        maven { url = uri("https://jitpack.io") }
+    }
+}
 ```
 
 <p align="left">
