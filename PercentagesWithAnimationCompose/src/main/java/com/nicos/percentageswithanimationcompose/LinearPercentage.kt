@@ -46,8 +46,8 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param endTextStartPadding - The padding of the end text, default value is 5
  * @param roundedCornerShapeValue - The rounded corner shape value, default value is 0
  * @param horizontalPadding - The horizontal padding left and right of the Linear Percentage, default value is 0
- * @param startTextStyle - The style of the start/lest text (Optional)
- * @param endTextStyle - The style of the end/right text (Optional)
+ * @param startTextStyle - The style of the start/lest text (Optional), default value TextStyle(color = Color.Black)
+ * @param endTextStyle - The style of the end/right text (Optional), default value TextStyle(color = Color.Black)
  * @param leftAndRightText - The left and right text, accepted values are LEFT_ONLY, RIGHT_ONLY, BOTH and NONE, default value is NONE
  * */
 @Composable
