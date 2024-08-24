@@ -49,7 +49,7 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param startTextStyle - The style of the start/lest text (Optional), default value TextStyle(color = Color.Black)
  * @param endTextStyle - The style of the end/right text (Optional), default value TextStyle(color = Color.Black)
  * @param leftAndRightText - The left and right text, accepted values are LEFT_ONLY, RIGHT_ONLY, BOTH and NONE, default value is NONE
- * @param showPercentageOnLinearPercentage - The percentage on Linear Percentage enabled the text percent on percentage view
+ * @param showPercentageOnLinearPercentage - The percentage on Linear Percentage enabled the text percent on percentage view, default value false
  * @param percentageOnLinearPercentageTextStyle - The text style of the percentage on Linear Percentage (Optional), default value TextStyle(color = Color.Black)
  * */
 @Composable
