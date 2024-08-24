@@ -90,22 +90,24 @@ dependencyResolutionManagement {
 
 ### Linear Percentage
 
-| Parameters                    | Description                                                                                                                                                 |
-|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `currentPercentage`           | The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
-| `maxPercentage`               | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
-| `percentageAnimationDuration` | The duration of the percentage animation, default value is 1500ms                                                                                           |
-| `heightPercentageBackground`  | The height of the background of the Linear Percentage                                                                                                       |
-| `heightPercentage`            | The height of the Linear Percentage                                                                                                                         |
-| `colorPercentageBackground`   | The color of the background of the Linear Percentage                                                                                                        |
-| `colorPercentage`             | The color of the Linear Percentage                                                                                                                          |
-| `startTextEndPadding`         | The padding of the start text, default value is 5                                                                                                           |
-| `endTextStartPadding`         | The padding of the end text, default value is 5                                                                                                             |
-| `roundedCornerShapeValue`     | The rounded corner shape value, default value is 0                                                                                                          |
-| `horizontalPadding`           | The horizontal padding left and right of the Linear Percentage, default value is 0                                                                          |
-| `startTextStyle`              | The style of the start/lest text (Optional), default value TextStyle(color = Color.Black)                                                                   |
-| `endTextStyle`                | The style of the end/right text (Optional), default value TextStyle(color = Color.Black)                                                                    |
-| `leftAndRightText`            | The left and right text, accepted values are `LEFT_ONLY`, `RIGHT_ONLY`, `BOTH` and `NONE`, default value is `NONE`                                          |
+| Parameters                              | Description                                                                                                                                                 |
+|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `currentPercentage`                     | The current value of the Linear Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
+| `maxPercentage`                         | The maximum value of the Linear Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
+| `percentageAnimationDuration`           | The duration of the percentage animation, default value is 1500ms                                                                                           |
+| `heightPercentageBackground`            | The height of the background of the Linear Percentage                                                                                                       |
+| `heightPercentage`                      | The height of the Linear Percentage                                                                                                                         |
+| `colorPercentageBackground`             | The color of the background of the Linear Percentage                                                                                                        |
+| `colorPercentage`                       | The color of the Linear Percentage                                                                                                                          |
+| `startTextEndPadding`                   | The padding of the start text, default value is 5                                                                                                           |
+| `endTextStartPadding`                   | The padding of the end text, default value is 5                                                                                                             |
+| `roundedCornerShapeValue`               | The rounded corner shape value, default value is 0                                                                                                          |
+| `horizontalPadding`                     | The horizontal padding left and right of the Linear Percentage, default value is 0                                                                          |
+| `startTextStyle`                        | The style of the start/lest text (Optional), default value TextStyle(color = Color.Black)                                                                   |
+| `endTextStyle`                          | The style of the end/right text (Optional), default value TextStyle(color = Color.Black)                                                                    |
+| `leftAndRightText`                      | The left and right text, accepted values are `LEFT_ONLY`, `RIGHT_ONLY`, `BOTH` and `NONE`, default value is `NONE`                                          |
+| `showPercentageOnLinearPercentage`      | The percentage on Linear Percentage enabled the text percent on percentage view, default value false                                                        |
+| `percentageOnLinearPercentageTextStyle` | The text style of the percentage on Linear Percentage (Optional), default value TextStyle(color = Color.Black)                                              |
 
 ### Circular Percentage
 
