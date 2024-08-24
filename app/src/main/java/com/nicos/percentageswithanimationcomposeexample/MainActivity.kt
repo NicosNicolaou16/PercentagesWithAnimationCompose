@@ -65,7 +65,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
             colorPercentage = Color.Blue,
             startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp),
             endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
-            leftAndRightText = LeftAndRightText.BOTH
+            leftAndRightText = LeftAndRightText.BOTH,
         )
 
         Spacer(modifier = Modifier.size(70.dp))
