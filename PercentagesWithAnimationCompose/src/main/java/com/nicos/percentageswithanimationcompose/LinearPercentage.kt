@@ -1,6 +1,5 @@
 package com.nicos.percentageswithanimationcompose
 
-import android.health.connect.datatypes.units.Percentage
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
