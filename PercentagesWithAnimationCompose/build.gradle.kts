@@ -7,11 +7,13 @@ plugins {
 
 android {
     namespace = "com.nicos.percentageswithanimationcompose"
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
+    compileSdk = 35
+    buildToolsVersion = "35.0.0"
 
     defaultConfig {
         minSdk = 27
+        lint.targetSdk = 35
+        testOptions.targetSdk = 35
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -71,7 +73,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "com.github.NicosNicolaou16"
                 artifactId = "PercentagesWithAnimationCompose"
-                version = "1.1.2"
+                version = "1.2.0"
                 from(components["release"])
             }
         }
