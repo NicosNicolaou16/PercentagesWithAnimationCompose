@@ -1,23 +1,32 @@
 # Percentages with Animation Compose
 
-This library built to give to other developers an easy way to implement percentages with custom
-Compose view and animation such as linear, circular,
-circle and gradient circle percentages. <br />
-Support me and I will appreciate if you provide me your feedback(s).<br />
+This library is designed to provide developers with an easy way to implement percentages with custom
+Compose views and animations, including linear, circular, circle, and gradient circle
+percentages. <br />
+Your support is greatly appreciated, and I would be grateful if you could share your
+feedback. <br />
 
-The library contain/features:
+The library contains the following features:
 
-- Linear Percentage
-- Circular Percentage
-- Circle Percentage
-- Gradient Circle Percentage
+- Linear Percentage.
+- Circular Percentage.
+- Circle Percentage.
+- Gradient Circle Percentage.
+- All with customizable options.
 
-... with customizations.
+**Reasons to use this library:**
+
+- **Easy Integration:** Quickly implement percentage displays with minimal setup in your Compose projects.
+- **Multiple View Types:** Support for various percentage display styles, including linear, circular, and gradient circle percentages.
+- **Customizable:** Highly customizable to match your app's design and user interface needs.
+- **Smooth Animations:** Enjoy smooth, animated transitions for percentage changes, improving user experience.
+- **Time-Saving:** Reduces development time by providing ready-to-use components for percentage representation.
+
 
 ### Versioning
 
-Gradle Version 8.7.2 <br />
-Kotlin Version 2.0.21 <br />
+Gradle Version 8.7.3 <br />
+Kotlin Version 2.1.0 <br />
 JDK Version 17 <br />
 Minimum SDK 27 <br />
 Target SDK 35 <br />
@@ -25,16 +34,16 @@ Build Tool Version 35 <br />
 
 ## IMPORTANT NOTE
 
-THE BETA RELEASES MAYBE CONTAIN MAJOR/MINOR CHANGES
+THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES.
 
-## Basic Configuration
+## Basic Configuration (Gradle Dependencies)
 
 [![](https://jitpack.io/v/NicosNicolaou16/PercentagesWithAnimationCompose.svg)](https://jitpack.io/#NicosNicolaou16/PercentagesWithAnimationCompose)
 
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.2.1'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.2.2'
 ```
 
 ```Groovy
@@ -48,7 +57,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.2.1")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.2.2")
 ```
 
 ```Kotlin
@@ -66,7 +75,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.2.1"
+percentagesWithAnimationComposeVersion = "1.2.2"
 
 [libraries]
 # other libraries here...
