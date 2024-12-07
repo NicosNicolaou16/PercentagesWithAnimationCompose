@@ -4,14 +4,14 @@ This library is designed to provide developers with an easy way to implement per
 Compose views and animations, including linear, circular, circle, and gradient circle percentages. <br />
 Your support is greatly appreciated, and I would be grateful if you could share your feedback. <br />
 
-The library contain/features:
 
-- Linear Percentage
-- Circular Percentage
-- Circle Percentage
-- Gradient Circle Percentage
+The library contains the following features:
 
-... with customizations.
+- Linear Percentage.
+- Circular Percentage.
+- Circle Percentage.
+- Gradient Circle Percentage.
+- All with customizable options.
 
 ### Versioning
 
