@@ -27,7 +27,7 @@ Build Tool Version 35 <br />
 
 THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES.
 
-## Basic Configuration
+## Basic Configuration (Gradle Dependencies)
 
 [![](https://jitpack.io/v/NicosNicolaou16/PercentagesWithAnimationCompose.svg)](https://jitpack.io/#NicosNicolaou16/PercentagesWithAnimationCompose)
 
