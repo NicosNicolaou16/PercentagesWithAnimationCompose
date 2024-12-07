@@ -1,9 +1,8 @@
 # Percentages with Animation Compose
 
-This library built to give to other developers an easy way to implement percentages with custom
-Compose view and animation such as linear, circular,
-circle and gradient circle percentages. <br />
-Support me and I will appreciate if you provide me your feedback(s).<br />
+This library is designed to provide developers with an easy way to implement percentages with custom
+Compose views and animations, including linear, circular, circle, and gradient circle percentages. <br />
+Your support is greatly appreciated, and I would be grateful if you could share your feedback. <br />
 
 The library contain/features:
 
