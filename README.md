@@ -14,6 +14,15 @@ The library contains the following features:
 - Gradient Circle Percentage.
 - All with customizable options.
 
+**Reasons to use this library:**
+
+- **Easy Integration:** Quickly implement percentage displays with minimal setup in your Compose projects.
+- **Multiple View Types:** Support for various percentage display styles, including linear, circular, and gradient circle percentages.
+- **Customizable:** Highly customizable to match your app's design and user interface needs.
+- **Smooth Animations:** Enjoy smooth, animated transitions for percentage changes, improving user experience.
+- **Time-Saving:** Reduces development time by providing ready-to-use components for percentage representation.
+
+
 ### Versioning
 
 Gradle Version 8.7.2 <br />
