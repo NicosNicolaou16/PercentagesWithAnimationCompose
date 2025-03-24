@@ -25,12 +25,12 @@ The library contains the following features:
 
 ### Versioning
 
-Gradle Version 8.8.0 <br />
-Kotlin Version 2.1.10 <br />
+Gradle Version 8.9.1 <br />
+Kotlin Version 2.1.20 <br />
 JDK Version 17 <br />
 Minimum SDK 27 <br />
 Target SDK 35 <br />
-Build Tool Version 35 <br />
+Build Tool Version 35.0.1 <br />
 
 ## IMPORTANT NOTE
 
@@ -43,7 +43,7 @@ THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES.
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.2.3'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.2.4'
 ```
 
 ```Groovy
@@ -57,7 +57,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.2.3")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.2.4")
 ```
 
 ```Kotlin
@@ -75,7 +75,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.2.3"
+percentagesWithAnimationComposeVersion = "1.2.4"
 
 [libraries]
 # other libraries here...
