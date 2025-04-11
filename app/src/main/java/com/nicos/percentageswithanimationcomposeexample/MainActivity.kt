@@ -5,11 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +26,7 @@ import com.nicos.percentageswithanimationcompose.CirclePercentage
 import com.nicos.percentageswithanimationcompose.LinearPercentage
 import com.nicos.percentageswithanimationcompose.CircularPercentage
 import com.nicos.percentageswithanimationcompose.GradientCirclePercentage
+import com.nicos.percentageswithanimationcompose.WavePercentage
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 import com.nicos.percentageswithanimationcomposeexample.ui.theme.PercentagesWithAnimationComposeTheme
 
@@ -48,10 +52,18 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
     Column(
         modifier = Modifier
             .background(Color.White)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .verticalScroll(
+                state = rememberScrollState()
+            ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.size(90.dp))
+        WavePercentage(
+            currentPercentage = 70F,
+            maxPercentage = 100F,
+            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+        )
         Text(text = "Linear Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
         Spacer(modifier = Modifier.size(15.dp))
         LinearPercentage(
@@ -102,5 +114,18 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
             ),
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
+
+        Spacer(modifier = Modifier.size(70.dp))
+        Text(
+            text = "Wave Percentage",
+            style = TextStyle(color = Color.Black, fontSize = 25.sp)
+        )
+        Spacer(modifier = Modifier.size(15.dp))
+        WavePercentage(
+            currentPercentage = 70F,
+            maxPercentage = 100F,
+            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+        )
+        Spacer(modifier = Modifier.size(70.dp))
     }
 }

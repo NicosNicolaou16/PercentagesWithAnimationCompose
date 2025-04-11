@@ -1,2 +1,218 @@
 package com.nicos.percentageswithanimationcompose
 
+import androidx.annotation.FloatRange
+import androidx.compose.animation.core.EaseInQuad
+import androidx.compose.animation.core.EaseOutQuad
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.launch
+import kotlin.math.PI
+import kotlin.math.sin
+import androidx.compose.animation.core.*
+
+/**
+ * @param currentPercentage - The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
+ * @param maxPercentage - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
+ * @param circularSize - The size of the circle, default value is 100
+ * @param percentageAnimationDuration - The duration of the animation, default value is 1500ms
+ * @param centerTextStyle - The text style of the center text
+ * */
+@Composable
+fun WavePercentage(
+    @FloatRange(
+        from = 0.0,
+        to = Float.MAX_VALUE.toDouble()
+    )
+    currentPercentage: Float,
+    @FloatRange(
+        from = 0.0,
+        to = Float.MAX_VALUE.toDouble()
+    )
+    maxPercentage: Float,
+    circularSize: Int = 100,
+    percentageAnimationDuration: Int = 1_500,
+    backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
+    centerTextStyle: TextStyle,
+    waveFrequency: Float = 0.5f,
+    waveAmplitude: Float = 10f,
+    animationDuration: Int = 1000,
+    waveAnimationDuration: Int = 500,
+    waveAnimationAmplitudeFactor: Float = 0.2f,
+    continuousWaveAnimationDuration: Int = 2000,
+    waveColor: Color = MaterialTheme.colorScheme.primary,
+) {
+    assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
+    assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
+    assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
+    assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
+
+    var actualPercentageToShow by remember { mutableFloatStateOf(0f) }
+    val animatedPercentage = remember { Animatable(0f) } // Create an Animatable
+    val modifier = Modifier
+    val animatedWaveAmplitude = remember { Animatable(0f) }
+    val animatedPhase = remember { Animatable(0f) } // For continuous wave
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(currentPercentage) {
+        scope.launch {
+            animatedPercentage.snapTo(0f) // Immediately set to 0
+            animatedPercentage.animateTo(
+                targetValue = currentPercentage,
+                animationSpec = tween(durationMillis = animationDuration),
+            ) {
+                actualPercentageToShow = value
+            }
+            actualPercentageToShow = animatedPercentage.value
+        }
+    }
+
+    // Animation during percentage change
+    LaunchedEffect(currentPercentage) {
+        scope.launch {
+            animatedWaveAmplitude.animateTo(
+                targetValue = waveAnimationAmplitudeFactor * waveAmplitude,
+                animationSpec = tween(
+                    durationMillis = waveAnimationDuration / 2,
+                    easing = EaseInQuad
+                )
+            )
+            animatedWaveAmplitude.animateTo(
+                targetValue = 0f,
+                animationSpec = tween(
+                    durationMillis = waveAnimationDuration / 2,
+                    easing = EaseOutQuad
+                )
+            )
+        }
+    }
+
+    // Continuous wave animation
+    LaunchedEffect(Unit) {
+        scope.launch {
+            animatedPhase.animateTo(
+                targetValue = 2 * PI.toFloat(),
+                animationSpec = infiniteRepeatable(
+                    animation = tween(
+                        durationMillis = continuousWaveAnimationDuration,
+                        easing = LinearEasing // Or a different easing
+                    ),
+                    repeatMode = RepeatMode.Restart
+                )
+            )
+        }
+    }
+
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center
+    ) {
+        Canvas(modifier = Modifier.size(100.dp)) {
+            drawCircle(color = backgroundColor)
+
+            clipPath(
+                Path().apply {
+                    val radius = size.width / 2
+                    addOval(
+                        Rect(
+                            center = Offset(size.width / 2, size.height / 2),
+                            radius = radius
+                        )
+                    )
+                }
+            ) {
+                drawWave(
+                    actualPercentageToShow = actualPercentageToShow,
+                    waveColor = waveColor,
+                    waveFrequency = waveFrequency,
+                    waveAmplitude = waveAmplitude + animatedWaveAmplitude.value, // Use modified amplitude
+                    wavePhase = animatedPhase.value,  // Use continuous wave phase
+                    isFull = false,
+                    maxPercentage = maxPercentage
+                )
+            }
+        }
+        if (actualPercentageToShow == currentPercentage)
+            Text(
+                text = actualPercentageToShow.toInt().toString(),
+                style = centerTextStyle
+            )
+    }
+}
+
+private fun DrawScope.drawWave(
+    actualPercentageToShow: Float,
+    waveColor: Color,
+    waveFrequency: Float,
+    waveAmplitude: Float,
+    wavePhase: Float,
+    isFull: Boolean,
+    maxPercentage: Float
+) {
+    val normalizedPercentage = 1f - (actualPercentageToShow / maxPercentage)
+    val path = Path().apply {
+        val fillHeightFromBottom =
+            if (isFull) 0f else size.height * normalizedPercentage  // Calculate from bottom
+        val centerX = size.width / 2
+        var previousY =
+            fillHeightFromBottom + waveAmplitude * sin(waveFrequency / size.width * 2 * PI * (-centerX) + PI / 2 + wavePhase).toFloat()
+        moveTo(0f, previousY)
+
+        val numPoints = 50
+        val step = size.width / numPoints
+        var previousX = 0f
+
+        for (i in 0..numPoints) {
+            val x = i * step
+            val y =
+                fillHeightFromBottom + waveAmplitude * sin(waveFrequency / size.width * 2 * PI * (x - centerX) + PI / 2 + wavePhase).toFloat()
+            if (i > 0) {
+                quadraticTo(previousX + step / 2, (y + previousY).toFloat() / 2, x, y.toFloat())
+            } else {
+                moveTo(x, y.toFloat())
+            }
+            previousY = y
+            previousX = x
+        }
+
+        lineTo(size.width, 0f)  // Change: Connect to top-right
+        lineTo(0f, 0f)          // Change: Connect to top-left
+        close()
+    }
+    drawPath(path, color = waveColor)
+}
+
+@Preview
+@Composable
+fun WavePercentagePreview() {
+    WavePercentage(
+        currentPercentage = 70F,
+        maxPercentage = 100F,
+        centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
+    )
+}
