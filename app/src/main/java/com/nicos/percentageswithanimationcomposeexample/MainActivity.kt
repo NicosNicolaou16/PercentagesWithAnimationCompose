@@ -59,11 +59,6 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.size(90.dp))
-        WavePercentage(
-            currentPercentage = 70F,
-            maxPercentage = 100F,
-            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
-        )
         Text(text = "Linear Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
         Spacer(modifier = Modifier.size(15.dp))
         LinearPercentage(
