@@ -210,7 +210,7 @@ private fun DrawScope.drawWave(
             fillHeightFromBottom + waveAmplitude * sin(waveFrequency / size.width * 2 * PI * (-centerX) + PI / 2 + wavePhase).toFloat()
         moveTo(0f, previousY)
 
-        val numPoints = 50
+        val numPoints = 30
         val step = size.width / numPoints
         var previousX = 0f
 
@@ -235,7 +235,7 @@ private fun DrawScope.drawWave(
 
 @Preview
 @Composable
-fun WavePercentagePreview() {
+private fun WavePercentagePreview() {
     WavePercentage(
         currentPercentage = 70F,
         maxPercentage = 100F,
