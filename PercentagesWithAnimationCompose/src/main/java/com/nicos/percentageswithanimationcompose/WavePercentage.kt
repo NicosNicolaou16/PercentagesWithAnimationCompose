@@ -170,7 +170,7 @@ fun WavePercentage(
                     waveFrequency = waveFrequency,
                     waveAmplitude = waveAmplitude + animatedWaveAmplitude.value, // Use modified amplitude
                     wavePhase = animatedPhase.value,  // Use continuous wave phase
-                    isFull = false,
+                    isFull = currentPercentage == maxPercentage,
                     maxPercentage = maxPercentage
                 )
                 drawPath(wavePath, color = backgroundColor)
