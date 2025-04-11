@@ -41,7 +41,14 @@ import androidx.compose.animation.core.*
  * @param currentPercentage - The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
  * @param maxPercentage - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
  * @param circularSize - The size of the circle, default value is 100
- * @param percentageAnimationDuration - The duration of the animation, default value is 1500ms
+ * @param backgroundColor - The background color of the circle
+ * @param waveColor - The color of the wave
+ * @param waveFrequency - The frequency of the wave
+ * @param waveAmplitude - The amplitude of the wave
+ * @param animationDuration - The duration of the animation, default value is 1000ms
+ * @param waveAnimationDuration - The duration of the wave animation, default value is 500ms
+ * @param waveAnimationAmplitudeFactor - The factor to multiply the wave amplitude, default value is 0.2
+ * @param continuousWaveAnimationDuration - The duration of the continuous wave animation, default value is 2000ms
  * @param centerTextStyle - The text style of the center text
  * */
 @Composable
@@ -57,7 +64,6 @@ fun WavePercentage(
     )
     maxPercentage: Float,
     circularSize: Int = 100,
-    percentageAnimationDuration: Int = 1_500,
     backgroundColor: Color = Color.White,
     waveColor: Color = Color.Green,
     waveFrequency: Float = 1.5f,
@@ -70,7 +76,6 @@ fun WavePercentage(
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
-    assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
     assert(animationDuration >= 0) { "Animation duration must be greater than or equal to 0" }
     assert(waveAnimationDuration >= 0) { "Wave animation duration must be greater than or equal to 0" }
