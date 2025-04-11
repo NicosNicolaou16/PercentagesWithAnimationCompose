@@ -1,5 +1,6 @@
 package com.nicos.percentageswithanimationcompose
 
+import android.util.Log
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.EaseInQuad
 import androidx.compose.animation.core.EaseOutQuad
@@ -71,6 +72,8 @@ fun WavePercentage(
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
+    assert(animationDuration >= 0) { "Animation duration must be greater than or equal to 0" }
+    assert(waveAnimationDuration >= 0) { "Wave animation duration must be greater than or equal to 0" }
 
     var actualPercentageToShow by remember { mutableFloatStateOf(0f) }
     val animatedPercentage = remember { Animatable(0f) } // Create an Animatable
@@ -142,7 +145,7 @@ fun WavePercentage(
         contentAlignment = Alignment.Center
     ) {
         Canvas(modifier = Modifier.size(circularSize.dp)) {
-            drawCircle(color = backgroundColor)
+            drawCircle(color = waveColor)
 
             clipPath(
                 Path().apply {
@@ -155,7 +158,7 @@ fun WavePercentage(
                     )
                 }
             ) {
-                wavePath.reset()
+                wavePath.reset() // Reuse and clear the path
                 drawWave(
                     path = wavePath,
                     actualPercentageToShow = actualPercentageToShow,
@@ -165,14 +168,13 @@ fun WavePercentage(
                     isFull = false,
                     maxPercentage = maxPercentage
                 )
-                drawPath(wavePath, color = waveColor)
+                drawPath(wavePath, color = backgroundColor)
             }
         }
-        if (actualPercentageToShow == currentPercentage)
-            Text(
-                text = actualPercentageToShow.toInt().toString(),
-                style = centerTextStyle
-            )
+        Text(
+            text = actualPercentageToShow.toInt().toString(),
+            style = centerTextStyle
+        )
     }
 }
 
