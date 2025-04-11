@@ -59,7 +59,7 @@ fun WavePercentage(
     percentageAnimationDuration: Int = 1_500,
     backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
     centerTextStyle: TextStyle,
-    waveFrequency: Float = 0.5f,
+    waveFrequency: Float = 1.5f,
     waveAmplitude: Float = 10f,
     animationDuration: Int = 1000,
     waveAnimationDuration: Int = 500,
@@ -78,6 +78,15 @@ fun WavePercentage(
     val animatedWaveAmplitude = remember { Animatable(0f) }
     val animatedPhase = remember { Animatable(0f) } // For continuous wave
     val scope = rememberCoroutineScope()
+
+    // Cache the wave path when shape-defining parameters change
+    val wavePath = remember(
+        waveFrequency,
+        waveAmplitude,
+        maxPercentage
+    ) { // Recompute if these change, excludes phase since it animates continuously.
+        Path()
+    }
 
     LaunchedEffect(currentPercentage) {
         scope.launch {
@@ -146,15 +155,17 @@ fun WavePercentage(
                     )
                 }
             ) {
+                wavePath.reset()
                 drawWave(
+                    path = wavePath,
                     actualPercentageToShow = actualPercentageToShow,
-                    waveColor = waveColor,
                     waveFrequency = waveFrequency,
                     waveAmplitude = waveAmplitude + animatedWaveAmplitude.value, // Use modified amplitude
                     wavePhase = animatedPhase.value,  // Use continuous wave phase
                     isFull = false,
                     maxPercentage = maxPercentage
                 )
+                drawPath(wavePath, color = waveColor)
             }
         }
         if (actualPercentageToShow == currentPercentage)
@@ -166,8 +177,8 @@ fun WavePercentage(
 }
 
 private fun DrawScope.drawWave(
+    path: Path, //Path as a parameter
     actualPercentageToShow: Float,
-    waveColor: Color,
     waveFrequency: Float,
     waveAmplitude: Float,
     wavePhase: Float,
@@ -175,7 +186,7 @@ private fun DrawScope.drawWave(
     maxPercentage: Float
 ) {
     val normalizedPercentage = 1f - (actualPercentageToShow / maxPercentage)
-    val path = Path().apply {
+    path.apply {
         val fillHeightFromBottom =
             if (isFull) 0f else size.height * normalizedPercentage  // Calculate from bottom
         val centerX = size.width / 2
@@ -204,7 +215,6 @@ private fun DrawScope.drawWave(
         lineTo(0f, 0f)          // Change: Connect to top-left
         close()
     }
-    drawPath(path, color = waveColor)
 }
 
 @Preview
