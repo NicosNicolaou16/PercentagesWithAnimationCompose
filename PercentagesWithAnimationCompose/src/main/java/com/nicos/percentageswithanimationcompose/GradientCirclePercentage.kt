@@ -79,7 +79,7 @@ fun GradientCirclePercentage(
                 start = Offset.Zero,
                 end = Offset(
                     0F,
-                    size.height * (actualPercentage / maxPercentage), /*actualPercentage * (maximumValue / 100)*/
+                    size.height * (actualPercentage / maxPercentage),
                 ),
                 colors = listOfColors,
             )
