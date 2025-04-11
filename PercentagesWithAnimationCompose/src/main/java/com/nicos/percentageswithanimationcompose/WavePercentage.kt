@@ -183,6 +183,15 @@ fun WavePercentage(
     }
 }
 
+/**
+ * @param path - The path to draw the wave on
+ * @param actualPercentageToShow - The actual percentage to show
+ * @param waveFrequency - The frequency of the wave
+ * @param waveAmplitude - The amplitude of the wave
+ * @param wavePhase - The phase of the wave
+ * @param isFull - Whether the wave should be full or not
+ * @param maxPercentage - The maximum value of the progress indicator
+ * */
 private fun DrawScope.drawWave(
     path: Path, //Path as a parameter
     actualPercentageToShow: Float,
