@@ -57,15 +57,15 @@ fun WavePercentage(
     maxPercentage: Float,
     circularSize: Int = 100,
     percentageAnimationDuration: Int = 1_500,
-    backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
-    centerTextStyle: TextStyle,
+    backgroundColor: Color = Color.White,
+    waveColor: Color = Color.Green,
     waveFrequency: Float = 1.5f,
     waveAmplitude: Float = 10f,
     animationDuration: Int = 1000,
     waveAnimationDuration: Int = 500,
     waveAnimationAmplitudeFactor: Float = 0.2f,
     continuousWaveAnimationDuration: Int = 2000,
-    waveColor: Color = MaterialTheme.colorScheme.primary,
+    centerTextStyle: TextStyle,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
@@ -141,7 +141,7 @@ fun WavePercentage(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        Canvas(modifier = Modifier.size(100.dp)) {
+        Canvas(modifier = Modifier.size(circularSize.dp)) {
             drawCircle(color = backgroundColor)
 
             clipPath(
