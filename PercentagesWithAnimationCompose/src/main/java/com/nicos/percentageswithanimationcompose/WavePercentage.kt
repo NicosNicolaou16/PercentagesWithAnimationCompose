@@ -43,9 +43,9 @@ import androidx.compose.animation.core.*
  * @param circularSize - The size of the circle, default value is 100
  * @param backgroundColor - The background color of the circle
  * @param waveColor - The color of the wave
+ * @param percentageAnimationDuration - The duration of the animation, default value is 1500ms
  * @param waveFrequency - The frequency of the wave
  * @param waveAmplitude - The amplitude of the wave
- * @param animationDuration - The duration of the animation, default value is 1000ms
  * @param waveAnimationDuration - The duration of the wave animation, default value is 500ms
  * @param waveAnimationAmplitudeFactor - The factor to multiply the wave amplitude, default value is 0.2
  * @param continuousWaveAnimationDuration - The duration of the continuous wave animation, default value is 2000ms
@@ -66,9 +66,9 @@ fun WavePercentage(
     circularSize: Int = 100,
     backgroundColor: Color = Color.White,
     waveColor: Color = Color.Green,
+    percentageAnimationDuration: Int = 1_500,
     waveFrequency: Float = 1.5f,
     waveAmplitude: Float = 10f,
-    animationDuration: Int = 1000,
     waveAnimationDuration: Int = 500,
     waveAnimationAmplitudeFactor: Float = 0.2f,
     continuousWaveAnimationDuration: Int = 2000,
@@ -77,7 +77,7 @@ fun WavePercentage(
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
-    assert(animationDuration >= 0) { "Animation duration must be greater than or equal to 0" }
+    assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(waveAnimationDuration >= 0) { "Wave animation duration must be greater than or equal to 0" }
 
     var actualPercentageToShow by remember { mutableFloatStateOf(0f) }
@@ -101,7 +101,7 @@ fun WavePercentage(
             animatedPercentage.snapTo(0f) // Immediately set to 0
             animatedPercentage.animateTo(
                 targetValue = currentPercentage,
-                animationSpec = tween(durationMillis = animationDuration),
+                animationSpec = tween(durationMillis = percentageAnimationDuration),
             ) {
                 actualPercentageToShow = value
             }
