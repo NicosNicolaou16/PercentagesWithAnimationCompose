@@ -69,7 +69,7 @@ fun WavePercentage(
     waveAmplitude: Float = 10f,
     waveAnimationDuration: Int = 500,
     waveAnimationAmplitudeFactor: Float = 0.2f,
-    continuousWaveAnimationDuration: Int = 2000,
+    continuousWaveAnimationDuration: Int = 2_000,
     centerTextStyle: TextStyle,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
@@ -78,9 +78,9 @@ fun WavePercentage(
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(waveAnimationDuration >= 0) { "Wave animation duration must be greater than or equal to 0" }
 
+    val modifier = Modifier
     var actualPercentageToShow by remember { mutableFloatStateOf(0f) }
     val animatedPercentage = remember { Animatable(0f) } // Create an Animatable
-    val modifier = Modifier
     val animatedWaveAmplitude = remember { Animatable(0f) }
     val animatedPhase = remember { Animatable(0f) } // For continuous wave
     val scope = rememberCoroutineScope()

@@ -118,6 +118,7 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
         WavePercentage(
             currentPercentage = 70F,
             maxPercentage = 100F,
+            percentageAnimationDuration = 5_000,
             centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
         )
         Spacer(modifier = Modifier.size(70.dp))
