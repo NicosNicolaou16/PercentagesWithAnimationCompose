@@ -36,8 +36,8 @@ import kotlin.math.PI
 import kotlin.math.sin
 
 /**
- * @param currentPercentage - The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
- * @param maxPercentage - The maximum value of the progress indicator (maximum value must be greater than or equal to 0)
+ * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
+ * @param maxPercentage - The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)
  * @param circularSize - The size of the circle, default value is 100
  * @param backgroundColor - The background color of the circle, default value is White
  * @param waveColor - The color of the wave, default value is Green

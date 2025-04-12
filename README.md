@@ -161,20 +161,20 @@ dependencyResolutionManagement {
 
 ### Wave Percentage
 
-| Parameters                        | Description                                                                                                                                               |
-|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `currentPercentage`               | The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue) |
-| `maxPercentage`                   | The maximum value of the progress indicator (maximum value must be greater than or equal to 0)                                                            |
-| `circularSize`                    | The size of the wave circle percentage, default value is 100                                                                                              |
-| `backgroundColor`                 | The background color of the circle, default value is White                                                                                                |
-| `waveColor`                       | The color of the wave, default value is Green                                                                                                             |
-| `percentageAnimationDuration`     | The duration of the animation, default value is 1500ms                                                                                                    |
-| `waveFrequency`                   | The frequency of the wave, default value is 1.5                                                                                                           |
-| `waveAmplitude`                   | The amplitude of the wave, default value is 10                                                                                                            |
-| `waveAnimationDuration`           | The duration of the wave animation, default value is 500ms                                                                                                |
-| `waveAnimationAmplitudeFactor`    | The factor to multiply the wave amplitude, default value is 0.2f                                                                                          |
-| `continuousWaveAnimationDuration` | The duration of the continuous wave animation, default value is 2000ms                                                                                    |
-| `centerTextStyle`                 | The text style of the center text                                                                                                                         |
+| Parameters                        | Description                                                                                                                                                |
+|-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `currentPercentage`               | The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue) |
+| `maxPercentage`                   | The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)                                                            |
+| `circularSize`                    | The size of the wave circle percentage, default value is 100                                                                                               |
+| `backgroundColor`                 | The background color of the circle, default value is White                                                                                                 |
+| `waveColor`                       | The color of the wave, default value is Green                                                                                                              |
+| `percentageAnimationDuration`     | The duration of the animation, default value is 1500ms                                                                                                     |
+| `waveFrequency`                   | The frequency of the wave, default value is 1.5                                                                                                            |
+| `waveAmplitude`                   | The amplitude of the wave, default value is 10                                                                                                             |
+| `waveAnimationDuration`           | The duration of the wave animation, default value is 500ms                                                                                                 |
+| `waveAnimationAmplitudeFactor`    | The factor to multiply the wave amplitude, default value is 0.2f                                                                                           |
+| `continuousWaveAnimationDuration` | The duration of the continuous wave animation, default value is 2000ms                                                                                     |
+| `centerTextStyle`                 | The text style of the center text                                                                                                                          |
 
 ### Example
 
