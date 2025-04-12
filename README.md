@@ -97,7 +97,7 @@ dependencyResolutionManagement {
 
 <p align="left">
   <a title="simulator_image"><img src="screenshots/Screenshot_20240728_152344.png" height="530" width="250"></a>
-  <a title="simulator_image"><img src="screenshots/example_gif.gif" height="530" width="250"></a>
+  <a title="simulator_image"><img src="screenshots/example_gif1.gif" height="530" width="250"></a>
 </p>
 
 ### Linear Percentage
