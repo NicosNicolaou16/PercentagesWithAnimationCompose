@@ -45,7 +45,7 @@ import kotlin.math.sin
  * @param waveFrequency - The frequency of the wave, default value is 1.5
  * @param waveAmplitude - The amplitude of the wave, default value is 10
  * @param waveAnimationDuration - The duration of the wave animation, default value is 500ms
- * @param waveAnimationAmplitudeFactor - The factor to multiply the wave amplitude, default value is 0.2
+ * @param waveAnimationAmplitudeFactor - The factor to multiply the wave amplitude, default value is 0.2f
  * @param continuousWaveAnimationDuration - The duration of the continuous wave animation, default value is 2000ms
  * @param centerTextStyle - The text style of the center text
  * */

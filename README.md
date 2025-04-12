@@ -16,12 +16,15 @@ The library contains the following features:
 
 **Reasons to use this library:**
 
-- **Easy Integration:** Quickly implement percentage displays with minimal setup in your Compose projects.
-- **Multiple View Types:** Support for various percentage display styles, including linear, circular, and gradient circle percentages.
+- **Easy Integration:** Quickly implement percentage displays with minimal setup in your Compose
+  projects.
+- **Multiple View Types:** Support for various percentage display styles, including linear,
+  circular, and gradient circle percentages.
 - **Customizable:** Highly customizable to match your app's design and user interface needs.
-- **Smooth Animations:** Enjoy smooth, animated transitions for percentage changes, improving user experience.
-- **Time-Saving:** Reduces development time by providing ready-to-use components for percentage representation.
-
+- **Smooth Animations:** Enjoy smooth, animated transitions for percentage changes, improving user
+  experience.
+- **Time-Saving:** Reduces development time by providing ready-to-use components for percentage
+  representation.
 
 ### Versioning
 
@@ -155,6 +158,23 @@ dependencyResolutionManagement {
 | `listOfColors`                | The list of gradient colors (list of colors must not be empty)                                                                                              |
 | `percentageAnimationDuration` | The duration of the animation, default value is 1500ms                                                                                                      |
 | `centerTextStyle`             | The text style of the center text                                                                                                                           |
+
+### Wave Percentage
+
+| Parameters                        | Description                                                                                                                                               |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `currentPercentage`               | The current value of the progress indicator (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue) |
+| `maxPercentage`                   | The maximum value of the progress indicator (maximum value must be greater than or equal to 0)                                                            |
+| `circularSize`                    | The size of the wave circle percentage, default value is 100                                                                                              |
+| `backgroundColor`                 | The background color of the circle, default value is White                                                                                                |
+| `waveColor`                       | The color of the wave, default value is Green                                                                                                             |
+| `percentageAnimationDuration`     | The duration of the animation, default value is 1500ms                                                                                                    |
+| `waveFrequency`                   | The frequency of the wave, default value is 1.5                                                                                                           |
+| `waveAmplitude`                   | The amplitude of the wave, default value is 10                                                                                                            |
+| `waveAnimationDuration`           | The duration of the wave animation, default value is 500ms                                                                                                |
+| `waveAnimationAmplitudeFactor`    | The factor to multiply the wave amplitude, default value is 0.2f                                                                                          |
+| `continuousWaveAnimationDuration` | The duration of the continuous wave animation, default value is 2000ms                                                                                    |
+| `centerTextStyle`                 | The text style of the center text                                                                                                                         |
 
 ### Example
 
