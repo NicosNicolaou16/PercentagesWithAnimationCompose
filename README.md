@@ -1,7 +1,7 @@
 # Percentages with Animation Compose
 
 This library is designed to provide developers with an easy way to implement percentages with custom
-Compose views and animations, including linear, circular, circle, and gradient circle
+Compose views and animations, including linear, circular, circle, gradient circle and wave
 percentages. <br />
 Your support is greatly appreciated, and I would be grateful if you could share your
 feedback. <br />
@@ -12,6 +12,7 @@ The library contains the following features:
 - Circular Percentage.
 - Circle Percentage.
 - Gradient Circle Percentage.
+- Wave Percentage.
 - All with customizable options.
 
 **Reasons to use this library:**
