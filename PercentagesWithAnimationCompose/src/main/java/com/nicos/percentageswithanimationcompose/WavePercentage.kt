@@ -45,7 +45,6 @@ import kotlin.math.sin
  * @param waveFrequency - The frequency of the wave, default value is 1.5
  * @param waveAmplitude - The amplitude of the wave, default value is 10
  * @param waveAnimationDuration - The duration of the wave animation, default value is 500ms
- * @param waveAnimationAmplitudeFactor - The factor to multiply the wave amplitude, default value is 0.2f
  * @param continuousWaveAnimationDuration - The duration of the continuous wave animation, default value is 2000ms
  * @param centerTextStyle - The text style of the center text
  * */
@@ -68,7 +67,6 @@ fun WavePercentage(
     waveFrequency: Float = 1.5f,
     waveAmplitude: Float = 10f,
     waveAnimationDuration: Int = 500,
-    waveAnimationAmplitudeFactor: Float = 0.2f,
     continuousWaveAnimationDuration: Int = 2_000,
     centerTextStyle: TextStyle,
 ) {
@@ -112,7 +110,7 @@ fun WavePercentage(
     LaunchedEffect(currentPercentage) {
         scope.launch {
             animatedWaveAmplitude.animateTo(
-                targetValue = waveAnimationAmplitudeFactor * waveAmplitude,
+                targetValue = 0.2f * waveAmplitude,
                 animationSpec = tween(
                     durationMillis = waveAnimationDuration / 2,
                     easing = EaseInQuad
