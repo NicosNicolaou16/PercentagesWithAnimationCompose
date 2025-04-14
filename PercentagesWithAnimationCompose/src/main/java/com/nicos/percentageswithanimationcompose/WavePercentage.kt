@@ -1,5 +1,6 @@
 package com.nicos.percentageswithanimationcompose
 
+import android.util.Log
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.EaseInQuad
@@ -75,6 +76,7 @@ fun WavePercentage(
     assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(waveAnimationDuration >= 0) { "Wave animation duration must be greater than or equal to 0" }
+    assert(continuousWaveAnimationDuration > 0) { "Continuous wave animation duration must be greater than 0" }
 
     val modifier = Modifier
     var actualPercentageToShow by remember { mutableFloatStateOf(0f) }
@@ -82,6 +84,7 @@ fun WavePercentage(
     val animatedWaveAmplitude = remember { Animatable(0f) }
     val animatedPhase = remember { Animatable(0f) } // For continuous wave
     val scope = rememberCoroutineScope()
+    var waveAmplitude by remember { mutableFloatStateOf(waveAmplitude) }
 
     // Cache the wave path when shape-defining parameters change
     val wavePath = remember(
@@ -127,18 +130,23 @@ fun WavePercentage(
     }
 
     // Continuous wave animation
-    LaunchedEffect(Unit) {
-        scope.launch {
-            animatedPhase.animateTo(
-                targetValue = 2 * PI.toFloat(),
-                animationSpec = infiniteRepeatable(
-                    animation = tween(
-                        durationMillis = continuousWaveAnimationDuration,
-                        easing = LinearEasing // Or a different easing
-                    ),
-                    repeatMode = RepeatMode.Restart
+    LaunchedEffect(actualPercentageToShow < maxPercentage) {
+        if (actualPercentageToShow < maxPercentage) {
+            scope.launch {
+                animatedPhase.animateTo(
+                    targetValue = 2 * PI.toFloat(),
+                    animationSpec = infiniteRepeatable(
+                        animation = tween(
+                            durationMillis = continuousWaveAnimationDuration,
+                            easing = LinearEasing // Or a different easing
+                        ),
+                        repeatMode = RepeatMode.Restart
+                    )
                 )
-            )
+            }
+        } else {
+            waveAmplitude = 0f
+            animatedPhase.animateTo(0f)
         }
     }
 
@@ -167,7 +175,7 @@ fun WavePercentage(
                     waveFrequency = waveFrequency,
                     waveAmplitude = waveAmplitude + animatedWaveAmplitude.value, // Use modified amplitude
                     wavePhase = animatedPhase.value,  // Use continuous wave phase
-                    isFull = currentPercentage == maxPercentage,
+                    isFull = false,
                     maxPercentage = maxPercentage
                 )
                 drawPath(wavePath, color = backgroundColor)
