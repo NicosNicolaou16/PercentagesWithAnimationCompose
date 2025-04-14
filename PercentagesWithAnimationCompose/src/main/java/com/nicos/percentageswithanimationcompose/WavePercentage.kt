@@ -175,7 +175,6 @@ fun WavePercentage(
                     waveFrequency = waveFrequency,
                     waveAmplitude = waveAmplitude + animatedWaveAmplitude.value, // Use modified amplitude
                     wavePhase = animatedPhase.value,  // Use continuous wave phase
-                    isFull = false,
                     maxPercentage = maxPercentage
                 )
                 drawPath(wavePath, color = backgroundColor)
@@ -194,7 +193,6 @@ fun WavePercentage(
  * @param waveFrequency - The frequency of the wave
  * @param waveAmplitude - The amplitude of the wave
  * @param wavePhase - The phase of the wave
- * @param isFull - Whether the wave should be full or not
  * @param maxPercentage - The maximum value of the progress indicator
  * */
 private fun DrawScope.drawWave(
@@ -203,13 +201,12 @@ private fun DrawScope.drawWave(
     waveFrequency: Float,
     waveAmplitude: Float,
     wavePhase: Float,
-    isFull: Boolean,
     maxPercentage: Float
 ) {
     val normalizedPercentage = 1f - (actualPercentageToShow / maxPercentage)
     path.apply {
         val fillHeightFromBottom =
-            if (isFull) 0f else size.height * normalizedPercentage  // Calculate from bottom
+            size.height * normalizedPercentage  // Calculate from bottom
         val centerX = size.width / 2
         var previousY =
             fillHeightFromBottom + waveAmplitude * sin(waveFrequency / size.width * 2 * PI * (-centerX) + PI / 2 + wavePhase).toFloat()
