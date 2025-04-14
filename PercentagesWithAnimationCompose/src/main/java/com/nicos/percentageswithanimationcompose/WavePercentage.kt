@@ -1,6 +1,5 @@
 package com.nicos.percentageswithanimationcompose
 
-import android.util.Log
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.EaseInQuad
