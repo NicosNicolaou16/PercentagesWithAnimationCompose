@@ -100,7 +100,7 @@ fun GradientCirclePercentage(
             )
         }
     }
-    LaunchedEffect(Unit) {
+    LaunchedEffect(key1 = currentPercentage) {
         percentage = (currentPercentage * 360) / maxPercentage
     }
 }
