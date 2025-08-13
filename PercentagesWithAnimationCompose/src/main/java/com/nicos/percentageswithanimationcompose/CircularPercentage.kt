@@ -99,7 +99,7 @@ fun CircularPercentage(
             style = centerTextStyle,
         )
     }
-    LaunchedEffect(Unit) {
+    LaunchedEffect(key1 = currentPercentage) {
         percentage = (currentPercentage * 360) / maxPercentage
     }
 }
