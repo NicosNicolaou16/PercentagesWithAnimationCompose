@@ -87,15 +87,15 @@ fun WavePercentage(
 
     // Cache the wave path when shape-defining parameters change
     val wavePath = remember(
-        waveFrequency,
-        waveAmplitude,
-        maxPercentage
+        key1 = waveFrequency,
+        key2 =waveAmplitude,
+        key3 = maxPercentage
     ) { // Recompute if these change, excludes phase since it animates continuously.
         Path()
     }
 
     // Animation during percentage change
-    LaunchedEffect(currentPercentage) {
+    LaunchedEffect(key1= currentPercentage) {
         scope.launch {
             animatedPercentage.snapTo(0f) // Immediately set to 0
             animatedPercentage.animateTo(
@@ -109,7 +109,7 @@ fun WavePercentage(
     }
 
     // Animation during percentage change
-    LaunchedEffect(currentPercentage) {
+    LaunchedEffect(key1 = currentPercentage) {
         scope.launch {
             animatedWaveAmplitude.animateTo(
                 targetValue = 0.2f * waveAmplitude,
@@ -129,7 +129,7 @@ fun WavePercentage(
     }
 
     // Continuous wave animation
-    LaunchedEffect(actualPercentageToShow < maxPercentage) {
+    LaunchedEffect(key1 = actualPercentageToShow < maxPercentage) {
         if (actualPercentageToShow < maxPercentage) {
             scope.launch {
                 animatedPhase.animateTo(
