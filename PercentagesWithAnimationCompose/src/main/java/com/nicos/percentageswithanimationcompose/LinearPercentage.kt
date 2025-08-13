@@ -154,7 +154,7 @@ fun LinearPercentage(
         if (leftAndRightText == LeftAndRightText.RIGHT_ONLY || leftAndRightText == LeftAndRightText.BOTH)
             RightText(modifier, maxPercentage, endTextStartPadding, endTextStyle)
     }
-    LaunchedEffect(Unit) {
+    LaunchedEffect(key1 = currentPercentage) {
         percentage = (currentPercentage * maxWidth.value.toInt()) / maxPercentage
         actualProgress = percentage * maxPercentage / maxWidth.value.toInt()
     }
