@@ -6,13 +6,13 @@ plugins {
 
 android {
     namespace = "com.nicos.percentageswithanimationcomposeexample"
-    compileSdk = 35
-    buildToolsVersion = "35.0.1"
+    compileSdk = 36
+    buildToolsVersion = "36.0.0"
 
     defaultConfig {
         applicationId = "com.nicos.percentageswithanimationcomposeexample"
         minSdk = 27
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 

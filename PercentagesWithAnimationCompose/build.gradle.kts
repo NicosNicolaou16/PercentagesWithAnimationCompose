@@ -9,13 +9,13 @@ plugins {
 
 android {
     namespace = "com.nicos.percentageswithanimationcompose"
-    compileSdk = 35
-    buildToolsVersion = "35.0.1"
+    compileSdk = 36
+    buildToolsVersion = "36.0.0"
 
     defaultConfig {
         minSdk = 27
-        lint.targetSdk = 35
-        testOptions.targetSdk = 35
+        lint.targetSdk = 36
+        testOptions.targetSdk = 36
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
