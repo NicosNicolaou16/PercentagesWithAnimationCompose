@@ -29,12 +29,12 @@ The library contains the following features:
 
 ### Versioning
 
-Gradle Version 8.12.0 <br />
-Kotlin Version 2.2.0 <br />
+Gradle Version 8.13.0 <br />
+Kotlin Version 2.2.20 <br />
 JDK Version 17 <br />
 Minimum SDK 27 <br />
-Target SDK 35 <br />
-Build Tool Version 35.0.1 <br />
+Target SDK 36 <br />
+Build Tool Version 36.0.0 <br />
 
 ## IMPORTANT NOTE
 
