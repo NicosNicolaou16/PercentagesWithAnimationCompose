@@ -47,7 +47,7 @@ THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES.
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.5'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.6'
 ```
 
 ```Groovy
@@ -61,7 +61,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.5")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.6")
 ```
 
 ```Kotlin
@@ -79,7 +79,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.3.5"
+percentagesWithAnimationComposeVersion = "1.3.6"
 
 [libraries]
 # other libraries here...
