@@ -29,7 +29,7 @@ The library contains the following features:
 
 ### Versioning
 
-Gradle Version 8.13.0 <br />
+Gradle Version 8.13.2 <br />
 Kotlin Version 2.2.20 <br />
 JDK Version 17 <br />
 Minimum SDK 27 <br />
