@@ -220,9 +220,9 @@ private fun DrawScope.drawWave(
             val y =
                 fillHeightFromBottom + waveAmplitude * sin(waveFrequency / size.width * 2 * PI * (x - centerX) + PI / 2 + wavePhase).toFloat()
             if (i > 0) {
-                quadraticTo(previousX + step / 2, (y + previousY).toFloat() / 2, x, y.toFloat())
+                quadraticTo(previousX + step / 2, (y + previousY) / 2, x, y)
             } else {
-                moveTo(x, y.toFloat())
+                moveTo(x, y)
             }
             previousY = y
             previousX = x
