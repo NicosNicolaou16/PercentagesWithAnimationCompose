@@ -35,7 +35,7 @@ This library offers a set of beautifully animated and highly customizable progre
 
 ---
 
-**Reasons to use this library:**
+## 🤔 Why Use This Library?
 
 - **Easy Integration:** Quickly implement percentage displays with minimal setup in your Compose
   projects.
