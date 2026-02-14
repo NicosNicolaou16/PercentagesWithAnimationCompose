@@ -47,6 +47,8 @@ This library offers a set of beautifully animated and highly customizable progre
 - **Time-Saving:** Reduces development time by providing ready-to-use components for percentage
   representation.
 
+---
+
 ### 🛠️ Versioning
 
 *   **JDK Version**: `17`
