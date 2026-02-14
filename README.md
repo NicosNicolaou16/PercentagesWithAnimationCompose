@@ -13,11 +13,10 @@
 [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/@nicosnicolaou16)
 [![Static Badge](https://img.shields.io/badge/Developer_Profile-blue?style=for-the-badge&label=Google)](https://g.dev/nicolaou_nicos)
 
-This library is designed to provide developers with an easy way to implement percentages with custom
-Compose views and animations, including linear, circular, circle, gradient circle and wave
-percentages. <br />
-Your support is greatly appreciated, and I would be grateful if you could share your
-feedback. <br />
+A modern and easy-to-use Jetpack Compose library that provides beautifully animated and highly
+customizable percentage indicators.
+It includes linear, circular, filled circle, gradient circle, and wave-style percentage components —
+all built natively for Compose with smooth animations and flexible styling options.
 
 ---
 
