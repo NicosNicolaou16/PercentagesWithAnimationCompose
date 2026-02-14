@@ -35,11 +35,15 @@ android {
     }
     kotlin {
         compilerOptions {
+            languageVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_3
             jvmTarget = JvmTarget.fromTarget("17")
         }
     }
     buildFeatures {
         compose = true
+    }
+    composeCompiler {
+        reportsDestination = layout.buildDirectory.dir("compose_compiler")
     }
     packaging {
         resources {

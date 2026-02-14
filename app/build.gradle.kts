@@ -36,11 +36,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.fromTarget("17")
-        }
-    }
+
     buildFeatures {
         compose = true
     }
@@ -50,9 +46,18 @@ android {
         }
     }
 }
+kotlin {
+    compilerOptions {
+        languageVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_3
+        jvmTarget = JvmTarget.fromTarget("17")
+    }
+}
+composeCompiler {
+    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+}
 
 dependencies {
-    implementation(project (":PercentagesWithAnimationCompose"))
+    implementation(project(":PercentagesWithAnimationCompose"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     // Compose
