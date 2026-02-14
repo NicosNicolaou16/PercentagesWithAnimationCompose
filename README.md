@@ -131,7 +131,7 @@ Below are examples of how to implement each of the percentage indicators availab
   <a title="simulator_image"><img src="screenshots/example_gif1.gif" height="530" width="250"></a>
 </p>
 
-### Linear Percentage
+### 📊 Linear Percentage
 
 | Parameters                              | Description                                                                                                                                                          |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -152,7 +152,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `showPercentageOnLinearPercentage`      | The percentage on Linear Percentage enabled the text percent on percentage view, default value false                                                                 |
 | `percentageOnLinearPercentageTextStyle` | The text style of the percentage on Linear Percentage (Optional), default value TextStyle(color = Color.Black)                                                       |
 
-### Circular Percentage
+### ⭕ Circular Percentage
 
 | Parameters                          | Description                                                                                                                                                   |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -166,7 +166,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `circularStrokeWidth`               | The width of the stroke of the circular percentage, default value is 10                                                                                       |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
 
-### Circle Percentage
+### 🔵 Circle Percentage
 
 | Parameters                          | Description                                                                                                                                                   |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -179,7 +179,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
 
-### Gradient Circle Percentage
+### 🌈 Gradient Circle Percentage
 
 | Parameters                    | Description                                                                                                                                                   |
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -190,7 +190,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `percentageAnimationDuration` | The duration of the animation, default value is 1500ms                                                                                                        |
 | `centerTextStyle`             | The text style of the center text                                                                                                                             |
 
-### Wave Percentage
+### 🌊 Wave Percentage
 
 | Parameters                        | Description                                                                                                                                                |
 |-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
