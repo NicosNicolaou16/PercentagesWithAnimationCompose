@@ -64,7 +64,7 @@ THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES. <br /> <br />
 
 ---
 
-## ⚙️ Basic Configuration (Gradle Setup)
+## ⚙️ Basic Configuration (Gradle Dependencies)
 
 To get started, add the JitPack repository to your `settings.gradle.kts` file.
 
