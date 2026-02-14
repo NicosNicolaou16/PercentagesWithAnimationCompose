@@ -25,13 +25,13 @@ feedback. <br />
 
 This library offers a set of beautifully animated and highly customizable progress indicators for your Jetpack Compose apps:
 
-*   **Linear Percentage:** A classic horizontal progress bar.
-*   **Circular Percentage:** A standard circular progress indicator with customizable stroke and colors.
-*   **Circle Percentage:** A filled circular progress indicator.
-*   **Gradient Circle Percentage:** A circular indicator with a smooth gradient fill.
-*   **Wave Percentage:** An engaging circular indicator with an animated wave effect.
-*   **Customizable Animations:** Control the duration and behavior of animations.
-*   **Highly Stylable:** Adjust colors, sizes, strokes, and text styles to match your app's theme.
+*   **📊 Linear Percentage:** A classic horizontal progress bar with optional labels.
+*   **⭕ Circular Percentage:** A standard circular progress indicator with customizable stroke and colors.
+*   **🔵 Circle Percentage:** A filled circular progress indicator.
+*   **🌈 Gradient Circle Percentage:** A circular indicator with a smooth gradient fill.
+*   **🌊 Wave Percentage:** An engaging circular indicator with an animated wave effect.
+*   **🎬 Customizable Animations:** Control the duration and behavior of animations.
+*   **🎨 Highly Stylable:** Adjust colors, sizes, strokes, and text styles to match your app's theme.
 
 ---
 
