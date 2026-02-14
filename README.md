@@ -64,7 +64,9 @@ THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES. <br /> <br />
 
 ---
 
-## Basic Configuration (Gradle Dependencies)
+## ⚙️ Basic Configuration (Gradle Setup)
+
+To get started, add the JitPack repository to your `settings.gradle.kts` file.
 
 ### Groovy
 
