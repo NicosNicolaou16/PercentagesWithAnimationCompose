@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     id("maven-publish")
 }
@@ -36,15 +35,24 @@ android {
     }
     kotlin {
         compilerOptions {
+            languageVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_3
             jvmTarget = JvmTarget.fromTarget("17")
         }
     }
     buildFeatures {
         compose = true
     }
+    composeCompiler {
+        reportsDestination = layout.buildDirectory.dir("compose_compiler")
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
         }
     }
 }
@@ -68,13 +76,13 @@ dependencies {
     debugImplementation(libs.ui.tooling)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            register<MavenPublication>("release") {
-                groupId = "com.github.NicosNicolaou16"
-                artifactId = "PercentagesWithAnimationCompose"
-                version = "1.3.6"
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.NicosNicolaou16"
+            artifactId = "PercentagesWithAnimationCompose"
+            version = "1.3.7"
+            afterEvaluate {
                 from(components["release"])
             }
         }
