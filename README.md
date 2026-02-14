@@ -334,3 +334,17 @@ fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
     }
 }
 ```
+
+---
+
+## ⭐ Stargazers
+
+If you enjoy this project, please give it a star!
+Check out all the stargazers
+here: [Stargazers on GitHub](https://github.com/NicosNicolaou16/PercentagesWithAnimationCompose/stargazers)
+
+---
+
+## 🙏 Support & Contributions
+
+This library is actively maintained. Feedback, bug reports, and feature requests are welcome! Please feel free to **open an issue** or submit a **pull request**.
