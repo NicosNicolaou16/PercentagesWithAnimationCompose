@@ -61,7 +61,7 @@ This library offers a set of beautifully animated and highly customizable progre
 
 ## !! IMPORTANT NOTE
 
-THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES. <br /> <br />
+THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES. <br />
 
 ---
 
