@@ -53,8 +53,8 @@ This library offers a set of beautifully animated and highly customizable progre
 *   **JDK Version**: `17`
 *   **Target SDK**: `36`
 *   **Minimum SDK**: `27`
-*   **Kotlin Version**: `2.3.10`
-*   **Gradle Version**: `9.0.1`
+*   **Kotlin Version**: `2.3.20`
+*   **Gradle Version**: `9.1.0`
 *   **Build Tool Version**: `36.0.0`
 
 ---
@@ -67,12 +67,17 @@ THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES. <br />
 
 ## ⚙️ Basic Configuration (Gradle Dependencies)
 
+> [!IMPORTANT]  
+> Check my article with the implementation <br />
+> :point_right: [PercentagesWithAnimationCompose — An Animated Percentage Indicators Library for Jetpack Compose - Medium](https://medium.com/@nicosnicolaou/percentageswithanimationcompose-an-animated-percentage-indicators-library-for-jetpack-compose-f11843ee4d87) :point_left: <br />
+
+
 To get started, add the JitPack repository to your `settings.gradle.kts` file.
 
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.7'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.8'
 ```
 
 ```Groovy
@@ -86,7 +91,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.7")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.8")
 ```
 
 ```Kotlin
@@ -104,7 +109,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.3.7"
+percentagesWithAnimationComposeVersion = "1.3.8"
 
 [libraries]
 # other libraries here...
