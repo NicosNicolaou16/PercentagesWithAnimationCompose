@@ -67,6 +67,11 @@ THE BETA RELEASES MAY CONTAIN MAJOR OR MINOR CHANGES. <br />
 
 ## ⚙️ Basic Configuration (Gradle Dependencies)
 
+> [!IMPORTANT]  
+> Check my article with the implementation <br />
+> :point_right: [PercentagesWithAnimationCompose — An Animated Percentage Indicators Library for Jetpack Compose - Medium](https://medium.com/@nicosnicolaou/percentageswithanimationcompose-an-animated-percentage-indicators-library-for-jetpack-compose-f11843ee4d87a) :point_left: <br />
+
+
 To get started, add the JitPack repository to your `settings.gradle.kts` file.
 
 ### Groovy
