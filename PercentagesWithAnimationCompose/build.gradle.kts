@@ -35,7 +35,7 @@ android {
     }
     kotlin {
         compilerOptions {
-            languageVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_3
+            languageVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_4
             jvmTarget = JvmTarget.fromTarget("17")
         }
     }
@@ -81,7 +81,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.NicosNicolaou16"
             artifactId = "PercentagesWithAnimationCompose"
-            version = "1.3.8"
+            version = "1.3.9"
             afterEvaluate {
                 from(components["release"])
             }

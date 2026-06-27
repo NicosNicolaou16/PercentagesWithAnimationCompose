@@ -53,8 +53,8 @@ This library offers a set of beautifully animated and highly customizable progre
 *   **JDK Version**: `17`
 *   **Target SDK**: `36`
 *   **Minimum SDK**: `27`
-*   **Kotlin Version**: `2.3.20`
-*   **Gradle Version**: `9.1.0`
+*   **Kotlin Version**: `2.4.0`
+*   **Gradle Version**: `9.2.1`
 *   **Build Tool Version**: `36.0.0`
 
 ---
@@ -77,7 +77,7 @@ To get started, add the JitPack repository to your `settings.gradle.kts` file.
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.8'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.9'
 ```
 
 ```Groovy
@@ -91,7 +91,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.8")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.3.9")
 ```
 
 ```Kotlin
@@ -109,7 +109,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.3.8"
+percentagesWithAnimationComposeVersion = "1.3.9"
 
 [libraries]
 # other libraries here...
