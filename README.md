@@ -133,7 +133,7 @@ dependencyResolutionManagement {
 Below are examples of how to implement each of the percentage indicators available in the library.
 
 <p align="left">
-  <a title="simulator_image"><img src="screenshots/Screenshot_20240728_152344.png" height="530" width="250"></a>
+  <a title="simulator_image"><img src="screenshots/Screenshot_20260807_195415.png" height="530" width="250"></a>
   <a title="simulator_image"><img src="screenshots/example_gif1.gif" height="530" width="250"></a>
 </p>
 
