@@ -66,7 +66,7 @@ fun CircularPercentage(
     var percentage by remember { mutableFloatStateOf(0F) }
     var actualPercentage by remember { mutableFloatStateOf(0F) }
     val progressAnimation by animateFloatAsState(
-        targetValue = if (percentage != Infinity.value) percentage else 0F,
+        targetValue = if (percentage != Infinity.value && !percentage.isNaN()) percentage else 0F,
         animationSpec = tween(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
@@ -100,7 +100,11 @@ fun CircularPercentage(
         )
     }
     LaunchedEffect(key1 = currentPercentage) {
-        percentage = (currentPercentage * 360) / maxPercentage
+        if (maxPercentage > 0) {
+            percentage = (currentPercentage * 360) / maxPercentage
+        } else {
+            percentage = 0f
+        }
     }
 }
 
