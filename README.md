@@ -224,129 +224,191 @@ Below are examples of how to implement each of the percentage indicators availab
 ### Example
 
 ```Kotlin
+package com.nicos.percentageswithanimationcomposeexample
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Refresh
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nicos.percentageswithanimationcompose.CirclePercentage
-import com.nicos.percentageswithanimationcompose.CircularPercentage
-import com.nicos.percentageswithanimationcompose.GradientCirclePercentage
-import com.nicos.percentageswithanimationcompose.LinearPercentage
-import com.nicos.percentageswithanimationcompose.WavePercentage
+import com.nicos.percentageswithanimationcompose.*
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
 import com.nicos.percentageswithanimationcomposeexample.ui.theme.PercentagesWithAnimationComposeTheme
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            PercentagesWithAnimationComposeTheme {
-                Scaffold(
-                    modifier = Modifier
-                        .fillMaxSize()
-                ) { innerPadding ->
-                    PercentagesWithAnimationCompose(innerPadding = innerPadding)
-                }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    enableEdgeToEdge()
+    setContent {
+      PercentagesWithAnimationComposeTheme {
+        // Use rememberSaveable to keep the state across configuration changes
+        var currentTargetPercentage by rememberSaveable { mutableFloatStateOf(70F) }
+
+        Scaffold(
+          modifier = Modifier.fillMaxSize(),
+          containerColor = Color(0xFFFAFAFA), // Very subtle off-white for a clean look
+          floatingActionButton = {
+            FloatingActionButton(
+              onClick = {
+                currentTargetPercentage = (10..100).random().toFloat()
+              },
+              containerColor = Color(0xFF1E1E1E), // Sleek black FAB
+              contentColor = Color.White,
+              shape = RoundedCornerShape(16.dp)
+            ) {
+              Icon(Icons.Rounded.Refresh, contentDescription = "Refresh Animations")
             }
+          }
+        ) { innerPadding ->
+          PercentagesList(
+            modifier = Modifier.padding(innerPadding),
+            percentage = currentTargetPercentage
+          )
         }
+      }
     }
+  }
 }
 
 @Composable
-fun PercentagesWithAnimationCompose(innerPadding: PaddingValues) {
-    Column(
-        modifier = Modifier
-            .background(Color.White)
-            .fillMaxSize()
-            .verticalScroll(
-                state = rememberScrollState()
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Spacer(modifier = Modifier.size(90.dp))
-        Text(text = "Linear Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
-        Spacer(modifier = Modifier.size(15.dp))
-        LinearPercentage(
-            currentPercentage = 50F,
-            maxPercentage = 100F,
-            heightPercentageBackground = 50,
-            heightPercentage = 50,
-            roundedCornerShapeValue = 21,
-            horizontalPadding = 15,
-            colorPercentageBackground = Color.Red,
-            colorPercentage = Color.Blue,
-            startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp),
-            endTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
-            leftAndRightText = LeftAndRightText.BOTH,
-        )
+fun PercentagesList(modifier: Modifier = Modifier, percentage: Float) {
+  val scrollState = rememberScrollState()
+  Column(
+    modifier = modifier
+      .fillMaxSize()
+      .verticalScroll(scrollState)
+      .padding(
+        top = 40.dp,
+        bottom = 100.dp,
+        start = 24.dp,
+        end = 24.dp
+      ),
+    horizontalAlignment = Alignment.CenterHorizontally
+  ) {
 
-        Spacer(modifier = Modifier.size(70.dp))
-        Text(text = "Circular Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
-        Spacer(modifier = Modifier.size(15.dp))
-        CircularPercentage(
-            currentPercentage = 70F,
-            maxPercentage = 100F,
-            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
-        )
+    // --- Header ---
+    Text(
+      text = "Animations",
+      style = TextStyle(
+        color = Color(0xFF121212),
+        fontSize = 34.sp,
+        fontWeight = FontWeight.ExtraBold,
+        letterSpacing = (-1).sp
+      ),
+      modifier = Modifier.padding(bottom = 50.dp)
+    )
 
-        Spacer(modifier = Modifier.size(70.dp))
-        Text(text = "Circle Percentage", style = TextStyle(color = Color.Black, fontSize = 25.sp))
-        Spacer(modifier = Modifier.size(15.dp))
-        CirclePercentage(
-            currentPercentage = 80F,
-            maxPercentage = 100F,
-            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
-        )
+    // --- Linear Percentage ---
+    SectionTitle("Linear Percentage")
+    LinearPercentage(
+      currentPercentage = percentage,
+      maxPercentage = 100F,
+      heightPercentageBackground = 50,
+      heightPercentage = 50,
+      roundedCornerShapeValue = 25,
+      horizontalPadding = 0,
+      colorPercentageBackground = Color(0xFFE9ECEF),
+      colorPercentage = Color(0xFF3A86FF), // Vibrant Blue
+      startTextStyle = TextStyle(
+        color = Color(0xFF3A86FF),
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Bold
+      ),
+      endTextStyle = TextStyle(
+        color = Color.LightGray,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Bold
+      ),
+      leftAndRightText = LeftAndRightText.BOTH,
+    )
+    Spacer(modifier = Modifier.height(70.dp))
 
-        Spacer(modifier = Modifier.size(70.dp))
-        Text(
-            text = "Gradient Circle Percentage",
-            style = TextStyle(color = Color.Black, fontSize = 25.sp)
-        )
-        Spacer(modifier = Modifier.size(15.dp))
-        GradientCirclePercentage(
-            currentPercentage = 70F,
-            maxPercentage = 100F,
-            listOfColors = mutableListOf(
-                Color.Green,
-                (Color.Green.copy(alpha = 0.3f)),
-                Color.White
-            ),
-            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
-        )
+    // --- Circular Percentage ---
+    SectionTitle("Circular Percentage")
+    CircularPercentage(
+      currentPercentage = percentage,
+      maxPercentage = 100F,
+      centerTextStyle = TextStyle(
+        color = Color(0xFFFF006E), // Vibrant Pink
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold
+      ),
+    )
+    Spacer(modifier = Modifier.height(70.dp))
 
-        Spacer(modifier = Modifier.size(70.dp))
-        Text(
-            text = "Wave Percentage",
-            style = TextStyle(color = Color.Black, fontSize = 25.sp)
-        )
-        Spacer(modifier = Modifier.size(15.dp))
-        WavePercentage(
-            currentPercentage = 70F,
-            maxPercentage = 100F,
-            percentageAnimationDuration = 5_000,
-            centerTextStyle = TextStyle(color = Color.Red, fontSize = 15.sp),
-        )
-        Spacer(modifier = Modifier.size(70.dp))
-    }
+    // --- Circle Percentage ---
+    SectionTitle("Circle Percentage")
+    CirclePercentage(
+      currentPercentage = percentage,
+      maxPercentage = 100F,
+      centerTextStyle = TextStyle(
+        color = Color(0xFF8338EC), // Deep Purple
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold
+      ),
+    )
+    Spacer(modifier = Modifier.height(70.dp))
+
+    // --- Gradient Circle Percentage ---
+    SectionTitle("Gradient Circle")
+    GradientCirclePercentage(
+      currentPercentage = percentage,
+      maxPercentage = 100F,
+      listOfColors = mutableListOf(
+        Color.Green,
+        (Color.Green.copy(alpha = 0.3f)),
+        Color.White
+      ),
+      centerTextStyle = TextStyle(
+        color = Color(0xFFFB5607),
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold
+      ),
+    )
+    Spacer(modifier = Modifier.height(70.dp))
+
+    // --- Wave Percentage ---
+    SectionTitle("Wave Percentage")
+    WavePercentage(
+      currentPercentage = percentage,
+      maxPercentage = 100F,
+      percentageAnimationDuration = 4_000,
+      centerTextStyle = TextStyle(
+        color = Color(0xFF00B4D8), // Ocean Blue
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold
+      ),
+    )
+  }
+}
+
+// Reusable clean title to keep code DRY and maintain consistent beautiful typography
+@Composable
+fun SectionTitle(title: String) {
+  Text(
+    text = title,
+    style = TextStyle(
+      color = Color(0xFF2B2D42),
+      fontSize = 20.sp,
+      fontWeight = FontWeight.SemiBold,
+      letterSpacing = 0.5.sp
+    )
+  )
+  Spacer(modifier = Modifier.height(24.dp))
 }
 ```
 
