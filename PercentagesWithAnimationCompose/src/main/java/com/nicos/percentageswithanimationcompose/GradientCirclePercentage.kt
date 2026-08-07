@@ -61,7 +61,7 @@ fun GradientCirclePercentage(
     var percentage by remember { mutableFloatStateOf(0F) }
     var actualPercentage by remember { mutableFloatStateOf(0F) }
     val progressAnimation by animateFloatAsState(
-        targetValue = if (percentage != Infinity.value) percentage else 0F,
+        targetValue = if (percentage != Infinity.value && !percentage.isNaN()) percentage else 0F,
         animationSpec = tween(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
@@ -79,7 +79,7 @@ fun GradientCirclePercentage(
                 start = Offset.Zero,
                 end = Offset(
                     0F,
-                    size.height * (actualPercentage / maxPercentage),
+                    if (maxPercentage > 0) size.height * (actualPercentage / maxPercentage) else 0f,
                 ),
                 colors = listOfColors,
             )
@@ -101,7 +101,11 @@ fun GradientCirclePercentage(
         }
     }
     LaunchedEffect(key1 = currentPercentage) {
-        percentage = (currentPercentage * 360) / maxPercentage
+        if (maxPercentage > 0) {
+            percentage = (currentPercentage * 360) / maxPercentage
+        } else {
+            percentage = 0f
+        }
     }
 }
 
