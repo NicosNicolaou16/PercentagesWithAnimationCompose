@@ -7,13 +7,13 @@ plugins {
 
 android {
     namespace = "com.nicos.percentageswithanimationcomposeexample"
-    compileSdk = 36
-    buildToolsVersion = "36.0.0"
+    compileSdk = 37
+    buildToolsVersion = "37.0.0"
 
     defaultConfig {
         applicationId = "com.nicos.percentageswithanimationcomposeexample"
         minSdk = 27
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -67,6 +67,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.icons.core)
+    implementation(libs.icons.extended)
     // Unit Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
