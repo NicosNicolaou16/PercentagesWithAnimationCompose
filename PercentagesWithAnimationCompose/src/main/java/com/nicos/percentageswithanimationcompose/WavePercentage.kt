@@ -202,7 +202,7 @@ private fun DrawScope.drawWave(
     wavePhase: Float,
     maxPercentage: Float
 ) {
-    val normalizedPercentage = 1f - (actualPercentageToShow / maxPercentage)
+    val normalizedPercentage = if (maxPercentage > 0) 1f - (actualPercentageToShow / maxPercentage) else 1f
     path.apply {
         val fillHeightFromBottom =
             size.height * normalizedPercentage  // Calculate from bottom
