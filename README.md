@@ -55,7 +55,7 @@ This library offers a set of beautifully animated and highly customizable progre
 *   **Minimum SDK**: `27`
 *   **Kotlin Version**: `2.4.0`
 *   **Gradle Version**: `9.3.1`
-*   **Build Tool Version**: `36.0.0`
+*   **Build Tool Version**: `37.0.0`
 
 ---
 
