@@ -70,7 +70,7 @@ fun GradientCirclePercentage(
     )
     Box(
         contentAlignment = Alignment.Center, modifier = modifier
-            .background(color = Color.White)
+            .background(color = Color.Transparent)
             .rotate(180f)
     ) {
         Canvas(modifier = modifier.size(circularSize.dp)) {
