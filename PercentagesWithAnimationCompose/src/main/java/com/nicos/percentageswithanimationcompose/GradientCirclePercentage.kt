@@ -70,13 +70,16 @@ fun GradientCirclePercentage(
         ),
         label = "GradientCirclePercentage",
     )
-    val fraction = if (maxPercentage > 0f) actualPercentage.toInt() / maxPercentage else 0f
+    //val fraction = if (maxPercentage > 0f) actualPercentage.toInt() / maxPercentage else 0f
     Box(
         contentAlignment = Alignment.Center, modifier = modifier
             .background(color = Color.Transparent)
     ) {
         Canvas(modifier = modifier.size(circularSize.dp)) {
-            actualPercentage = (progressAnimation / 360) * maxPercentage
+            actualPercentage =
+                (progressAnimation / 360) * maxPercentage // still drives the text; goes away with #17
+            // progressAnimation is 0..360, so this is the exact fill for this frame: no lag, no rounding
+            val fraction = progressAnimation / 360f
             // Fill from the bottom up by flipping the gradient, instead of rotating the whole layout
             val gradientShader = Brush.linearGradient(
                 colors = listOfColors,
@@ -96,7 +99,7 @@ fun GradientCirclePercentage(
             )
         }
         Box(
-            modifier = modifier
+            contentAlignment = Alignment.Center
         ) {
             Text(
                 text = actualPercentage.toInt().toString(),
