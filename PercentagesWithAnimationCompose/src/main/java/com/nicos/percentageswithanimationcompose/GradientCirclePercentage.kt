@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.nicos.percentageswithanimationcompose.utils.formatPercentageText
 import kotlin.math.max
 
 /**
@@ -35,6 +36,7 @@ import kotlin.math.max
  * @param listOfColors - The list of gradient colors (must contain at least two colors)
  * @param percentageAnimationDuration - The duration of the animation, default value is 1500ms
  * @param centerTextStyle - The text style of the center text
+ * @param showPercentageSymbol - Show the percentage symbol after the value, default value is false
  * */
 @Composable
 fun GradientCirclePercentage(
@@ -52,6 +54,7 @@ fun GradientCirclePercentage(
     circularSize: Int = 100,
     percentageAnimationDuration: Int = 1_500,
     centerTextStyle: TextStyle,
+    showPercentageSymbol: Boolean = false,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
@@ -100,7 +103,7 @@ fun GradientCirclePercentage(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = actualPercentage.toInt().toString(),
+                text = formatPercentageText(actualPercentage, showPercentageSymbol),
                 style = centerTextStyle,
             )
         }
