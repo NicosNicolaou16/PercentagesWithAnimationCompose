@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
+import com.nicos.percentageswithanimationcompose.utils.formatPercentageText
 
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
@@ -36,6 +37,7 @@ import androidx.compose.ui.unit.dp
  * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage, default value is 10
  * @param circularStrokeWidth - The width of the stroke of the circular percentage, default value is 10
  * @param centerTextStyle - The text style of the center of the circular percentage
+ * @param showPercentageSymbol - Show the percentage symbol after the value, default value is false
  * */
 @Composable
 fun CircularPercentage(
@@ -56,6 +58,7 @@ fun CircularPercentage(
     circularStrokeBackgroundWidth: Float = 10F,
     circularStrokeWidth: Float = 10F,
     centerTextStyle: TextStyle,
+    showPercentageSymbol: Boolean = false,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
@@ -95,7 +98,7 @@ fun CircularPercentage(
             )
         }
         Text(
-            text = actualPercentage.toInt().toString(),
+            text = formatPercentageText(actualPercentage, showPercentageSymbol),
             style = centerTextStyle,
         )
     }
