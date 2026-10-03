@@ -153,7 +153,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `endTextStartPadding`                   | The padding of the end text, default value is 5                                                                                                                      |
 | `roundedCornerShapeValue`               | The rounded corner shape value, default value is 0                                                                                                                   |
 | `horizontalPadding`                     | The horizontal padding left and right of the Linear Percentage, default value is 0                                                                                   |
-| `innerTextEndPadding`                     | The end padding of the label drawn inside the bar, default value is 5                                                                                                |
+| `innerTextEndPadding`                   | The end padding of the label drawn inside the bar, default value is 5                                                                                                |
 | `innerTextMinFraction`                  | The minimum fraction of the Linear Percentage to show the label, default value is 0.15f                                                                              |
 | `startTextStyle`                        | The style of the start/lest text (Optional), default value TextStyle(color = Color.Black)                                                                            |
 | `endTextStyle`                          | The style of the end/right text (Optional), default value TextStyle(color = Color.Black)                                                                             |
