@@ -31,6 +31,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.nicos.percentageswithanimationcompose.utils.formatPercentageText
 import kotlinx.coroutines.launch
 import kotlin.math.PI
 import kotlin.math.sin
@@ -47,6 +48,7 @@ import kotlin.math.sin
  * @param waveAnimationDuration - The duration of the wave animation, default value is 500ms
  * @param continuousWaveAnimationDuration - The duration of the continuous wave animation, default value is 2000ms
  * @param centerTextStyle - The text style of the center text
+ * @param showPercentageSymbol - Show the percentage symbol after the value, default value is false
  * */
 @Composable
 fun WavePercentage(
@@ -69,6 +71,7 @@ fun WavePercentage(
     waveAnimationDuration: Int = 500,
     continuousWaveAnimationDuration: Int = 2_000,
     centerTextStyle: TextStyle,
+    showPercentageSymbol: Boolean = false,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
@@ -160,7 +163,7 @@ fun WavePercentage(
                 }
         )
         Text(
-            text = animatedPercentage.value.toInt().toString(),
+            text = formatPercentageText(animatedPercentage.value, showPercentageSymbol),
             style = centerTextStyle
         )
     }
