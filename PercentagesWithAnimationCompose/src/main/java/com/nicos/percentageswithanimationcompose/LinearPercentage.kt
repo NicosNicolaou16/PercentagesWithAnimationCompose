@@ -100,7 +100,7 @@ fun LinearPercentage(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
         ),
-        label = "",
+        label = "LinearPercentageBar",
     )
     val actualProgressAnimation by animateFloatAsState(
         targetValue = if (actualProgress != Infinity.value && !actualProgress.isNaN()) actualProgress else 0F,
