@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.math.max
 
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
@@ -69,31 +70,33 @@ fun GradientCirclePercentage(
         ),
         label = "",
     )
+    val fraction = if (maxPercentage > 0f) actualPercentage.toInt() / maxPercentage else 0f
     Box(
         contentAlignment = Alignment.Center, modifier = modifier
             .background(color = Color.Transparent)
-            .rotate(180f)
     ) {
         Canvas(modifier = modifier.size(circularSize.dp)) {
             actualPercentage = (progressAnimation / 360) * maxPercentage
+            // Fill from the bottom up by flipping the gradient, instead of rotating the whole layout
             val gradientShader = Brush.linearGradient(
-                start = Offset.Zero,
-                end = Offset(
-                    0F,
-                    if (maxPercentage > 0) size.height * (actualPercentage / maxPercentage) else 0f,
-                ),
                 colors = listOfColors,
+                start = Offset(
+                    0f,
+                    size.height
+                ),                                    // bottom of the circle
+                end = Offset(
+                    0f,
+                    size.height - max(size.height * fraction, 1f)
+                ),    // fill level; at least 1px so start != end at 0%
             )
 
             drawCircle(
                 brush = gradientShader,
-                radius = size.maxDimension / 2,
-                center = Offset(size.width / 2, size.height / 2)
+                radius = size.minDimension / 2,
             )
         }
         Box(
             modifier = modifier
-                .rotate(180f)
         ) {
             Text(
                 text = actualPercentage.toInt().toString(),
