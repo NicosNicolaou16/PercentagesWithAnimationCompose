@@ -56,7 +56,7 @@ fun GradientCirclePercentage(
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
-    assert(listOfColors.size > 1) { "List of colors must contain at least two colors" }
+    assert(listOfColors.size >= 2) { "listOfColors must contain at least two colors, was ${listOfColors.size}" }
 
     val modifier = Modifier
     var percentage by remember { mutableFloatStateOf(0F) }
