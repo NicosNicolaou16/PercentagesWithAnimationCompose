@@ -110,7 +110,7 @@ fun LinearPercentage(
         ),
         label = "LinearPercentage",
     )
-    val fraction = if (maxPercentage > 0f) actualProgressAnimation.toInt() / maxPercentage else 0f
+    val fraction = if (maxPercentage > 0f) actualProgressAnimation / maxPercentage else 0f
     Row(
         modifier = modifier
             .height(heightPercentageBackground.dp)
