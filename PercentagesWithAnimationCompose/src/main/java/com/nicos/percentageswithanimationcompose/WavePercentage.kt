@@ -96,7 +96,6 @@ fun WavePercentage(
     // Animation during percentage change
     LaunchedEffect(key1 = currentPercentage) {
         launch {
-            animatedPercentage.snapTo(0f) // Immediately set to 0
             animatedPercentage.animateTo(
                 targetValue = currentPercentage,
                 animationSpec = tween(durationMillis = percentageAnimationDuration),
