@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
-import com.nicos.percentageswithanimationcompose.utils.formatPercentageText
+import com.nicos.percentageswithanimationcompose.utils.PercentageTextFormatter.formatPercentageText
 
 /**
  * @param currentPercentage - The current value of the Linear progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)

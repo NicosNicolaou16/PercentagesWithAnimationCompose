@@ -1,4 +1,4 @@
-package com.nicos.percentageswithanimationcompose.utils
+package com.nicos.percentageswithanimationcompose.utils.PercentageTextFormatter
 
 /**
  * Formats a value as the label text shown by the percentage composables.
