@@ -48,12 +48,12 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param roundedCornerShapeValue - The rounded corner shape value, default value is 0
  * @param horizontalPadding - The horizontal padding left and right of the Linear Percentage, default value is 0
  * @param innerTextMinFraction - The minimum fraction of the Linear Percentage to show the label, default value is 0.15f
- * @param innerTextEndPadding - The padding of the end text, default value is 5
+ * @param innerTextEndPadding - The end padding of the label drawn inside the bar, default value is 5
  * @param startTextStyle - The style of the start/lest text (Optional), default value TextStyle(color = Color.Black)
  * @param endTextStyle - The style of the end/right text (Optional), default value TextStyle(color = Color.Black)
  * @param leftAndRightText - The left and right text, accepted values are LEFT_ONLY, RIGHT_ONLY, BOTH and NONE, default value is NONE
  * @param showPercentageOnLinearPercentage - The percentage on Linear Percentage enabled the text percent on percentage view, default value false
- * @param percentageOnLinearPercentageTextStyle - The text style of the percentage on Linear Percentage (Optional), default value TextStyle(color = Color.Black)
+ * @param percentageOnLinearPercentageTextStyle - The text style of the label inside the bar (Optional), default value LocalTextStyle.current
  * */
 @Composable
 fun LinearPercentage(
