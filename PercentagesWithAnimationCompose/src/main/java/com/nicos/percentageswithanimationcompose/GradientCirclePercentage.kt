@@ -71,8 +71,7 @@ fun GradientCirclePercentage(
         label = "GradientCirclePercentage",
     )
     Box(
-        contentAlignment = Alignment.Center, modifier = modifier
-            .background(color = Color.Transparent)
+        contentAlignment = Alignment.Center
     ) {
         Canvas(modifier = modifier.size(circularSize.dp)) {
             actualPercentage =
