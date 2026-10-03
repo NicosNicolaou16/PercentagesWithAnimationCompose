@@ -6,7 +6,10 @@ import androidx.compose.animation.core.EaseInQuad
 import androidx.compose.animation.core.EaseOutQuad
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
@@ -80,20 +83,18 @@ fun WavePercentage(
     var actualPercentageToShow by remember { mutableFloatStateOf(0f) }
     val animatedPercentage = remember { Animatable(0f) } // Create an Animatable
     val animatedWaveAmplitude = remember { Animatable(0f) }
-    val animatedPhase = remember { Animatable(0f) } // For continuous wave
-    var waveAmplitude by remember { mutableFloatStateOf(waveAmplitude) }
 
     // Cache the wave path when shape-defining parameters change
     val wavePath = remember(
         key1 = waveFrequency,
-        key2 =waveAmplitude,
+        key2 = waveAmplitude,
         key3 = maxPercentage
     ) { // Recompute if these change, excludes phase since it animates continuously.
         Path()
     }
 
     // Animation during percentage change
-    LaunchedEffect(key1= currentPercentage) {
+    LaunchedEffect(key1 = currentPercentage) {
         launch {
             animatedPercentage.snapTo(0f) // Immediately set to 0
             animatedPercentage.animateTo(
@@ -122,26 +123,26 @@ fun WavePercentage(
         }
     }
 
-    // Continuous wave animation
-    LaunchedEffect(key1 = actualPercentageToShow < maxPercentage) {
-        if (actualPercentageToShow < maxPercentage) {
-            launch {
-                animatedPhase.animateTo(
-                    targetValue = 2 * PI.toFloat(),
-                    animationSpec = infiniteRepeatable(
-                        animation = tween(
-                            durationMillis = continuousWaveAnimationDuration,
-                            easing = LinearEasing // Or a different easing
-                        ),
-                        repeatMode = RepeatMode.Restart
-                    )
-                )
-            }
-        } else {
-            waveAmplitude = 0f
-            animatedPhase.animateTo(0f)
-        }
-    }
+    // True when the wave has reached the top
+    val isFull = maxPercentage > 0f && animatedPercentage.value >= maxPercentage
+    // Fades the wave out when full and back in when the value drops again.
+    // Reads the waveAmplitude parameter directly, so changes from the caller apply.
+    val baseAmplitude by animateFloatAsState(
+        targetValue = if (isFull) 0f else waveAmplitude,
+        label = "WaveAmplitude",
+    )
+    // Endless wave movement, no LaunchedEffect or manual restart needed
+    val phase by rememberInfiniteTransition(label = "WavePhase").animateFloat(
+        initialValue = 0f,
+        targetValue = 2 * PI.toFloat(),
+        animationSpec = infiniteRepeatable(
+            tween(
+                continuousWaveAnimationDuration,
+                easing = LinearEasing
+            )
+        ),
+        label = "WavePhase",
+    )
 
     Box(
         modifier = modifier,
@@ -166,8 +167,8 @@ fun WavePercentage(
                     path = wavePath,
                     actualPercentageToShow = actualPercentageToShow,
                     waveFrequency = waveFrequency,
-                    waveAmplitude = waveAmplitude + animatedWaveAmplitude.value, // Use modified amplitude
-                    wavePhase = animatedPhase.value,  // Use continuous wave phase
+                    waveAmplitude = baseAmplitude + animatedWaveAmplitude.value, // Use modified amplitude
+                    wavePhase = phase,  // Use continuous wave phase
                     maxPercentage = maxPercentage
                 )
                 drawPath(wavePath, color = backgroundColor)
@@ -196,7 +197,8 @@ private fun DrawScope.drawWave(
     wavePhase: Float,
     maxPercentage: Float
 ) {
-    val normalizedPercentage = if (maxPercentage > 0) 1f - (actualPercentageToShow / maxPercentage) else 1f
+    val normalizedPercentage =
+        if (maxPercentage > 0) 1f - (actualPercentageToShow / maxPercentage) else 1f
     path.apply {
         val fillHeightFromBottom =
             size.height * normalizedPercentage  // Calculate from bottom
