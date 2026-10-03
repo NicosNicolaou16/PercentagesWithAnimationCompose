@@ -82,7 +82,6 @@ fun WavePercentage(
     val animatedPercentage = remember { Animatable(0f) } // Create an Animatable
     val animatedWaveAmplitude = remember { Animatable(0f) }
     val animatedPhase = remember { Animatable(0f) } // For continuous wave
-    val scope = rememberCoroutineScope()
     var waveAmplitude by remember { mutableFloatStateOf(waveAmplitude) }
 
     // Cache the wave path when shape-defining parameters change
@@ -96,7 +95,7 @@ fun WavePercentage(
 
     // Animation during percentage change
     LaunchedEffect(key1= currentPercentage) {
-        scope.launch {
+        launch {
             animatedPercentage.snapTo(0f) // Immediately set to 0
             animatedPercentage.animateTo(
                 targetValue = currentPercentage,
@@ -106,11 +105,7 @@ fun WavePercentage(
             }
             actualPercentageToShow = animatedPercentage.value
         }
-    }
-
-    // Animation during percentage change
-    LaunchedEffect(key1 = currentPercentage) {
-        scope.launch {
+        launch {
             animatedWaveAmplitude.animateTo(
                 targetValue = 0.2f * waveAmplitude,
                 animationSpec = tween(
@@ -131,7 +126,7 @@ fun WavePercentage(
     // Continuous wave animation
     LaunchedEffect(key1 = actualPercentageToShow < maxPercentage) {
         if (actualPercentageToShow < maxPercentage) {
-            scope.launch {
+            launch {
                 animatedPhase.animateTo(
                     targetValue = 2 * PI.toFloat(),
                     animationSpec = infiniteRepeatable(
