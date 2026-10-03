@@ -12,6 +12,7 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
@@ -83,13 +85,13 @@ fun WavePercentage(
     val animatedWaveAmplitude = remember { Animatable(0f) }
 
     // Cache the wave path when shape-defining parameters change
-    val wavePath = remember(
+/*    val wavePath = remember(
         key1 = waveFrequency,
         key2 = waveAmplitude,
         key3 = maxPercentage
     ) { // Recompute if these change, excludes phase since it animates continuously.
         Path()
-    }
+    }*/
 
     // Animation during percentage change
     LaunchedEffect(key1 = currentPercentage, key2 = maxPercentage) {
@@ -142,7 +144,34 @@ fun WavePercentage(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        Canvas(modifier = Modifier.size(circularSize.dp)) {
+        Spacer(
+            Modifier
+                .size(circularSize.dp)
+                .drawWithCache {
+                    // Built only when the size changes, not every frame
+                    val clip = Path().apply { addOval(Rect(Offset.Zero, size)) }
+                    // One path object, reused on every frame
+                    val wave = Path()
+
+                    onDrawBehind {
+                        drawCircle(waveColor)
+                        clipPath(clip) {
+                            // Clear last frame's wave before drawing the new one
+                            wave.reset()
+                            drawWave(
+                                path = wave,
+                                actualPercentageToShow = animatedPercentage.value,
+                                waveFrequency = waveFrequency,
+                                waveAmplitude = baseAmplitude + animatedWaveAmplitude.value,
+                                wavePhase = phase,
+                                maxPercentage = maxPercentage,
+                            )
+                            drawPath(wave, backgroundColor)
+                        }
+                    }
+                }
+        )
+        /*Canvas(modifier = Modifier.size(circularSize.dp)) {
             drawCircle(color = waveColor)
 
             clipPath(
@@ -167,7 +196,7 @@ fun WavePercentage(
                 )
                 drawPath(wavePath, color = backgroundColor)
             }
-        }
+        }*/
         Text(
             text = animatedPercentage.value.toInt().toString(),
             style = centerTextStyle
