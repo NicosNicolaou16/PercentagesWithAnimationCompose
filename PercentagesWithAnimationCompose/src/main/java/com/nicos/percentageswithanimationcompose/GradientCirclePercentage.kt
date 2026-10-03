@@ -47,7 +47,7 @@ fun GradientCirclePercentage(
         to = Float.MAX_VALUE.toDouble()
     )
     maxPercentage: Float,
-    listOfColors: MutableList<Color>,
+    listOfColors: List<Color>,
     circularSize: Int = 100,
     percentageAnimationDuration: Int = 1_500,
     centerTextStyle: TextStyle,
