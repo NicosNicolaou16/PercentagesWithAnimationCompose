@@ -79,7 +79,6 @@ fun WavePercentage(
     assert(continuousWaveAnimationDuration > 0) { "Continuous wave animation duration must be greater than 0" }
 
     val modifier = Modifier
-    var actualPercentageToShow by remember { mutableFloatStateOf(0f) }
     val animatedPercentage = remember { Animatable(0f) } // Create an Animatable
     val animatedWaveAmplitude = remember { Animatable(0f) }
 
@@ -98,10 +97,7 @@ fun WavePercentage(
             animatedPercentage.animateTo(
                 targetValue = currentPercentage,
                 animationSpec = tween(durationMillis = percentageAnimationDuration),
-            ) {
-                actualPercentageToShow = value
-            }
-            actualPercentageToShow = animatedPercentage.value
+            )
         }
         launch {
             animatedWaveAmplitude.animateTo(
@@ -163,7 +159,7 @@ fun WavePercentage(
                 wavePath.reset() // Reuse and clear the path
                 drawWave(
                     path = wavePath,
-                    actualPercentageToShow = actualPercentageToShow,
+                    actualPercentageToShow = animatedPercentage.value,
                     waveFrequency = waveFrequency,
                     waveAmplitude = baseAmplitude + animatedWaveAmplitude.value, // Use modified amplitude
                     wavePhase = phase,  // Use continuous wave phase
@@ -173,7 +169,7 @@ fun WavePercentage(
             }
         }
         Text(
-            text = actualPercentageToShow.toInt().toString(),
+            text = animatedPercentage.value.toInt().toString(),
             style = centerTextStyle
         )
     }
