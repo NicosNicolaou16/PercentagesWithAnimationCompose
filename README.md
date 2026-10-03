@@ -176,7 +176,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
 | `circularStrokeWidth`               | The width of the stroke of the circular percentage, default value is 10                                                                                       |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
-| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is true, default value is "%"                                                                      |
+| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
 
 ---
 
@@ -192,7 +192,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                  |
 | `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
-| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is true, default value is "%"                                                                      |
+| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
 
 ### 🌈 Gradient Circle Percentage
 
@@ -204,7 +204,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `listOfColors`                | The list of gradient colors (list of colors must not be empty)                                                                                                |
 | `percentageAnimationDuration` | The duration of the animation, default value is 1500ms                                                                                                        |
 | `centerTextStyle`             | The text style of the center text                                                                                                                             |
-| `showPercentageSymbol`        | The symbol shown after the value when showPercentageSymbol is true, default value is "%"                                                                      |
+| `showPercentageSymbol`        | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
 
 ---
 
@@ -223,7 +223,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `waveAnimationDuration`           | The duration of the wave animation, default value is 500ms                                                                                                 |
 | `continuousWaveAnimationDuration` | The duration of the continuous wave animation, default value is 2000ms                                                                                     |
 | `centerTextStyle`                 | The text style of the center text                                                                                                                          |
-| `showPercentageSymbol`            | The symbol shown after the value when showPercentageSymbol is true, default value is "%"                                                                   |
+| `showPercentageSymbol`            | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                  |
 
 ---
 
