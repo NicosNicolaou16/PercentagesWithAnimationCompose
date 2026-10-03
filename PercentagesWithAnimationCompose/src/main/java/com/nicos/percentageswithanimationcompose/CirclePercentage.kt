@@ -36,7 +36,7 @@ import com.nicos.percentageswithanimationcompose.utils.formatPercentageText
  * @param circlePercentageColor - The color of the circle, default value is Black
  * @param circleStrokeBackgroundWidth - The width of the circle stroke, default value is 10
  * @param centerTextStyle - The text style of the center text
- * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is true, default value is "%"
+ * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
  * */
 @Composable
 fun CirclePercentage(

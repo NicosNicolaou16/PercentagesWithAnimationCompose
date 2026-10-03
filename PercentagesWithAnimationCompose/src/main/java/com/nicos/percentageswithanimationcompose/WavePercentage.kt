@@ -48,7 +48,7 @@ import kotlin.math.sin
  * @param waveAnimationDuration - The duration of the wave animation, default value is 500ms
  * @param continuousWaveAnimationDuration - The duration of the continuous wave animation, default value is 2000ms
  * @param centerTextStyle - The text style of the center text
- * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is true, default value is "%"
+ * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
  * */
 @Composable
 fun WavePercentage(
