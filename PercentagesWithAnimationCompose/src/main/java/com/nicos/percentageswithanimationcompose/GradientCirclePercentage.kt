@@ -112,7 +112,7 @@ fun GradientCirclePercentage(
 
 @Preview
 @Composable
-fun GradientCirclePercentagePreview() {
+private fun GradientCirclePercentagePreview() {
     GradientCirclePercentage(
         currentPercentage = 50F,
         maxPercentage = 100F,
