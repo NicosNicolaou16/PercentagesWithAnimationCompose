@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -46,6 +47,8 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param endTextStartPadding - The padding of the end text, default value is 5
  * @param roundedCornerShapeValue - The rounded corner shape value, default value is 0
  * @param horizontalPadding - The horizontal padding left and right of the Linear Percentage, default value is 0
+ * @param innerTextMinFraction - The minimum fraction of the Linear Percentage to show the label, default value is 0.15f
+ * @param innerTextEndPadding - The padding of the end text, default value is 5
  * @param startTextStyle - The style of the start/lest text (Optional), default value TextStyle(color = Color.Black)
  * @param endTextStyle - The style of the end/right text (Optional), default value TextStyle(color = Color.Black)
  * @param leftAndRightText - The left and right text, accepted values are LEFT_ONLY, RIGHT_ONLY, BOTH and NONE, default value is NONE
@@ -72,6 +75,8 @@ fun LinearPercentage(
     endTextStartPadding: Int = 5,
     roundedCornerShapeValue: Int = 0,
     horizontalPadding: Int = 0,
+    innerTextMinFraction: Float = 0.15f, // show the label once the bar is 15% full, whatever the max is
+    innerTextEndPadding: Int = 5,        // the label's own padding, separate from startTextEndPadding
     startTextStyle: TextStyle? = null,
     endTextStyle: TextStyle? = null,
     leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
@@ -105,7 +110,7 @@ fun LinearPercentage(
         ),
         label = "",
     )
-
+    val fraction = if (maxPercentage > 0f) actualProgressAnimation.toInt() / maxPercentage else 0f
     Row(
         modifier = modifier
             .height(heightPercentageBackground.dp)
@@ -139,15 +144,13 @@ fun LinearPercentage(
                         .align(Alignment.CenterStart)
                         .background(colorPercentage)
                 ) {
-                    if (showPercentageOnLinearPercentage && (actualProgressAnimation).toInt() >= 15)
+                    if (showPercentageOnLinearPercentage && fraction >= innerTextMinFraction) {
                         Text(
-                            text = "${(actualProgressAnimation).toInt()}/${maxPercentage.toInt()}",
-                            modifier = modifier
-                                .padding(end = startTextEndPadding.dp)
-                                .align(Alignment.CenterEnd),
-                            style = percentageOnLinearPercentageTextStyle
-                                ?: TextStyle(color = Color.Black)
+                            text = "${actualProgressAnimation.toInt()}/${maxPercentage.toInt()}",
+                            modifier = Modifier.padding(end = innerTextEndPadding.dp).align(Alignment.CenterEnd),
+                            style = percentageOnLinearPercentageTextStyle ?: LocalTextStyle.current, // theme style, not hard-coded black
                         )
+                    }
                 }
             }
         }
