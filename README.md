@@ -160,6 +160,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `leftAndRightText`                      | The left and right text, accepted values are `LEFT_ONLY`, `RIGHT_ONLY`, `BOTH` and `NONE`, default value is `NONE`                                                   |
 | `showPercentageOnLinearPercentage`      | The percentage on Linear Percentage enabled the text percent on percentage view, default value false                                                                 |
 | `percentageOnLinearPercentageTextStyle` | The text style of the percentage on Linear Percentage (Optional), default value TextStyle(color = Color.Black)                                                       |
+| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
 
 ---
 
