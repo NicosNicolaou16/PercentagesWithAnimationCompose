@@ -25,7 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
-import com.nicos.percentageswithanimationcompose.utils.PercentageTextFormatter.formatPercentageText
+import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.formatPercentageText
 
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)

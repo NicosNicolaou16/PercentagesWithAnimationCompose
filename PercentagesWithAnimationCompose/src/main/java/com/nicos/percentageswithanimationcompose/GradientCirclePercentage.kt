@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nicos.percentageswithanimationcompose.utils.PercentageTextFormatter.formatPercentageText
+import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.formatPercentageText
 import kotlin.math.max
 
 /**
