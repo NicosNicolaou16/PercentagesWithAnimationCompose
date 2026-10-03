@@ -96,7 +96,7 @@ fun CirclePercentage(
             style = centerTextStyle,
         )
     }
-    LaunchedEffect(key1 = currentPercentage) {
+    LaunchedEffect(key1 = currentPercentage, key2 = maxPercentage) {
         if (maxPercentage > 0) {
             percentage = (currentPercentage * 360) / maxPercentage
         } else {
