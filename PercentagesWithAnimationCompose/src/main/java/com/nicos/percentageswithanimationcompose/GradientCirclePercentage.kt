@@ -56,6 +56,7 @@ fun GradientCirclePercentage(
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
+    assert(listOfColors.size > 1) { "List of colors must contain at least two colors" }
 
     val modifier = Modifier
     var percentage by remember { mutableFloatStateOf(0F) }
@@ -100,7 +101,7 @@ fun GradientCirclePercentage(
             )
         }
     }
-    LaunchedEffect(key1 = currentPercentage) {
+    LaunchedEffect(key1 = currentPercentage, key2 = maxPercentage) {
         if (maxPercentage > 0) {
             percentage = (currentPercentage * 360) / maxPercentage
         } else {
