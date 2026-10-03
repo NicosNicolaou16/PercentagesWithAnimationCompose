@@ -68,7 +68,7 @@ fun GradientCirclePercentage(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
         ),
-        label = "",
+        label = "GradientCirclePercentage",
     )
     val fraction = if (maxPercentage > 0f) actualPercentage.toInt() / maxPercentage else 0f
     Box(

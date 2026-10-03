@@ -108,7 +108,7 @@ fun LinearPercentage(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
         ),
-        label = "",
+        label = "LinearPercentage",
     )
     val fraction = if (maxPercentage > 0f) actualProgressAnimation.toInt() / maxPercentage else 0f
     Row(

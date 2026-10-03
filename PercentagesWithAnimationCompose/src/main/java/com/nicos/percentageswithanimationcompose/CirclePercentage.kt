@@ -69,7 +69,7 @@ fun CirclePercentage(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
         ),
-        label = "",
+        label = "CirclePercentage",
     )
 
     Box(contentAlignment = Alignment.Center) {
