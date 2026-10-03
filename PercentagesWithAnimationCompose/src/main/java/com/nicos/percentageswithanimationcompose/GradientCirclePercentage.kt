@@ -70,7 +70,6 @@ fun GradientCirclePercentage(
         ),
         label = "GradientCirclePercentage",
     )
-    //val fraction = if (maxPercentage > 0f) actualPercentage.toInt() / maxPercentage else 0f
     Box(
         contentAlignment = Alignment.Center, modifier = modifier
             .background(color = Color.Transparent)
