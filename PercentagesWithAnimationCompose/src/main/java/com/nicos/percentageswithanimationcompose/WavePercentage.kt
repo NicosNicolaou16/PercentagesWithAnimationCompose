@@ -84,15 +84,6 @@ fun WavePercentage(
     val animatedPercentage = remember { Animatable(0f) } // Create an Animatable
     val animatedWaveAmplitude = remember { Animatable(0f) }
 
-    // Cache the wave path when shape-defining parameters change
-/*    val wavePath = remember(
-        key1 = waveFrequency,
-        key2 = waveAmplitude,
-        key3 = maxPercentage
-    ) { // Recompute if these change, excludes phase since it animates continuously.
-        Path()
-    }*/
-
     // Animation during percentage change
     LaunchedEffect(key1 = currentPercentage, key2 = maxPercentage) {
         launch {
@@ -171,32 +162,6 @@ fun WavePercentage(
                     }
                 }
         )
-        /*Canvas(modifier = Modifier.size(circularSize.dp)) {
-            drawCircle(color = waveColor)
-
-            clipPath(
-                Path().apply {
-                    val radius = size.width / 2
-                    addOval(
-                        Rect(
-                            center = Offset(size.width / 2, size.height / 2),
-                            radius = radius
-                        )
-                    )
-                }
-            ) {
-                wavePath.reset() // Reuse and clear the path
-                drawWave(
-                    path = wavePath,
-                    actualPercentageToShow = animatedPercentage.value,
-                    waveFrequency = waveFrequency,
-                    waveAmplitude = baseAmplitude + animatedWaveAmplitude.value, // Use modified amplitude
-                    wavePhase = phase,  // Use continuous wave phase
-                    maxPercentage = maxPercentage
-                )
-                drawPath(wavePath, color = backgroundColor)
-            }
-        }*/
         Text(
             text = animatedPercentage.value.toInt().toString(),
             style = centerTextStyle
