@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
+import com.nicos.percentageswithanimationcompose.utils.formatPercentageText
 
 /**
  * @param currentPercentage - The current value of the Linear progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
@@ -55,7 +56,6 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param showPercentageOnLinearPercentage - The percentage on Linear Percentage enabled the text percent on percentage view, default value false
  * @param percentageOnLinearPercentageTextStyle - The text style of the label inside the bar (Optional), default value LocalTextStyle.current
  * @param showPercentageSymbol - Show the percentage symbol after the value, default value is false
- *
  * */
 @Composable
 fun LinearPercentage(
@@ -149,9 +149,16 @@ fun LinearPercentage(
                 ) {
                     if (showPercentageOnLinearPercentage && fraction >= innerTextMinFraction) {
                         Text(
-                            text = "${actualProgressAnimation.toInt()}/${maxPercentage.toInt()}",
-                            modifier = Modifier.padding(end = innerTextEndPadding.dp).align(Alignment.CenterEnd),
-                            style = percentageOnLinearPercentageTextStyle ?: LocalTextStyle.current, // theme style, not hard-coded black
+                            text = formatPercentageText(
+                                actualProgressAnimation,
+                                showPercentageSymbol
+                            ) +
+                                    "/" + formatPercentageText(maxPercentage, showPercentageSymbol),
+                            modifier = Modifier
+                                .padding(end = innerTextEndPadding.dp)
+                                .align(Alignment.CenterEnd),
+                            style = percentageOnLinearPercentageTextStyle
+                                ?: LocalTextStyle.current, // theme style, not hard-coded black
                         )
                     }
                 }
