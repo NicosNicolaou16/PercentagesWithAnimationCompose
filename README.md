@@ -176,6 +176,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
 | `circularStrokeWidth`               | The width of the stroke of the circular percentage, default value is 10                                                                                       |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
+| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is true, default value is "%"                                                                      |
 
 ---
 
