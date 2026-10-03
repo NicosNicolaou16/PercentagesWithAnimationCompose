@@ -223,6 +223,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `waveAnimationDuration`           | The duration of the wave animation, default value is 500ms                                                                                                 |
 | `continuousWaveAnimationDuration` | The duration of the continuous wave animation, default value is 2000ms                                                                                     |
 | `centerTextStyle`                 | The text style of the center text                                                                                                                          |
+| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is true, default value is "%"                                                                      |
 
 ---
 
