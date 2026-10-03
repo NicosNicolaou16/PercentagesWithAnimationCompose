@@ -54,6 +54,8 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param leftAndRightText - The left and right text, accepted values are LEFT_ONLY, RIGHT_ONLY, BOTH and NONE, default value is NONE
  * @param showPercentageOnLinearPercentage - The percentage on Linear Percentage enabled the text percent on percentage view, default value false
  * @param percentageOnLinearPercentageTextStyle - The text style of the label inside the bar (Optional), default value LocalTextStyle.current
+ * @param showPercentageSymbol - Show the percentage symbol after the value, default value is false
+ *
  * */
 @Composable
 fun LinearPercentage(
@@ -82,6 +84,7 @@ fun LinearPercentage(
     leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
     showPercentageOnLinearPercentage: Boolean = false,
     percentageOnLinearPercentageTextStyle: TextStyle? = null,
+    showPercentageSymbol: Boolean = false,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
