@@ -77,7 +77,7 @@ To get started, add the JitPack repository to your `settings.gradle.kts` file.
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.0'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.1'
 ```
 
 ```Groovy
@@ -91,7 +91,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.0")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.1")
 ```
 
 ```Kotlin
@@ -109,7 +109,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.4.0"
+percentagesWithAnimationComposeVersion = "1.4.1"
 
 [libraries]
 # other libraries here...
