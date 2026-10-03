@@ -53,8 +53,8 @@ This library offers a set of beautifully animated and highly customizable progre
 *   **JDK Version**: `17`
 *   **Target SDK**: `37`
 *   **Minimum SDK**: `27`
-*   **Kotlin Version**: `2.4.0`
-*   **Gradle Version**: `9.3.1`
+*   **Kotlin Version**: `2.4.20`
+*   **Gradle Version**: `9.4.1`
 *   **Build Tool Version**: `37.0.0`
 
 ---
@@ -77,7 +77,7 @@ To get started, add the JitPack repository to your `settings.gradle.kts` file.
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.0'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.1'
 ```
 
 ```Groovy
@@ -91,7 +91,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.0")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.1")
 ```
 
 ```Kotlin
@@ -109,7 +109,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.4.0"
+percentagesWithAnimationComposeVersion = "1.4.1"
 
 [libraries]
 # other libraries here...
@@ -153,11 +153,14 @@ Below are examples of how to implement each of the percentage indicators availab
 | `endTextStartPadding`                   | The padding of the end text, default value is 5                                                                                                                      |
 | `roundedCornerShapeValue`               | The rounded corner shape value, default value is 0                                                                                                                   |
 | `horizontalPadding`                     | The horizontal padding left and right of the Linear Percentage, default value is 0                                                                                   |
+| `innerTextEndPadding`                   | The end padding of the label drawn inside the bar, default value is 5                                                                                                |
+| `innerTextMinFraction`                  | The minimum fraction of the Linear Percentage to show the label, default value is 0.15f                                                                              |
 | `startTextStyle`                        | The style of the start/lest text (Optional), default value TextStyle(color = Color.Black)                                                                            |
 | `endTextStyle`                          | The style of the end/right text (Optional), default value TextStyle(color = Color.Black)                                                                             |
 | `leftAndRightText`                      | The left and right text, accepted values are `LEFT_ONLY`, `RIGHT_ONLY`, `BOTH` and `NONE`, default value is `NONE`                                                   |
 | `showPercentageOnLinearPercentage`      | The percentage on Linear Percentage enabled the text percent on percentage view, default value false                                                                 |
 | `percentageOnLinearPercentageTextStyle` | The text style of the percentage on Linear Percentage (Optional), default value TextStyle(color = Color.Black)                                                       |
+| `showPercentageSymbol`                  | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                            |
 
 ---
 
@@ -174,6 +177,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
 | `circularStrokeWidth`               | The width of the stroke of the circular percentage, default value is 10                                                                                       |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
+| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
 
 ---
 
@@ -189,6 +193,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                  |
 | `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
+| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
 
 ### 🌈 Gradient Circle Percentage
 
@@ -200,6 +205,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `listOfColors`                | The list of gradient colors (list of colors must not be empty)                                                                                                |
 | `percentageAnimationDuration` | The duration of the animation, default value is 1500ms                                                                                                        |
 | `centerTextStyle`             | The text style of the center text                                                                                                                             |
+| `showPercentageSymbol`        | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
 
 ---
 
@@ -218,6 +224,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `waveAnimationDuration`           | The duration of the wave animation, default value is 500ms                                                                                                 |
 | `continuousWaveAnimationDuration` | The duration of the continuous wave animation, default value is 2000ms                                                                                     |
 | `centerTextStyle`                 | The text style of the center text                                                                                                                          |
+| `showPercentageSymbol`            | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                  |
 
 ---
 

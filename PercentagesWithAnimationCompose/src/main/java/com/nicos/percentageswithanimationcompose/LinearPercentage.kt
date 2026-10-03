@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,6 +34,7 @@ import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
+import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.formatPercentageText
 
 /**
  * @param currentPercentage - The current value of the Linear progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
@@ -46,11 +48,14 @@ import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
  * @param endTextStartPadding - The padding of the end text, default value is 5
  * @param roundedCornerShapeValue - The rounded corner shape value, default value is 0
  * @param horizontalPadding - The horizontal padding left and right of the Linear Percentage, default value is 0
+ * @param innerTextMinFraction - The minimum fraction of the Linear Percentage to show the label, default value is 0.15f
+ * @param innerTextEndPadding - The end padding of the label drawn inside the bar, default value is 5
  * @param startTextStyle - The style of the start/lest text (Optional), default value TextStyle(color = Color.Black)
  * @param endTextStyle - The style of the end/right text (Optional), default value TextStyle(color = Color.Black)
  * @param leftAndRightText - The left and right text, accepted values are LEFT_ONLY, RIGHT_ONLY, BOTH and NONE, default value is NONE
  * @param showPercentageOnLinearPercentage - The percentage on Linear Percentage enabled the text percent on percentage view, default value false
- * @param percentageOnLinearPercentageTextStyle - The text style of the percentage on Linear Percentage (Optional), default value TextStyle(color = Color.Black)
+ * @param percentageOnLinearPercentageTextStyle - The text style of the label inside the bar (Optional), default value LocalTextStyle.current
+ * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
  * */
 @Composable
 fun LinearPercentage(
@@ -72,11 +77,14 @@ fun LinearPercentage(
     endTextStartPadding: Int = 5,
     roundedCornerShapeValue: Int = 0,
     horizontalPadding: Int = 0,
+    innerTextMinFraction: Float = 0.15f, // show the label once the bar is 15% full, whatever the max is
+    innerTextEndPadding: Int = 5,        // the label's own padding, separate from startTextEndPadding
     startTextStyle: TextStyle? = null,
     endTextStyle: TextStyle? = null,
     leftAndRightText: LeftAndRightText = LeftAndRightText.NONE,
     showPercentageOnLinearPercentage: Boolean = false,
     percentageOnLinearPercentageTextStyle: TextStyle? = null,
+    showPercentageSymbol: Boolean = false,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
@@ -95,7 +103,7 @@ fun LinearPercentage(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
         ),
-        label = "",
+        label = "LinearPercentageBar",
     )
     val actualProgressAnimation by animateFloatAsState(
         targetValue = if (actualProgress != Infinity.value && !actualProgress.isNaN()) actualProgress else 0F,
@@ -103,9 +111,9 @@ fun LinearPercentage(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
         ),
-        label = "",
+        label = "LinearPercentage",
     )
-
+    val fraction = if (maxPercentage > 0f) actualProgressAnimation / maxPercentage else 0f
     Row(
         modifier = modifier
             .height(heightPercentageBackground.dp)
@@ -139,22 +147,27 @@ fun LinearPercentage(
                         .align(Alignment.CenterStart)
                         .background(colorPercentage)
                 ) {
-                    if (showPercentageOnLinearPercentage && (actualProgressAnimation).toInt() >= 15)
+                    if (showPercentageOnLinearPercentage && fraction >= innerTextMinFraction) {
                         Text(
-                            text = "${(actualProgressAnimation).toInt()}/${maxPercentage.toInt()}",
-                            modifier = modifier
-                                .padding(end = startTextEndPadding.dp)
+                            text = formatPercentageText(
+                                actualProgressAnimation,
+                                showPercentageSymbol
+                            ) +
+                                    "/" + formatPercentageText(maxPercentage, showPercentageSymbol),
+                            modifier = Modifier
+                                .padding(end = innerTextEndPadding.dp)
                                 .align(Alignment.CenterEnd),
                             style = percentageOnLinearPercentageTextStyle
-                                ?: TextStyle(color = Color.Black)
+                                ?: LocalTextStyle.current, // theme style, not hard-coded black
                         )
+                    }
                 }
             }
         }
         if (leftAndRightText == LeftAndRightText.RIGHT_ONLY || leftAndRightText == LeftAndRightText.BOTH)
             RightText(modifier, maxPercentage, endTextStartPadding, endTextStyle)
     }
-    LaunchedEffect(key1 = currentPercentage, key2 = maxWidth) {
+    LaunchedEffect(key1 = currentPercentage, key2 = maxPercentage, key3 = maxWidth) {
         if (maxPercentage > 0 && maxWidth.value.toInt() > 0) {
             percentage = (currentPercentage * maxWidth.value.toInt()) / maxPercentage
             actualProgress = percentage * maxPercentage / maxWidth.value.toInt()

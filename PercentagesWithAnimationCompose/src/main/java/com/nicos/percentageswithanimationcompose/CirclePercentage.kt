@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
+import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.formatPercentageText
 
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
@@ -35,6 +36,7 @@ import androidx.compose.ui.unit.dp
  * @param circlePercentageColor - The color of the circle, default value is Black
  * @param circleStrokeBackgroundWidth - The width of the circle stroke, default value is 10
  * @param centerTextStyle - The text style of the center text
+ * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
  * */
 @Composable
 fun CirclePercentage(
@@ -54,6 +56,7 @@ fun CirclePercentage(
     circlePercentageColor: Color = Color.Black,
     circleStrokeBackgroundWidth: Float = 10F,
     centerTextStyle: TextStyle,
+    showPercentageSymbol: Boolean = false,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
@@ -69,7 +72,7 @@ fun CirclePercentage(
             durationMillis = percentageAnimationDuration,
             easing = FastOutSlowInEasing
         ),
-        label = "",
+        label = "CirclePercentage",
     )
 
     Box(contentAlignment = Alignment.Center) {
@@ -92,11 +95,11 @@ fun CirclePercentage(
             )
         }
         Text(
-            text = actualPercentage.toInt().toString(),
+            text = formatPercentageText(actualPercentage, showPercentageSymbol),
             style = centerTextStyle,
         )
     }
-    LaunchedEffect(key1 = currentPercentage) {
+    LaunchedEffect(key1 = currentPercentage, key2 = maxPercentage) {
         if (maxPercentage > 0) {
             percentage = (currentPercentage * 360) / maxPercentage
         } else {
