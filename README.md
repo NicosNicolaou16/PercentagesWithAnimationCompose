@@ -192,6 +192,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                  |
 | `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
+| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is true, default value is "%"                                                                      |
 
 ### 🌈 Gradient Circle Percentage
 
