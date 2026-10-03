@@ -93,7 +93,7 @@ fun WavePercentage(
     }
 
     // Animation during percentage change
-    LaunchedEffect(key1 = currentPercentage) {
+    LaunchedEffect(key1 = currentPercentage, key2 = maxPercentage) {
         launch {
             animatedPercentage.animateTo(
                 targetValue = currentPercentage,
