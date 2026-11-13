@@ -100,7 +100,7 @@ fun CircularPercentage(
         }
         Text(
             text = formatPercentageText(
-                value = actualPercentage,
+                currentPercentage = actualPercentage,
                 maxPercentage = maxPercentage,
                 showPercentageSymbol = showPercentageSymbol
             ),
