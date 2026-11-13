@@ -222,7 +222,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `waveColor`                       | The color of the wave, default value is Green                                                                                                              |
 | `percentageAnimationDuration`     | The duration of the animation, default value is 1500ms                                                                                                     |
 | `waveFrequency`                   | The frequency of the wave, default value is 1.5                                                                                                            |
-| `waveAmplitude`                   | The amplitude of the wave, default value is 10                                                                                                             |
+| `waveAmplitude`                   | The amplitude of the wave in dp, default value is 10                                                                                                       |
 | `waveAnimationDuration`           | The duration of the wave animation, default value is 500ms                                                                                                 |
 | `continuousWaveAnimationDuration` | The duration of the continuous wave animation, default value is 2000ms                                                                                     |
 | `centerTextStyle`                 | The text style of the center text                                                                                                                          |
