@@ -110,7 +110,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.4.1"
+percentagesWithAnimationComposeVersion = "1.4.2"
 
 [libraries]
 # other libraries here...
