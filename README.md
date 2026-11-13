@@ -195,6 +195,8 @@ Below are examples of how to implement each of the percentage indicators availab
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
 | `showPercentageSymbol`              | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                        |
 
+---
+
 ### 🌈 Gradient Circle Percentage
 
 | Parameters                    | Description                                                                                                                                                   |
