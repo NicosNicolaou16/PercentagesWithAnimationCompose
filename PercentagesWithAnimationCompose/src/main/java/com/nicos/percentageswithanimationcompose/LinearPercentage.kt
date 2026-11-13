@@ -122,7 +122,14 @@ fun LinearPercentage(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         if (leftAndRightText == LeftAndRightText.LEFT_ONLY || leftAndRightText == LeftAndRightText.BOTH)
-            LeftText(modifier, actualProgressAnimation, startTextEndPadding, startTextStyle)
+            LeftText(
+                modifier = modifier,
+                actualProgressAnimation = actualProgressAnimation,
+                maxPercentage = maxPercentage,
+                showPercentageSymbol = showPercentageSymbol,
+                startTextEndPadding = startTextEndPadding,
+                startTextStyle = startTextStyle
+            )
         /**
          * Main Functionality - Linear Percentage
          * */
@@ -185,6 +192,8 @@ fun LinearPercentage(
 /**
  * @param modifier - Modifier
  * @param actualProgressAnimation - Actual progress animation
+ * @param maxPercentage - Maximum percentage
+ * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign
  * @param startTextEndPadding - Start text end padding
  * @param startTextStyle - Start text style
  * */
@@ -192,11 +201,18 @@ fun LinearPercentage(
 private fun LeftText(
     modifier: Modifier,
     actualProgressAnimation: Float,
+    maxPercentage: Float,          // needed to work out the real percentage
+    showPercentageSymbol: Boolean, // follows the same option as the inner label
     startTextEndPadding: Int,
     startTextStyle: TextStyle?
 ) {
     Text(
-        text = (actualProgressAnimation).toInt().toString(),
+        // "50%" with the symbol, "50" without; same rule as everywhere else
+        text = formatPercentageText(
+            value = actualProgressAnimation,
+            maxValue = maxPercentage,
+            showPercentageSymbol = showPercentageSymbol
+        ),
         modifier = modifier.padding(end = startTextEndPadding.dp),
         style = startTextStyle ?: TextStyle(color = Color.Black)
     )
@@ -245,6 +261,8 @@ private fun LeftTextPreview() {
         modifier = Modifier,
         actualProgressAnimation = 50F,
         startTextEndPadding = 5,
+        maxPercentage = 100F,
+        showPercentageSymbol = true,
         startTextStyle = TextStyle(color = Color.Blue, fontSize = 15.sp)
     )
 }
