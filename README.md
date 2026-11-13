@@ -203,7 +203,7 @@ Below are examples of how to implement each of the percentage indicators availab
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`           | The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
 | `maxPercentage`               | The maximum value of the progress Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
-| `circularSize`                | The size of the circular percentage, default value is 100                                                                                                     |
+| `circularSize`                | The size of the circular percentage, default value is 100.dp                                                                                                  |
 | `listOfColors`                | The list of gradient colors (must contain at least two colors)                                                                                                |
 | `percentageAnimationDuration` | The duration of the animation, default value is 1500ms                                                                                                        |
 | `centerTextStyle`             | The text style of the center text                                                                                                                             |
