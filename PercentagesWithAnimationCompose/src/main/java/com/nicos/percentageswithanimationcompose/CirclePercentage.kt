@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.formatPercentageText
@@ -30,13 +31,13 @@ import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.f
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
  * @param maxPercentage - The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)
- * @param circleSize - The size of the circle, default value is 100
+ * @param circleSize - The size of the circle, default value is 100.dp
  * @param percentageAnimationDuration - The duration of the animation (percentage animation duration must be greater than or equal to 0)
  * @param circlePercentageBackgroundColor - The background color of the circle, default value is LightGray
  * @param circlePercentageColor - The color of the circle, default value is Black
- * @param circleStrokeBackgroundWidth - The width of the circle stroke, default value is 10
+ * @param circleStrokeBackgroundWidth - The width of the circle stroke in dp, default value is 4
  * @param centerTextStyle - The text style of the center text
- * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
+ * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
 @Composable
 fun CirclePercentage(
@@ -50,18 +51,18 @@ fun CirclePercentage(
         to = Float.MAX_VALUE.toDouble()
     )
     maxPercentage: Float,
-    circleSize: Int = 100,
+    circleSize: Dp = 100.dp,
     percentageAnimationDuration: Int = 1_500,
     circlePercentageBackgroundColor: Color = Color.LightGray,
     circlePercentageColor: Color = Color.Black,
-    circleStrokeBackgroundWidth: Float = 10F,
+    circleStrokeBackgroundWidth: Float = 4F,
     centerTextStyle: TextStyle,
     showPercentageSymbol: Boolean = false,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
-    assert(circleSize >= 0) { "Circular size must be greater than or equal to 0" }
+    assert(circleSize >= 0.dp) { "Circular size must be greater than or equal to 0" }
     assert(circleStrokeBackgroundWidth > 0) { "Circle stroke background width must be greater than 0" }
 
     var percentage by remember { mutableFloatStateOf(0F) }
@@ -76,11 +77,11 @@ fun CirclePercentage(
     )
 
     Box(contentAlignment = Alignment.Center) {
-        Canvas(modifier = Modifier.size(circleSize.dp)) {
+        Canvas(modifier = Modifier.size(circleSize)) {
             actualPercentage = (progressAnimation / 360) * maxPercentage
             drawCircle(
                 color = circlePercentageBackgroundColor,
-                style = Stroke(width = circleStrokeBackgroundWidth),
+                style = Stroke(width = circleStrokeBackgroundWidth.dp.toPx()),
                 radius = size.minDimension / 2,
                 center = Offset(size.width / 2, size.height / 2)
             )
@@ -95,7 +96,11 @@ fun CirclePercentage(
             )
         }
         Text(
-            text = formatPercentageText(actualPercentage, showPercentageSymbol),
+            text = formatPercentageText(
+                currentPercentage = actualPercentage,
+                maxPercentage = maxPercentage,
+                showPercentageSymbol = showPercentageSymbol
+            ),
             style = centerTextStyle,
         )
     }

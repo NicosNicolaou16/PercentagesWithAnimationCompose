@@ -53,8 +53,9 @@ This library offers a set of beautifully animated and highly customizable progre
 *   **JDK Version**: `17`
 *   **Target SDK**: `37`
 *   **Minimum SDK**: `27`
-*   **Kotlin Version**: `2.4.20`
-*   **Gradle Version**: `9.4.1`
+*   **Kotlin Version**: `2.4.21`
+*   **AGP Version**: `9.5.1`
+*   **Gradle Version**: `9.9.0`
 *   **Build Tool Version**: `37.0.0`
 
 ---
@@ -77,7 +78,7 @@ To get started, add the JitPack repository to your `settings.gradle.kts` file.
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.1'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.2'
 ```
 
 ```Groovy
@@ -91,7 +92,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.1")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.2")
 ```
 
 ```Kotlin
@@ -109,7 +110,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.4.1"
+percentagesWithAnimationComposeVersion = "1.4.2"
 
 [libraries]
 # other libraries here...
@@ -159,8 +160,8 @@ Below are examples of how to implement each of the percentage indicators availab
 | `endTextStyle`                          | The style of the end/right text (Optional), default value TextStyle(color = Color.Black)                                                                             |
 | `leftAndRightText`                      | The left and right text, accepted values are `LEFT_ONLY`, `RIGHT_ONLY`, `BOTH` and `NONE`, default value is `NONE`                                                   |
 | `showPercentageOnLinearPercentage`      | The percentage on Linear Percentage enabled the text percent on percentage view, default value false                                                                 |
-| `percentageOnLinearPercentageTextStyle` | The text style of the percentage on Linear Percentage (Optional), default value TextStyle(color = Color.Black)                                                       |
-| `showPercentageSymbol`                  | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                            |
+| `percentageOnLinearPercentageTextStyle` | The text style of the label inside the bar (Optional), default value LocalTextStyle.current                                                                          |
+| `showPercentageSymbol`                  | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                               |
 
 ---
 
@@ -170,14 +171,14 @@ Below are examples of how to implement each of the percentage indicators availab
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`                 | The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
 | `maxPercentage`                     | The maximum value of the progress Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
-| `circularSize`                      | The size of the circular percentage, default value is 100                                                                                                     |
+| `circularSize`                      | The size of the circular percentage, default value is 100.dp                                                                                                  |
 | `percentageAnimationDuration`       | The duration of the animation in milliseconds, default value is 1500ms                                                                                        |
 | `circularPercentageBackgroundColor` | The background color of the circular percentage, default value is LightGray                                                                                   |
 | `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                  |
-| `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
-| `circularStrokeWidth`               | The width of the stroke of the circular percentage, default value is 10                                                                                       |
+| `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage in dp, default value is 4                                                                       |
+| `circularStrokeWidth`               | The width of the stroke of the circular percentage in dp, default value is 4                                                                                  |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
-| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
+| `showPercentageSymbol`              | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                        |
 
 ---
 
@@ -187,13 +188,15 @@ Below are examples of how to implement each of the percentage indicators availab
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`                 | The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
 | `maxPercentage`                     | The maximum value of the progress Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
-| `circularSize`                      | The size of the circular percentage, default value is 100                                                                                                     |
+| `circleSize`                        | The size of the circle, default value is 100.dp                                                                                                               |
 | `percentageAnimationDuration`       | The duration of the animation in milliseconds, default value is 1500ms                                                                                        |
 | `circularPercentageBackgroundColor` | The background color of the circular percentage, default value is LightGray                                                                                   |
 | `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                  |
-| `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
+| `circleStrokeBackgroundWidth`       | The width of the circle stroke in dp, default value is 4                                                                                                      |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
-| `showPercentageSymbol`              | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
+| `showPercentageSymbol`              | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                        |
+
+---
 
 ### 🌈 Gradient Circle Percentage
 
@@ -201,11 +204,11 @@ Below are examples of how to implement each of the percentage indicators availab
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`           | The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
 | `maxPercentage`               | The maximum value of the progress Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
-| `circularSize`                | The size of the circular percentage, default value is 100                                                                                                     |
-| `listOfColors`                | The list of gradient colors (list of colors must not be empty)                                                                                                |
+| `circularSize`                | The size of the circular percentage, default value is 100.dp                                                                                                  |
+| `listOfColors`                | The list of gradient colors (must contain at least two colors)                                                                                                |
 | `percentageAnimationDuration` | The duration of the animation, default value is 1500ms                                                                                                        |
 | `centerTextStyle`             | The text style of the center text                                                                                                                             |
-| `showPercentageSymbol`        | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                     |
+| `showPercentageSymbol`        | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                        |
 
 ---
 
@@ -215,16 +218,16 @@ Below are examples of how to implement each of the percentage indicators availab
 |-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`               | The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue) |
 | `maxPercentage`                   | The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)                                                            |
-| `circularSize`                    | The size of the wave circle percentage, default value is 100                                                                                               |
+| `circularSize`                    | The size of the wave circle percentage, default value is 100.dp                                                                                            |
 | `backgroundColor`                 | The background color of the circle, default value is White                                                                                                 |
 | `waveColor`                       | The color of the wave, default value is Green                                                                                                              |
 | `percentageAnimationDuration`     | The duration of the animation, default value is 1500ms                                                                                                     |
 | `waveFrequency`                   | The frequency of the wave, default value is 1.5                                                                                                            |
-| `waveAmplitude`                   | The amplitude of the wave, default value is 10                                                                                                             |
+| `waveAmplitude`                   | The amplitude of the wave in dp, default value is 10                                                                                                       |
 | `waveAnimationDuration`           | The duration of the wave animation, default value is 500ms                                                                                                 |
 | `continuousWaveAnimationDuration` | The duration of the continuous wave animation, default value is 2000ms                                                                                     |
 | `centerTextStyle`                 | The text style of the center text                                                                                                                          |
-| `showPercentageSymbol`            | The symbol shown after the value when showPercentageSymbol is false, default value is "%"                                                                  |
+| `showPercentageSymbol`            | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                     |
 
 ---
 

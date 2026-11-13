@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.formatPercentageText
@@ -39,16 +40,16 @@ import kotlin.math.sin
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
  * @param maxPercentage - The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)
- * @param circularSize - The size of the circle, default value is 100
+ * @param circularSize - The size of the circle, default value is 100.dp
  * @param backgroundColor - The background color of the circle, default value is White
  * @param waveColor - The color of the wave, default value is Green
  * @param percentageAnimationDuration - The duration of the animation, default value is 1500ms
  * @param waveFrequency - The frequency of the wave, default value is 1.5
- * @param waveAmplitude - The amplitude of the wave, default value is 10
+ * @param waveAmplitude - The amplitude of the wave in dp, default value is 10
  * @param waveAnimationDuration - The duration of the wave animation, default value is 500ms
  * @param continuousWaveAnimationDuration - The duration of the continuous wave animation, default value is 2000ms
  * @param centerTextStyle - The text style of the center text
- * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
+ * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
 @Composable
 fun WavePercentage(
@@ -62,7 +63,7 @@ fun WavePercentage(
         to = Float.MAX_VALUE.toDouble()
     )
     maxPercentage: Float,
-    circularSize: Int = 100,
+    circularSize: Dp = 100.dp,
     backgroundColor: Color = Color.White,
     waveColor: Color = Color.Green,
     percentageAnimationDuration: Int = 1_500,
@@ -75,7 +76,7 @@ fun WavePercentage(
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
-    assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
+    assert(circularSize >= 0.dp) { "Circular size must be greater than or equal to 0" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(waveAnimationDuration >= 0) { "Wave animation duration must be greater than or equal to 0" }
     assert(continuousWaveAnimationDuration > 0) { "Continuous wave animation duration must be greater than 0" }
@@ -88,7 +89,10 @@ fun WavePercentage(
     LaunchedEffect(key1 = currentPercentage, key2 = maxPercentage) {
         launch {
             animatedPercentage.animateTo(
-                targetValue = currentPercentage,
+                targetValue = if (maxPercentage > 0f) currentPercentage.coerceIn(
+                    0f,
+                    maxPercentage
+                ) else 0f,
                 animationSpec = tween(durationMillis = percentageAnimationDuration),
             )
         }
@@ -137,7 +141,7 @@ fun WavePercentage(
     ) {
         Spacer(
             Modifier
-                .size(circularSize.dp)
+                .size(circularSize)
                 .drawWithCache {
                     // Built only when the size changes, not every frame
                     val clip = Path().apply { addOval(Rect(Offset.Zero, size)) }
@@ -153,7 +157,7 @@ fun WavePercentage(
                                 path = wave,
                                 actualPercentageToShow = animatedPercentage.value,
                                 waveFrequency = waveFrequency,
-                                waveAmplitude = baseAmplitude + animatedWaveAmplitude.value,
+                                waveAmplitude = (baseAmplitude + animatedWaveAmplitude.value).dp.toPx(),
                                 wavePhase = phase,
                                 maxPercentage = maxPercentage,
                             )
@@ -163,7 +167,11 @@ fun WavePercentage(
                 }
         )
         Text(
-            text = formatPercentageText(animatedPercentage.value, showPercentageSymbol),
+            text = formatPercentageText(
+                currentPercentage = animatedPercentage.value,
+                maxPercentage = maxPercentage,
+                showPercentageSymbol = showPercentageSymbol
+            ),
             style = centerTextStyle
         )
     }

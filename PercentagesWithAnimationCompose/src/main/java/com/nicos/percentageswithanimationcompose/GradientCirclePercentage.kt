@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,11 +31,11 @@ import kotlin.math.max
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
  * @param maxPercentage - The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)
- * @param circularSize - The size of the circle, default value is 100
+ * @param circularSize - The size of the circle, default value is 100.dp
  * @param listOfColors - The list of gradient colors (must contain at least two colors)
  * @param percentageAnimationDuration - The duration of the animation, default value is 1500ms
  * @param centerTextStyle - The text style of the center text
- * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
+ * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
 @Composable
 fun GradientCirclePercentage(
@@ -49,7 +50,7 @@ fun GradientCirclePercentage(
     )
     maxPercentage: Float,
     listOfColors: List<Color>,
-    circularSize: Int = 100,
+    circularSize: Dp = 100.dp,
     percentageAnimationDuration: Int = 1_500,
     centerTextStyle: TextStyle,
     showPercentageSymbol: Boolean = false,
@@ -57,7 +58,7 @@ fun GradientCirclePercentage(
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
-    assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
+    assert(circularSize >= 0.dp) { "Circular size must be greater than or equal to 0" }
     assert(listOfColors.size >= 2) { "listOfColors must contain at least two colors, was ${listOfColors.size}" }
 
     val modifier = Modifier
@@ -74,7 +75,7 @@ fun GradientCirclePercentage(
     Box(
         contentAlignment = Alignment.Center
     ) {
-        Canvas(modifier = modifier.size(circularSize.dp)) {
+        Canvas(modifier = modifier.size(circularSize)) {
             actualPercentage =
                 (progressAnimation / 360) * maxPercentage // still drives the text; goes away with #17
             // progressAnimation is 0..360, so this is the exact fill for this frame: no lag, no rounding
@@ -101,7 +102,11 @@ fun GradientCirclePercentage(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = formatPercentageText(actualPercentage, showPercentageSymbol),
+                text = formatPercentageText(
+                    actualPercentage,
+                    maxPercentage = maxPercentage,
+                    showPercentageSymbol = showPercentageSymbol
+                ),
                 style = centerTextStyle,
             )
         }

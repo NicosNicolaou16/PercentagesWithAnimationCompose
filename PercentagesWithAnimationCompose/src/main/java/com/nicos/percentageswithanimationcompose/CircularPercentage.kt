@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.dp
 import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.formatPercentageText
@@ -30,14 +31,14 @@ import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.f
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
  * @param maxPercentage - The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)
- * @param circularSize - The size of the circular percentage, default value is 100
+ * @param circularSize - The size of the circular percentage, default value is 100.dp
  * @param percentageAnimationDuration - The duration of the animation in milliseconds, default value is 1500ms
  * @param circularPercentageBackgroundColor - The background color of the circular percentage, default value is LightGray
  * @param circularPercentageColor - The color of the circular percentage, default value is Black
- * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage, default value is 10
- * @param circularStrokeWidth - The width of the stroke of the circular percentage, default value is 10
+ * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage in dp, default value is 4
+ * @param circularStrokeWidth - The width of the stroke of the circular percentage in dp, default value is 4
  * @param centerTextStyle - The text style of the center of the circular percentage
- * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
+ * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
 @Composable
 fun CircularPercentage(
@@ -51,19 +52,19 @@ fun CircularPercentage(
         to = Float.MAX_VALUE.toDouble()
     )
     maxPercentage: Float,
-    circularSize: Int = 100,
+    circularSize: Dp = 100.dp,
     percentageAnimationDuration: Int = 1_500,
     circularPercentageBackgroundColor: Color = Color.LightGray,
     circularPercentageColor: Color = Color.Black,
-    circularStrokeBackgroundWidth: Float = 10F,
-    circularStrokeWidth: Float = 10F,
+    circularStrokeBackgroundWidth: Float = 4F,
+    circularStrokeWidth: Float = 4F,
     centerTextStyle: TextStyle,
     showPercentageSymbol: Boolean = false,
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
-    assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
+    assert(circularSize >= 0.dp) { "Circular size must be greater than or equal to 0" }
 
     val modifier = Modifier
     var percentage by remember { mutableFloatStateOf(0F) }
@@ -78,11 +79,11 @@ fun CircularPercentage(
     )
 
     Box(contentAlignment = Alignment.Center) {
-        Canvas(modifier = modifier.size(circularSize.dp)) {
+        Canvas(modifier = modifier.size(circularSize)) {
             actualPercentage = (progressAnimation / 360) * maxPercentage
             drawCircle(
                 color = circularPercentageBackgroundColor,
-                style = Stroke(width = circularStrokeBackgroundWidth),
+                style = Stroke(width = circularStrokeBackgroundWidth.dp.toPx()),
                 radius = size.minDimension / 2,
                 center = Offset(size.width / 2, size.height / 2)
             )
@@ -92,13 +93,17 @@ fun CircularPercentage(
                 startAngle = -90f,
                 sweepAngle = progressAnimation,
                 useCenter = false,
-                style = Stroke(width = circularStrokeWidth),
+                style = Stroke(width = circularStrokeWidth.dp.toPx()),
                 size = Size(size.width, size.height),
                 topLeft = Offset(0f, 0f)
             )
         }
         Text(
-            text = formatPercentageText(actualPercentage, showPercentageSymbol),
+            text = formatPercentageText(
+                currentPercentage = actualPercentage,
+                maxPercentage = maxPercentage,
+                showPercentageSymbol = showPercentageSymbol
+            ),
             style = centerTextStyle,
         )
     }

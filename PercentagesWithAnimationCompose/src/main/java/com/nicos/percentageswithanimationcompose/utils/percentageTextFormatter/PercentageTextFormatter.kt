@@ -1,15 +1,20 @@
 package com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter
 
 /**
- * Formats a value as the label text shown by the percentage composables.
+ * Formats the label text shown by the percentage composables.
  *
- * @param value - The value to show, truncated to an Int
- * @param showPercentageSymbol - Appends % after the value when true
+ * @param currentPercentage - The current (animated) value
+ * @param maxPercentage - The maximum value; used to work out the real percentage
+ * @param showPercentageSymbol - When true, shows currentPercentage / maxPercentage as a percentage with a % sign
  * */
 internal fun formatPercentageText(
-    value: Float,
+    currentPercentage: Float,
+    maxPercentage: Float,
     showPercentageSymbol: Boolean,
 ): String {
-    val number = value.toInt().toString()
-    return if (showPercentageSymbol) "$number%" else number
+    // Without the symbol, keep the old behavior: the raw value, truncated
+    if (!showPercentageSymbol) return currentPercentage.toInt().toString()
+    // With the symbol, show the true share of max, so 100 of 200 reads "50%"
+    val percent = if (maxPercentage > 0f) currentPercentage / maxPercentage * 100f else 0f
+    return "${percent.toInt()}%"
 }
