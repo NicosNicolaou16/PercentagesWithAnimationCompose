@@ -37,7 +37,7 @@ import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.f
  * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage, default value is 10
  * @param circularStrokeWidth - The width of the stroke of the circular percentage, default value is 10
  * @param centerTextStyle - The text style of the center of the circular percentage
- * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
+ * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
 @Composable
 fun CircularPercentage(
