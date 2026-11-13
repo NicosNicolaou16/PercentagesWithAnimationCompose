@@ -78,7 +78,7 @@ To get started, add the JitPack repository to your `settings.gradle.kts` file.
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.1'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.2'
 ```
 
 ```Groovy
