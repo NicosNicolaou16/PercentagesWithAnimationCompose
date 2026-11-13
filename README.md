@@ -187,11 +187,11 @@ Below are examples of how to implement each of the percentage indicators availab
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`                 | The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)    |
 | `maxPercentage`                     | The maximum value of the progress Percentage (maximum value must be greater than or equal to current value maximumValue >= 0 && maximumValue >= currentValue) |
-| `circularSize`                      | The size of the circular percentage, default value is 100                                                                                                     |
+| `circleSize`                        | The size of the circle, default value is 100.dp                                                                                                               |
 | `percentageAnimationDuration`       | The duration of the animation in milliseconds, default value is 1500ms                                                                                        |
 | `circularPercentageBackgroundColor` | The background color of the circular percentage, default value is LightGray                                                                                   |
 | `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                  |
-| `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage, default value is 10                                                                            |
+| `circleStrokeBackgroundWidth`       | The width of the circle stroke in dp, default value is 4.dp                                                                                                   |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
 | `showPercentageSymbol`              | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                        |
 
