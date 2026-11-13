@@ -101,7 +101,11 @@ fun GradientCirclePercentage(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = formatPercentageText(actualPercentage, showPercentageSymbol),
+                text = formatPercentageText(
+                    actualPercentage,
+                    maxValue = maxPercentage,
+                    showPercentageSymbol = showPercentageSymbol
+                ),
                 style = centerTextStyle,
             )
         }
