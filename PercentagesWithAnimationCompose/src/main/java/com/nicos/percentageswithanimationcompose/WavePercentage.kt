@@ -88,7 +88,10 @@ fun WavePercentage(
     LaunchedEffect(key1 = currentPercentage, key2 = maxPercentage) {
         launch {
             animatedPercentage.animateTo(
-                targetValue = if (maxPercentage > 0f) currentPercentage.coerceIn(0f, maxPercentage) else 0f,
+                targetValue = if (maxPercentage > 0f) currentPercentage.coerceIn(
+                    0f,
+                    maxPercentage
+                ) else 0f,
                 animationSpec = tween(durationMillis = percentageAnimationDuration),
             )
         }
@@ -163,7 +166,11 @@ fun WavePercentage(
                 }
         )
         Text(
-            text = formatPercentageText(animatedPercentage.value, showPercentageSymbol),
+            text = formatPercentageText(
+                value = animatedPercentage.value,
+                maxValue = maxPercentage,
+                showPercentageSymbol = showPercentageSymbol
+            ),
             style = centerTextStyle
         )
     }
