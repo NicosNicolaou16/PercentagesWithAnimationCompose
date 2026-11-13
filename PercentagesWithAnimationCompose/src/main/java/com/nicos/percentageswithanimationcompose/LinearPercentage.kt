@@ -149,11 +149,15 @@ fun LinearPercentage(
                 ) {
                     if (showPercentageOnLinearPercentage && fraction >= innerTextMinFraction) {
                         Text(
-                            text = formatPercentageText(
-                                actualProgressAnimation,
-                                showPercentageSymbol
-                            ) +
-                                    "/" + formatPercentageText(maxPercentage, showPercentageSymbol),
+                            text = if (showPercentageSymbol) {
+                                formatPercentageText(
+                                    value = actualProgressAnimation,
+                                    maxValue = maxPercentage,
+                                    showPercentageSymbol = true
+                                )
+                            } else {
+                                "${actualProgressAnimation.toInt()}/${maxPercentage.toInt()}"
+                            },
                             modifier = Modifier
                                 .padding(end = innerTextEndPadding.dp)
                                 .align(Alignment.CenterEnd),
