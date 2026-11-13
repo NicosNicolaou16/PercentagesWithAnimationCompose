@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.formatPercentageText
@@ -62,7 +63,7 @@ fun WavePercentage(
         to = Float.MAX_VALUE.toDouble()
     )
     maxPercentage: Float,
-    circularSize: Int = 100,
+    circularSize: Dp = 100.dp,
     backgroundColor: Color = Color.White,
     waveColor: Color = Color.Green,
     percentageAnimationDuration: Int = 1_500,
@@ -75,7 +76,7 @@ fun WavePercentage(
 ) {
     assert(currentPercentage >= 0) { "Current value must be greater than or equal to 0" }
     assert(currentPercentage <= maxPercentage) { "Current value must be less than or equal to maximum value" }
-    assert(circularSize >= 0) { "Circular size must be greater than or equal to 0" }
+    assert(circularSize >= 0.dp) { "Circular size must be greater than or equal to 0" }
     assert(percentageAnimationDuration >= 0) { "Percentage animation duration must be greater than or equal to 0" }
     assert(waveAnimationDuration >= 0) { "Wave animation duration must be greater than or equal to 0" }
     assert(continuousWaveAnimationDuration > 0) { "Continuous wave animation duration must be greater than 0" }
@@ -140,7 +141,7 @@ fun WavePercentage(
     ) {
         Spacer(
             Modifier
-                .size(circularSize.dp)
+                .size(circularSize)
                 .drawWithCache {
                     // Built only when the size changes, not every frame
                     val clip = Path().apply { addOval(Rect(Offset.Zero, size)) }
@@ -156,7 +157,7 @@ fun WavePercentage(
                                 path = wave,
                                 actualPercentageToShow = animatedPercentage.value,
                                 waveFrequency = waveFrequency,
-                                waveAmplitude = baseAmplitude + animatedWaveAmplitude.value,
+                                waveAmplitude = (baseAmplitude + animatedWaveAmplitude.value).dp.toPx(),
                                 wavePhase = phase,
                                 maxPercentage = maxPercentage,
                             )
