@@ -31,12 +31,12 @@ import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.f
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
  * @param maxPercentage - The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)
- * @param circularSize - The size of the circular percentage, default value is 100
+ * @param circularSize - The size of the circular percentage, default value is 100.dp
  * @param percentageAnimationDuration - The duration of the animation in milliseconds, default value is 1500ms
  * @param circularPercentageBackgroundColor - The background color of the circular percentage, default value is LightGray
  * @param circularPercentageColor - The color of the circular percentage, default value is Black
- * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage, default value is 10
- * @param circularStrokeWidth - The width of the stroke of the circular percentage, default value is 10
+ * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage in dp, default value is 4.dp
+ * @param circularStrokeWidth - The width of the stroke of the circular percentage in dp, default value is 4.dp
  * @param centerTextStyle - The text style of the center of the circular percentage
  * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
