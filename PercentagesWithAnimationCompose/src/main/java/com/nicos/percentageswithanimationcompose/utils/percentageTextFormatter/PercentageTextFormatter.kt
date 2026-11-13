@@ -5,7 +5,7 @@ package com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter
  *
  * @param currentPercentage - The current (animated) value
  * @param maxPercentage - The maximum value; used to work out the real percentage
- * @param showPercentageSymbol - When true, shows value / maxValue as a percentage with a % sign
+ * @param showPercentageSymbol - When true, shows currentPercentage / maxPercentage as a percentage with a % sign
  * */
 internal fun formatPercentageText(
     currentPercentage: Float,
