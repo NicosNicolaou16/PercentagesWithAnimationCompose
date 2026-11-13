@@ -32,11 +32,11 @@ import kotlin.assert
 /**
  * @param currentPercentage - The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue)
  * @param maxPercentage - The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)
- * @param circleSize - The size of the circle, default value is 100
+ * @param circleSize - The size of the circle, default value is 100.dp
  * @param percentageAnimationDuration - The duration of the animation (percentage animation duration must be greater than or equal to 0)
  * @param circlePercentageBackgroundColor - The background color of the circle, default value is LightGray
  * @param circlePercentageColor - The color of the circle, default value is Black
- * @param circleStrokeBackgroundWidth - The width of the circle stroke, default value is 4
+ * @param circleStrokeBackgroundWidth - The width of the circle stroke in dp, default value is 4.dp
  * @param centerTextStyle - The text style of the center text
  * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
