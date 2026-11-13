@@ -36,7 +36,7 @@ import kotlin.assert
  * @param percentageAnimationDuration - The duration of the animation (percentage animation duration must be greater than or equal to 0)
  * @param circlePercentageBackgroundColor - The background color of the circle, default value is LightGray
  * @param circlePercentageColor - The color of the circle, default value is Black
- * @param circleStrokeBackgroundWidth - The width of the circle stroke, default value is 10
+ * @param circleStrokeBackgroundWidth - The width of the circle stroke, default value is 4
  * @param centerTextStyle - The text style of the center text
  * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
