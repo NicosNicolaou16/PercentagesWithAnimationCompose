@@ -95,7 +95,11 @@ fun CirclePercentage(
             )
         }
         Text(
-            text = formatPercentageText(actualPercentage, showPercentageSymbol),
+            text = formatPercentageText(
+                value = actualPercentage,
+                maxValue = maxPercentage,
+                showPercentageSymbol = showPercentageSymbol
+            ),
             style = centerTextStyle,
         )
     }
