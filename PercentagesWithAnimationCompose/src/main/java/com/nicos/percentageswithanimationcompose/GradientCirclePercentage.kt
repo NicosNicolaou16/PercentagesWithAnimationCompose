@@ -34,7 +34,7 @@ import kotlin.math.max
  * @param listOfColors - The list of gradient colors (must contain at least two colors)
  * @param percentageAnimationDuration - The duration of the animation, default value is 1500ms
  * @param centerTextStyle - The text style of the center text
- * @param showPercentageSymbol - The symbol shown after the value when showPercentageSymbol is false, default value is "%"
+ * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
 @Composable
 fun GradientCirclePercentage(
