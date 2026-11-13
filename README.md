@@ -217,7 +217,7 @@ Below are examples of how to implement each of the percentage indicators availab
 |-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `currentPercentage`               | The current value of the progress Percentage (current value must be less than or equal to maximum value currentValue >= 0 && currentValue <= maximumValue) |
 | `maxPercentage`                   | The maximum value of the progress Percentage (maximum value must be greater than or equal to 0)                                                            |
-| `circularSize`                    | The size of the wave circle percentage, default value is 100                                                                                               |
+| `circularSize`                    | The size of the wave circle percentage, default value is 100.dp                                                                                            |
 | `backgroundColor`                 | The background color of the circle, default value is White                                                                                                 |
 | `waveColor`                       | The color of the wave, default value is Green                                                                                                              |
 | `percentageAnimationDuration`     | The duration of the animation, default value is 1500ms                                                                                                     |
