@@ -161,6 +161,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `showPercentageOnLinearPercentage`      | The percentage on Linear Percentage enabled the text percent on percentage view, default value false                                                                 |
 | `percentageOnLinearPercentageTextStyle` | The text style of the label inside the bar (Optional), default value LocalTextStyle.current                                                                          |
 | `showPercentageSymbol`                  | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                               |
+
 ---
 
 ### ⭕ Circular Percentage
