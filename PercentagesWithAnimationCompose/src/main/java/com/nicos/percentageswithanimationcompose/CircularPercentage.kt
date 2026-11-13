@@ -35,8 +35,8 @@ import com.nicos.percentageswithanimationcompose.utils.percentageTextFormatter.f
  * @param percentageAnimationDuration - The duration of the animation in milliseconds, default value is 1500ms
  * @param circularPercentageBackgroundColor - The background color of the circular percentage, default value is LightGray
  * @param circularPercentageColor - The color of the circular percentage, default value is Black
- * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage in dp, default value is 4.dp
- * @param circularStrokeWidth - The width of the stroke of the circular percentage in dp, default value is 4.dp
+ * @param circularStrokeBackgroundWidth - The width of the background stroke of the circular percentage in dp, default value is 4
+ * @param circularStrokeWidth - The width of the stroke of the circular percentage in dp, default value is 4
  * @param centerTextStyle - The text style of the center of the circular percentage
  * @param showPercentageSymbol - Shows the value as a percentage of maxPercentage with a % sign, default value is false
  * */
