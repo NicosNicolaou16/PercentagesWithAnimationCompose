@@ -159,7 +159,7 @@ fun LinearPercentage(
                             text = if (showPercentageSymbol) {
                                 formatPercentageText(
                                     value = actualProgressAnimation,
-                                    maxValue = maxPercentage,
+                                    maxPercentage = maxPercentage,
                                     showPercentageSymbol = true
                                 )
                             } else {
@@ -210,7 +210,7 @@ private fun LeftText(
         // "50%" with the symbol, "50" without; same rule as everywhere else
         text = formatPercentageText(
             value = actualProgressAnimation,
-            maxValue = maxPercentage,
+            maxPercentage = maxPercentage,
             showPercentageSymbol = showPercentageSymbol
         ),
         modifier = modifier.padding(end = startTextEndPadding.dp),

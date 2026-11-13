@@ -104,7 +104,7 @@ fun GradientCirclePercentage(
             Text(
                 text = formatPercentageText(
                     actualPercentage,
-                    maxValue = maxPercentage,
+                    maxPercentage = maxPercentage,
                     showPercentageSymbol = showPercentageSymbol
                 ),
                 style = centerTextStyle,

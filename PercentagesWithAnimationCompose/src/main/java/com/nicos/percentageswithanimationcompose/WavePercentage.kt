@@ -169,7 +169,7 @@ fun WavePercentage(
         Text(
             text = formatPercentageText(
                 value = animatedPercentage.value,
-                maxValue = maxPercentage,
+                maxPercentage = maxPercentage,
                 showPercentageSymbol = showPercentageSymbol
             ),
             style = centerTextStyle

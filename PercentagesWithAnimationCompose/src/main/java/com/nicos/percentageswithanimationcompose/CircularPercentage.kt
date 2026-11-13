@@ -101,7 +101,7 @@ fun CircularPercentage(
         Text(
             text = formatPercentageText(
                 value = actualPercentage,
-                maxValue = maxPercentage,
+                maxPercentage = maxPercentage,
                 showPercentageSymbol = showPercentageSymbol
             ),
             style = centerTextStyle,
