@@ -174,8 +174,8 @@ Below are examples of how to implement each of the percentage indicators availab
 | `percentageAnimationDuration`       | The duration of the animation in milliseconds, default value is 1500ms                                                                                        |
 | `circularPercentageBackgroundColor` | The background color of the circular percentage, default value is LightGray                                                                                   |
 | `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                  |
-| `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage in dp, default value is 4.dp                                                                    |
-| `circularStrokeWidth`               | The width of the stroke of the circular percentage in dp, default value is 4.dp                                                                               |
+| `circularStrokeBackgroundWidth`     | The width of the background stroke of the circular percentage in dp, default value is 4                                                                       |
+| `circularStrokeWidth`               | The width of the stroke of the circular percentage in dp, default value is 4                                                                                  |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
 | `showPercentageSymbol`              | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                        |
 
@@ -191,7 +191,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `percentageAnimationDuration`       | The duration of the animation in milliseconds, default value is 1500ms                                                                                        |
 | `circularPercentageBackgroundColor` | The background color of the circular percentage, default value is LightGray                                                                                   |
 | `circularPercentageColor`           | The color of the circular percentage, default value is Black                                                                                                  |
-| `circleStrokeBackgroundWidth`       | The width of the circle stroke in dp, default value is 4.dp                                                                                                   |
+| `circleStrokeBackgroundWidth`       | The width of the circle stroke in dp, default value is 4                                                                                                      |
 | `centerTextStyle`                   | The text style of the center of the circular percentage                                                                                                       |
 | `showPercentageSymbol`              | Shows the value as a percentage of maxPercentage with a % sign, default value is false                                                                        |
 
