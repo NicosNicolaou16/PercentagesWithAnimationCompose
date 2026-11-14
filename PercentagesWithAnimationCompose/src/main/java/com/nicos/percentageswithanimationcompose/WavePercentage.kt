@@ -68,7 +68,7 @@ fun WavePercentage(
     waveColor: Color = Color.Green,
     percentageAnimationDuration: Int = 1_500,
     waveFrequency: Float = 1.5f,
-    waveAmplitude: Float = 10f,
+    waveAmplitude: Float = 4f,
     waveAnimationDuration: Int = 500,
     continuousWaveAnimationDuration: Int = 2_000,
     centerTextStyle: TextStyle,
