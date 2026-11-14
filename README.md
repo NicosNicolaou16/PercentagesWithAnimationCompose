@@ -92,7 +92,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.2")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.3")
 ```
 
 ```Kotlin
