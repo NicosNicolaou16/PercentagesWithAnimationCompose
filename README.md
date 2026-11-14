@@ -55,7 +55,7 @@ This library offers a set of beautifully animated and highly customizable progre
 *   **Minimum SDK**: `27`
 *   **Kotlin Version**: `2.4.21`
 *   **AGP Version**: `9.5.1`
-*   **Gradle Version**: `9.9.0`
+*   **Gradle Version**: `9.9.1`
 *   **Build Tool Version**: `37.0.0`
 
 ---
@@ -78,7 +78,7 @@ To get started, add the JitPack repository to your `settings.gradle.kts` file.
 ### Groovy
 
 ```Groovy
-implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.2'
+implementation 'com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.3'
 ```
 
 ```Groovy
@@ -92,7 +92,7 @@ allprojects {
 ### Kotlin DSL
 
 ```Kotlin
-implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.2")
+implementation("com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.3")
 ```
 
 ```Kotlin
@@ -110,7 +110,7 @@ dependencyResolutionManagement {
 ```toml
 [versions]
 # other versions here...
-percentagesWithAnimationComposeVersion = "1.4.2"
+percentagesWithAnimationComposeVersion = "1.4.3"
 
 [libraries]
 # other libraries here...
@@ -223,7 +223,7 @@ Below are examples of how to implement each of the percentage indicators availab
 | `waveColor`                       | The color of the wave, default value is Green                                                                                                              |
 | `percentageAnimationDuration`     | The duration of the animation, default value is 1500ms                                                                                                     |
 | `waveFrequency`                   | The frequency of the wave, default value is 1.5                                                                                                            |
-| `waveAmplitude`                   | The amplitude of the wave in dp, default value is 10                                                                                                       |
+| `waveAmplitude`                   | The amplitude of the wave in dp, default value is 4                                                                                                        |
 | `waveAnimationDuration`           | The duration of the wave animation, default value is 500ms                                                                                                 |
 | `continuousWaveAnimationDuration` | The duration of the continuous wave animation, default value is 2000ms                                                                                     |
 | `centerTextStyle`                 | The text style of the center text                                                                                                                          |

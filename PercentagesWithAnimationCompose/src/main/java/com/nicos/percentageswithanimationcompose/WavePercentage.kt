@@ -45,7 +45,7 @@ import kotlin.math.sin
  * @param waveColor - The color of the wave, default value is Green
  * @param percentageAnimationDuration - The duration of the animation, default value is 1500ms
  * @param waveFrequency - The frequency of the wave, default value is 1.5
- * @param waveAmplitude - The amplitude of the wave in dp, default value is 10
+ * @param waveAmplitude - The amplitude of the wave in dp, default value is 4
  * @param waveAnimationDuration - The duration of the wave animation, default value is 500ms
  * @param continuousWaveAnimationDuration - The duration of the continuous wave animation, default value is 2000ms
  * @param centerTextStyle - The text style of the center text
@@ -68,7 +68,7 @@ fun WavePercentage(
     waveColor: Color = Color.Green,
     percentageAnimationDuration: Int = 1_500,
     waveFrequency: Float = 1.5f,
-    waveAmplitude: Float = 10f,
+    waveAmplitude: Float = 4f,
     waveAnimationDuration: Int = 500,
     continuousWaveAnimationDuration: Int = 2_000,
     centerTextStyle: TextStyle,
